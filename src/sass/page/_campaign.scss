@@ -1,0 +1,61 @@
+@use "global" as *;
+
+.campaign {
+  margin-top: rem(40);
+}
+
+.campaign__inner {
+  @include mq("md") {
+    margin-top: rem(40.8);
+    max-width: calc(50vw + rem(558));
+    padding: rem(70) 0 0 0;
+    margin-left: auto;
+  }
+}
+
+.campaign__header {
+  margin-bottom: rem(28.8);
+  padding-right: rem(14);
+  @include mq("md") {
+    margin-bottom: rem(40);
+    padding-right: rem(200);
+    padding-top: rem(4);
+  }
+}
+
+.campaign__header .section-header__jatitle {
+  @include mq("md") {
+    margin-top: rem(2.2);
+    padding-right: rem(2);
+  }
+}
+
+.campaign__slider {
+  margin-top: rem(24);
+  padding-left: rem(15);
+  box-sizing: content-box;
+  overflow: hidden;
+  @include mq("md") {
+    margin-top: 0;
+    padding-left: rem(25);
+    width: 100%;
+    max-width: 100%;
+    margin-left: auto;
+  }
+}
+
+.campaign__link {
+  padding: 0 rem(15);
+  text-align: center;
+  margin-top: rem(28);
+  @include mq("md") {
+    margin-top: rem(70.4);
+  }
+}
+
+.campaign__link .button {
+  left: rem(-3);
+  @include mq("md") {
+    left: rem(0);
+  }
+}

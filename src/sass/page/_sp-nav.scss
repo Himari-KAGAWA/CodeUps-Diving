@@ -1,0 +1,204 @@
+@use "global" as *;
+
+.sp-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $main;
+  width: 100%;
+  height: 100vh;
+  z-index: 8888;
+}
+
+.sp-nav.is-active {
+  display: block;
+}
+
+.sp-nav__inner {
+  display: flex;
+  justify-content: center;
+  padding-top: rem(24);
+}
+
+.sp-nav__logo {
+  padding-top: rem(20.8);
+  padding-left: rem(16);
+}
+
+.sp-nav__logo img {
+  width: rem(102);
+}
+
+.sp-nav__column {
+  width: 48.115942%;
+  margin-top: rem(3);
+  margin-left: rem(-5);
+}
+
+.sp-nav__column--right {
+  width: 43.4782608%;
+  margin-left: rem(8);
+}
+
+.sp-nav__items {
+  color: $base;
+}
+
+.sp-nav__item a {
+  display: inline-block;
+  font-weight: $regular;
+  font-size: rem(16);
+  line-height: 1.12;
+  margin-left: rem(14.4);
+  padding-top: rem(12);
+  padding-bottom: rem(12);
+}
+
+.sp-nav__heading_1 a,
+.sp-nav__heading_2 a,
+.sp-nav__heading_3 a,
+.sp-nav__heading_4 a,
+.sp-nav__heading_5 a,
+.sp-nav__heading_6 a,
+.sp-nav__heading_7 a,
+.sp-nav__heading_8 a {
+  display: inline-block;
+  font-weight: $bold;
+  font-size: rem(16);
+  line-height: 1.125;
+  margin-left: rem(14);
+}
+
+.sp-nav__heading_1 a {
+  padding-top: rem(18.88);
+  padding-bottom: rem(12);
+}
+
+.sp-nav__heading_2 a {
+  padding-top: rem(28);
+  padding-bottom: rem(20);
+}
+
+.sp-nav__heading_3 a {
+  padding-top: rem(20);
+  padding-bottom: rem(12);
+}
+
+.sp-nav__heading_4 a {
+  padding-top: rem(28);
+  padding-bottom: rem(12);
+}
+
+.sp-nav__heading_5 a {
+  padding-top: rem(20);
+  padding-bottom: rem(20);
+}
+
+.sp-nav__heading_6 a {
+  padding-top: rem(20);
+  padding-bottom: rem(13.12);
+}
+
+.sp-nav__heading_7 a {
+  padding-top: rem(28);
+  padding-bottom: rem(20);
+  @include mq("md") {
+    padding-top: rem(20.5);
+  }
+}
+
+.sp-nav__heading_8 a {
+  padding-top: rem(20);
+  padding-bottom: rem(20);
+}
+
+.sp-nav__heading_1,
+.sp-nav__heading_2,
+.sp-nav__heading_3,
+.sp-nav__heading_4,
+.sp-nav__heading_5,
+.sp-nav__heading_6,
+.sp-nav__heading_7,
+.sp-nav__heading_8 {
+  position: relative;
+}
+
+.sp-nav__heading_1::before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  left: rem(-10);
+  top: rem(18);
+  width: rem(18);
+  height: rem(18);
+  background: transparent url(../images/common/icon-hitode.png) no-repeat center
+    center / contain;
+}
+
+.sp-nav__heading_3::before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  left: rem(-10);
+  top: rem(20);
+  width: rem(18);
+  height: rem(18);
+  background: transparent url(../images/common/icon-hitode.png) no-repeat center
+    center / contain;
+}
+
+.sp-nav__heading_4::before,
+.sp-nav__heading_2:before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  left: rem(-10);
+  top: rem(28);
+  width: rem(18);
+  height: rem(18);
+  background: transparent url(../images/common/icon-hitode.png) no-repeat center
+    center / contain;
+}
+
+.sp-nav__heading_5::before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  left: rem(-8);
+  top: rem(20);
+  width: rem(18);
+  height: rem(18);
+  background: transparent url(../images/common/icon-hitode.png) no-repeat center
+    center / contain;
+}
+
+.sp-nav__heading_7::before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  left: rem(-8);
+  top: rem(28);
+  width: rem(18);
+  height: rem(18);
+  background: transparent url(../images/common/icon-hitode.png) no-repeat center
+    center / contain;
+  @include mq("md") {
+    left: rem(-8);
+    top: rem(20);
+  }
+}
+
+.sp-nav__heading_6::before,
+.sp-nav__heading_8::before {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  left: rem(-8);
+  top: rem(20);
+  width: rem(18);
+  height: rem(18);
+  background: transparent url(../images/common/icon-hitode.png) no-repeat center
+    center / contain;
+}

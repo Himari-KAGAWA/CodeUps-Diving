@@ -1,0 +1,84 @@
+@use "global" as *;
+
+.pc-nav {
+  position: relative;
+  z-index: 8888;
+}
+
+.pc-nav__container {
+  max-width: rem(819);
+  width: 100%;
+  padding: 0 rem(1);
+}
+
+.pc-nav__items {
+  display: flex;
+  text-align: center;
+}
+
+.pc-nav__item {
+  flex-shrink: 0;
+}
+
+.pc-nav__link {
+  position: relative;
+}
+
+.pc-nav__link::after {
+  content: "";
+  position: absolute;
+  bottom: rem(16);
+  left: 50%; /* 中央からスタート */
+  transform: translateX(-50%); /* 中央に配置 */
+  width: 0;
+  height: rem(1);
+  background: transparent;
+  transition: width 0.4s ease 0s, background-color 0.4s ease 0s;
+}
+
+.pc-nav__link:hover::after {
+  background: $base;
+  width: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.pc-nav__link.last:hover::after {
+  background: $base;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-34%);
+}
+
+.pc-nav__link.current::after {
+  background: $base;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-60%);
+}
+
+.pc-nav__item a {
+  display: inline-block;
+  font-family: $english-family;
+  font-weight: $regular;
+  font-size: rem(18);
+  color: $base;
+  line-height: 1;
+  padding: rem(27.008) rem(20) rem(27.008) rem(20);
+}
+
+.pc-nav__item:first-child a {
+  padding-left: 0;
+}
+
+.pc-nav__item:last-child a {
+  padding-right: 0;
+}
+
+.pc-nav__link--ja {
+  font-family: $base-font-family;
+  font-weight: $regular;
+  font-size: rem(10);
+  margin-top: rem(3);
+  line-height: 1.5;
+}

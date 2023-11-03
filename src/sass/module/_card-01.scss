@@ -1,0 +1,121 @@
+@use "global" as *;
+
+.card-01 {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.25);
+  max-width: rem(280);
+  color: $font;
+  @include mq("md") {
+    max-width: rem(333);
+  }
+}
+
+.card-01__img {
+  overflow: hidden;
+  aspect-ratio: 280 / 188;
+  @include mq("md") {
+    aspect-ratio: 333 / 223;
+  }
+}
+
+.card-01__img img {
+  width: 100%;
+  height: 100%;
+}
+
+.card-01__body {
+  text-align: center;
+  padding: rem(16) rem(16) rem(24);
+  @include mq("md") {
+    padding-top: rem(24);
+    padding-bottom: rem(40);
+  }
+}
+
+.card-01__header {
+  text-align: left;
+  border-bottom: rem(1) solid $main;
+  padding-bottom: rem(6.88);
+  @include mq("md") {
+    padding-bottom: rem(7.68);
+  }
+}
+
+.card-01__title {
+  font-weight: $regular;
+  font-size: rem(16);
+  margin-top: rem(4.8);
+  @include mq('md') {
+  margin-top: rem(5.5);
+  }
+}
+
+.card-01__lead {
+  @include mq("md") {
+    font-size: rem(16);
+    margin-left: rem(-15);
+  }
+}
+
+.card-01__content {
+  display: block;
+  margin-top: rem(9.28);
+  font-size: rem(14);
+  text-align: center;
+  @include mq("md") {
+    margin-top: rem(16);
+  }
+}
+
+.card-01__discount {
+  display: inline-block;
+  font-family: $english-family_2nd;
+  font-weight: $bold;
+  color: $main;
+  line-height: 1;
+  font-size: rem(32);
+  margin-top: rem(9.6);
+  @include mq("md") {
+    font-size: rem(40);
+    margin-top: rem(7.2);
+  }
+}
+
+.card-01__price {
+  font-family: $english-family_2nd;
+  font-weight: $bold;
+  color: $font;
+  line-height: 1;
+  font-size: rem(20);
+  text-decoration: line-through;
+  text-decoration-color: #c94800;
+  text-decoration-thickness: 3px;
+  margin-right: rem(12);
+  text-align: left;
+  @include mq("md") {
+    font-size: rem(24);
+    margin-right: rem(18);
+    margin-left: rem(1);
+  }
+}
+
+.card-01__link:hover .card-01__img img {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.card-01__price--space {
+  font-family: $english-family_2nd;
+  font-weight: $bold;
+  color: $font;
+  line-height: 1;
+  font-size: rem(20);
+  text-decoration: line-through;
+  text-decoration-color: #c94800;
+  text-decoration-thickness: 3px;
+  margin-right: rem(12);
+  @include mq("md") {
+    font-size: rem(24);
+    margin-right: rem(18);
+    margin-left: rem(-18);
+  }
+}

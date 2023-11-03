@@ -1,0 +1,108 @@
+@use "global" as *;
+
+.blog {
+  @include mq("md") {
+    position: relative;
+    background-image: url(../images/common/pc/blog-bg.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+}
+
+.blog__overlay-img {
+  @include mq("md") {
+    position: absolute;
+    top: 2.69%;
+    left: 6.99%;
+    width: rem(437);
+    height: rem(201);
+    background-image: url(../images/common/pc/blog-fish-illust.png);
+    background-size: cover;
+    z-index: 1; /* 背景画像の上に配置 */
+  }
+}
+
+.blog__inner {
+  padding-top: rem(81);
+  padding-bottom: rem(40);
+  @include mq("md") {
+    padding-top: rem(96);
+  }
+}
+
+.blog__header {
+  text-align: center;
+}
+
+.blog__engtitle {
+  display: inline-block;
+  font-family: $english-family;
+  font-weight: $regular;
+  font-size: rem(32);
+  line-height: 1.25;
+  color: $font;
+  @include mq("md") {
+    color: $base;
+    font-size: rem(40);
+  }
+}
+
+.blog__engtitle-reverse {
+  color: $main;
+  @include mq("md") {
+    color: $base;
+  }
+}
+
+.blog__jatitle {
+  font-size: rem(12);
+  color: $main;
+  line-height: 1;
+  margin-top: rem(7.2);
+  @include mq("md") {
+    color: $base;
+    margin-top: rem(5.6);
+  }
+}
+
+.blog__items {
+  margin-top: rem(29.6);
+  @include mq("md") {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 40px;
+    margin-top: rem(82.4);
+  }
+}
+
+.blog__item {
+  margin: auto;
+  @include mq("md") {
+    margin: 0;
+    width: calc((100% - 80px) / 3);
+  }
+}
+
+.blog__item + .blog__item {
+  margin-top: rem(40);
+  @include mq("md") {
+    margin-top: 0;
+  }
+}
+
+.blog__link {
+  margin-top: rem(40);
+  text-align: center;
+  @include mq("md") {
+    margin-top: rem(80);
+  }
+}
+
+.blog__link .button {
+  left: rem(-2);
+  @include mq("md") {
+    left: rem(-4);
+  }
+}

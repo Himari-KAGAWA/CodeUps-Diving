@@ -1,0 +1,73 @@
+@use "global" as *;
+
+.swiper {
+  overflow: visible;
+}
+
+.swiper-slide {
+  width: rem(280);
+  // 下部シャドウ表示のための余白
+  padding-bottom: rem(10);
+  @include mq("md") {
+    width: rem(333);
+  }
+}
+
+.swiper-button-prev,
+.swiper-rtl .swiper-button-next {
+  top: rem(29);
+  left: calc(50% + rem(198));
+}
+
+.swiper-button-next,
+.swiper-rtl .swiper-button-prev {
+  top: rem(29);
+  left: calc(50% + rem(359));
+}
+
+.swiper-button-prev {
+  width: rem(80);
+  height: rem(80);
+  margin-top: -20px;
+  background: transparent url(../images/common/pc/arrow-prev.png) no-repeat
+    center center/contain;
+  right: calc(50% - 600px);
+  color: transparent;
+  transition: all 0.4s ease 0s;
+}
+
+.swiper-button-next {
+  width: rem(80);
+  height: rem(80);
+  margin-top: -20px;
+  background: transparent url(../images/common/pc/arrow-next.png) no-repeat
+    center center/contain;
+  right: calc(50% - 600px);
+  color: transparent;
+  transition: all 0.4s ease 0s;
+}
+
+.swiper-button-prev::before,
+.swiper-button-next::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* シャドウのスタイル（insetを追加して内側に配置） */
+  box-shadow: inset 0 0 4px 2px rgba(64, 143, 149, 0.3); /* 内側にシャドウを設定 */
+  border-radius: 50%; /* 丸い形状にする */
+  opacity: 0; /* 最初は非表示にする */
+  transition: opacity 0.3s ease; /* シャドウの表示をスムーズに変化させる */
+}
+
+.swiper-button-prev:hover::before,
+.swiper-button-next:hover::before {
+  opacity: 1; /* ホバー時にシャドウを表示 */
+}
+
+.swiper-backface-hidden .swiper-slide {
+  padding-bottom: 0;
+}

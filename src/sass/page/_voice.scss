@@ -1,0 +1,85 @@
+@use "global" as *;
+
+.voice {
+  margin-top: rem(40.8);
+  @include mq("md") {
+    position: relative;
+    background: url(../images/common/pc/seahorse-illust.png) no-repeat;
+    background-position: 86.8% 99.6%;
+    background-size: 71px 162px;
+    margin-top: rem(0);
+  }
+}
+
+.voice__bg-img {
+  @include mq('md') {
+    content: "";
+    position: absolute;
+    left: 7%;
+    top: -12.5%;
+    width: rem(301);
+    height: rem(138);
+    background: transparent url(../images/common/pc/fish-illust.png) no-repeat
+      center center / contain;
+    z-index: 1;
+  }
+}
+
+.voice__inner {
+  padding-bottom: rem(40);
+  @include mq("md") {
+    padding-bottom: rem(70);
+    padding-top: rem(26);
+  }
+}
+
+.voice__header .section-header__engtitle {
+  line-height: 1.25;
+  @include mq("md") {
+    margin-left: rem(-1);
+  }
+}
+
+.voice__header .section-header__jatitle {
+  @include mq("md") {
+    margin-top: rem(3);
+  }
+}
+
+.voice__items {
+  display: flex;
+  flex-direction: column;
+  gap: rem(40);
+  margin-top: rem(42.4);
+  @include mq("md") {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: rem(40);
+    margin-top: rem(28.16);
+  }
+}
+
+.voice__item {
+  margin: 0 auto;
+  @include mq("md") {
+    margin: 0;
+    width: calc((100% - 40px) / 2);
+  }
+}
+
+.voice__link {
+  text-align: center;
+  margin-top: rem(40);
+  margin-left: rem(-2);
+  @include mq("md") {
+    margin-top: rem(80);
+  }
+}
+
+.voice__link .button {
+  margin-left: rem(-2);
+  @include mq('md') {
+    margin-left: rem(-5);
+  }
+}

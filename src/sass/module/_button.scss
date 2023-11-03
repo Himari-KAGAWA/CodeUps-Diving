@@ -1,0 +1,71 @@
+@use "global" as *;
+
+.button {
+  display: inline-block;
+  position: relative;
+  width: rem(202);
+  z-index: 1;
+}
+
+.button__link {
+  display: inline-block;
+  width: 100%;
+  background-color: $main;
+  color: $base;
+  border: rem(1) solid $main;
+  font-family: $english-family;
+  font-size: rem(14);
+  font-weight: $regular;
+  line-height: 1;
+  padding: rem(19.04) 0 rem(18) rem(40);
+  transition: background-color 0.3s ease 0s;
+  text-align: left;
+  margin-bottom: rem(4);
+}
+
+.button__link::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - rem(1.6));
+  right: rem(39);
+  transform: translateY(calc(-50% - rem(3))) rotate(42deg);
+  width: rem(10);
+  height: rem(1);
+  background-color: $base;
+}
+
+.button__link::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - rem(1.6));
+  right: rem(40);
+  transform: translateY(-50%);
+  width: rem(40);
+  height: rem(1);
+  background-color: $base;
+}
+
+.button__link:hover {
+  background-color: $base;
+  color: $main;
+}
+
+.button__link:hover::before {
+  background-color: $main;
+}
+
+.button__link:hover::after {
+  background-color: $main;
+}
+
+.button__under {
+  position: absolute;
+  top: rem(4);
+  right: rem(-4);
+  display: inline-block;
+  width: 100%;
+  padding: rem(26) 0 rem(26) rem(40);
+  background-color: transparent;
+  border: 1px solid $main;
+  z-index: -1;
+}
