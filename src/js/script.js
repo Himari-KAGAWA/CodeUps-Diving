@@ -1,14 +1,14 @@
 jQuery(function ($) {
   // この中であればWordpressでも「$」が使用可能になる
 
- //ナビバートグル
-  $('.js-hamburger').on('click', function () {
-    if ($('.js-hamburger').hasClass('is-open')) {
-      $('.js-drawer-menu').fadeOut();
-      $(this).removeClass('is-open');
+  //ナビバートグル
+  $(".js-hamburger").on("click", function () {
+    if ($(".js-hamburger").hasClass("is-open")) {
+      $(".js-drawer-menu").fadeOut();
+      $(this).removeClass("is-open");
     } else {
-      $('.js-drawer-menu').fadeIn();
-      $(this).addClass('is-open');
+      $(".js-drawer-menu").fadeIn();
+      $(this).addClass("is-open");
     }
   });
 
@@ -24,26 +24,20 @@ jQuery(function ($) {
   });
 
   // ドロワーメニュー内のリンクがクリックされたとき
-$(".js-sp-nav a").click(function () {
-  $(".js-hamburger").removeClass("is-active");
-  $(".js-hamburger").removeClass("is-open");
-  $(".js-sp-nav").fadeOut(300);
-});
+  $(".js-sp-nav a").click(function () {
+    $(".js-hamburger").removeClass("is-active");
+    $(".js-hamburger").removeClass("is-open");
+    $(".js-sp-nav").fadeOut(300);
+  });
 
   // swiper メインビュー
-  const swiper = new Swiper(".js-main-visual", {
-    loop: true, // ループ有効
-    slidesPerView: 1, // 一度に表示する枚数
-    speed: 10000, // ループの時間
-    allowTouchMove: false, // スワイプ無効
-    autoplay: {
-      delay: 0, // 途切れなくループ
-    },
-  });
+var swiper = new Swiper("#js-main-visual-swiper", {
+
+})
 
   // swiper campaign
   // overflow:hidden;したクラスを追記する↓
-  const mySwiper = new Swiper(".campaign__slider .js-campaign", {
+  var campaign__slider = new Swiper(".campaign__slider #js-campaign-swiper", {
     loop: true,
     loopAdditionalSlides: 1,
     slidesPerView: "auto",
@@ -53,8 +47,8 @@ $(".js-sp-nav a").click(function () {
     // overflow:hidden;したクラスを追記する↓
     // Navigation arrows
     navigation: {
-      nextEl: ".campaign__slider .swiper-button-next",
-      prevEl: ".campaign__slider .swiper-button-prev",
+      nextEl: "#js-campaign-next",
+      prevEl: "#js-campaign-prev",
       clickable: true,
     },
 

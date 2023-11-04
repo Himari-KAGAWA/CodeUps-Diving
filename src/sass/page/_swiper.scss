@@ -5,12 +5,7 @@
 }
 
 .swiper-slide {
-  width: rem(280);
-  // 下部シャドウ表示のための余白
-  padding-bottom: rem(10);
-  @include mq("md") {
-    width: rem(333);
-  }
+  width: max-content;
 }
 
 .swiper-button-prev,

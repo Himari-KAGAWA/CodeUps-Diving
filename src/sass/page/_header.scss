@@ -1,8 +1,10 @@
 @use "global" as *;
 
 .header {
-  position: fixed;
   background-color: rgba(13, 41, 54, 0.68);
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: rem(80);
   padding: rem(24) 0;
@@ -23,7 +25,6 @@
   justify-content: space-between;
   align-items: center;
   @include mq("md") {
-    display: flex;
     padding: 0 rem(40);
   }
 }

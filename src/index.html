@@ -34,7 +34,7 @@
     <!-- css -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <!-- swiper js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.7/swiper-bundle.min.js"></script>
     <!-- inview js -->
@@ -46,22 +46,20 @@
     <!-- header -->
     <header class="header">
       <div class="header__inner">
-        <div class="header__logo">
-          <h1>
-            <a href="" class="header__logo-link">
+        <h1 class="header__logo">
+          <a href="#" class="header__logo-link">
+            <picture>
+              <source
+                srcset="./assets/images/common/pc/logo-header_pc.png"
+                media="(min-width:767px)"
+              />
               <img
                 src="./assets/images/common/logo-header_sp.png"
                 alt="CodeUps"
-                class="u-mobile"
               />
-              <img
-                src="./assets/images/common/pc/logo-header_pc.png"
-                alt="CodeUps"
-                class="u-desktop"
-              />
-            </a>
-          </h1>
-        </div>
+            </picture>
+          </a>
+        </h1>
         <div class="header__drawer hamburger u-mobile js-hamburger">
           <span></span>
           <span></span>
@@ -123,81 +121,81 @@
           </div>
         </div>
         <!-- /PCナビ -->
-      </div>
-      <!-- SPナビ -->
-      <div class="header__sp-nav sp-nav js-sp-nav">
-        <div class="sp-nav__logo">
-          <img src="./assets/images/common/logo-nav_sp.png" alt="CodeUps" />
-        </div>
-        <div class="sp-nav__inner inner">
-          <div class="sp-nav__column">
-            <ul class="sp-nav__items">
-              <li class="sp-nav__heading_1">
-                <a href="#campaign">キャンペーン</a>
-              </li>
-              <li class="sp-nav__item">
-                <a href="#">ライセンス取得</a>
-              </li>
-              <li class="sp-nav__item">
-                <a href="#">貸切体験ダイビング</a>
-              </li>
-              <li class="sp-nav__item">
-                <a href="#">ナイトダイビング</a>
-              </li>
-              <li class="sp-nav__heading_2">
-                <a href="#about">私たちについて</a>
-              </li>
-            </ul>
-            <ul class="sp-nav__items">
-              <li class="sp-nav__heading_3">
-                <a href="#information">ダイビング情報</a>
-              </li>
-              <li class="sp-nav__item">
-                <a href="#">ライセンス講習</a>
-              </li>
-              <li class="sp-nav__item">
-                <a href="#">体験ダイビング</a>
-              </li>
-              <li class="sp-nav__item">
-                <a href="#">ファンダイビング</a>
-              </li>
-              <li class="sp-nav__heading_4">
-                <a href="#blog">ブログ</a>
-              </li>
-            </ul>
+        <!-- SPナビ -->
+        <div class="header__sp-nav sp-nav js-sp-nav">
+          <div class="sp-nav__logo">
+            <img src="./assets/images/common/logo-nav_sp.png" alt="CodeUps" />
           </div>
-          <div class="sp-nav__column--right">
-            <ul class="sp-nav__items">
-              <li class="sp-nav__heading_5">
-                <a href="#voice">お客様の声</a>
-              </li>
-              <li class="sp-nav__heading_6">
-                <a href="#price">料金一覧</a>
-              </li>
-              <li class="sp-nav__item">
-                <a href="#">ライセンス講習</a>
-              </li>
-              <li class="sp-nav__item">
-                <a href="#">体験ダイビング</a>
-              </li>
-              <li class="sp-nav__item">
-                <a href="#">ファンダイビング</a>
-              </li>
-            </ul>
-            <ul class="sp-nav__items">
-              <li class="sp-nav__heading_7">
-                <a href="#">よくある質問</a>
-              </li>
-              <li class="sp-nav__heading_8">
-                <a href="#">プライバシー<br class="u-mobile" />ポリシー</a>
-              </li>
-              <li class="sp-nav__heading_8">
-                <a href="#">利用規約</a>
-              </li>
-              <li class="sp-nav__heading_8">
-                <a href="#contact">おい問わ合せ</a>
-              </li>
-            </ul>
+          <div class="sp-nav__inner">
+            <div class="sp-nav__column">
+              <ul class="sp-nav__items">
+                <li class="sp-nav__heading_1">
+                  <a href="#campaign">キャンペーン</a>
+                </li>
+                <li class="sp-nav__item">
+                  <a href="#">ライセンス取得</a>
+                </li>
+                <li class="sp-nav__item">
+                  <a href="#">貸切体験ダイビング</a>
+                </li>
+                <li class="sp-nav__item">
+                  <a href="#">ナイトダイビング</a>
+                </li>
+                <li class="sp-nav__heading_2">
+                  <a href="#about">私たちについて</a>
+                </li>
+              </ul>
+              <ul class="sp-nav__items">
+                <li class="sp-nav__heading_3">
+                  <a href="#information">ダイビング情報</a>
+                </li>
+                <li class="sp-nav__item">
+                  <a href="#">ライセンス講習</a>
+                </li>
+                <li class="sp-nav__item">
+                  <a href="#">体験ダイビング</a>
+                </li>
+                <li class="sp-nav__item">
+                  <a href="#">ファンダイビング</a>
+                </li>
+                <li class="sp-nav__heading_4">
+                  <a href="#blog">ブログ</a>
+                </li>
+              </ul>
+            </div>
+            <div class="sp-nav__column--right">
+              <ul class="sp-nav__items">
+                <li class="sp-nav__heading_5">
+                  <a href="#voice">お客様の声</a>
+                </li>
+                <li class="sp-nav__heading_6">
+                  <a href="#price">料金一覧</a>
+                </li>
+                <li class="sp-nav__item">
+                  <a href="#">ライセンス講習</a>
+                </li>
+                <li class="sp-nav__item">
+                  <a href="#">体験ダイビング</a>
+                </li>
+                <li class="sp-nav__item">
+                  <a href="#">ファンダイビング</a>
+                </li>
+              </ul>
+              <ul class="sp-nav__items">
+                <li class="sp-nav__heading_7">
+                  <a href="#">よくある質問</a>
+                </li>
+                <li class="sp-nav__heading_8">
+                  <a href="#">プライバシー<br class="u-mobile" />ポリシー</a>
+                </li>
+                <li class="sp-nav__heading_8">
+                  <a href="#">利用規約</a>
+                </li>
+                <li class="sp-nav__heading_8">
+                  <a href="#contact">おい問わ合せ</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -207,42 +205,20 @@
     <main>
       <!-- メインビュー -->
       <!-- Slider main container -->
-      <div class="swiper js-main-visual">
+      <div id="js-main-visual-swiper" class="swiper">
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
           <!-- Slides -->
           <div class="swiper-slide">
-            <div class="main-visual slide-img1">
+            <div class="main-visual main-visual__img--1">
               <div class="main-visual__wrapper">
                 <p class="main-visual__title">DIVING</p>
                 <div class="main-visual__lead">into the ocean</div>
               </div>
             </div>
           </div>
-          <div class="swiper-slide">
-            <div class="main-visual slide-img2">
-              <div class="main-visual__wrapper">
-                <p class="main-visual__title">DIVING</p>
-                <div class="main-visual__lead">into the ocean</div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="main-visual slide-img3">
-              <div class="main-visual__wrapper">
-                <p class="main-visual__title">DIVING</p>
-                <div class="main-visual__lead">into the ocean</div>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <div class="main-visual slide-img4">
-              <div class="main-visual__wrapper">
-                <p class="main-visual__title">DIVING</p>
-                <div class="main-visual__lead">into the ocean</div>
-              </div>
-            </div>
-          </div>
+          <div class="swiper-slide">slide2</div>
+          <div class="swiper-slide">slide3</div>
         </div>
       </div>
       <!-- /メインビュー -->
@@ -250,10 +226,10 @@
       <section id="campaign" class="campaign">
         <div class="campaign__inner">
           <!-- ↓にoverflow:hidden;を指定 -->
-          <div class="campaign__slider">
+          <div class="swiper-container campaign__slider">
             <!-- swiper -->
             <!-- ↓のoverflow:hidden;をvisibleに -->
-            <div class="swiper campaign__swiper js-campaign">
+            <div id="js-campaign-swiper" class="swiper">
               <div class="campaign__header section-header">
                 <h2 class="section-header__engtitle">
                   <span class="section-header__engtitle-reverse">C</span>ampaign
@@ -263,7 +239,7 @@
               <!-- swiper-wrapper -->
               <div class="swiper-wrapper">
                 <!-- Slides -->
-                <article class="swiper-slide">
+                <article class="swiper-slide campaign__slide">
                   <div class="campaign-card card-01">
                     <a href="" class="card-01__link">
                       <div class="card-01__img">
@@ -288,7 +264,7 @@
                     </a>
                   </div>
                 </article>
-                <article class="swiper-slide">
+                <article class="swiper-slide campaign__slide">
                   <div class="campaign-card card-01">
                     <a href="" class="card-01__link">
                       <div class="card-01__img">
@@ -313,7 +289,7 @@
                     </a>
                   </div>
                 </article>
-                <article class="swiper-slide">
+                <article class="swiper-slide campaign__slide">
                   <div class="campaign-card card-01">
                     <a href="" class="card-01__link">
                       <div class="card-01__img">
@@ -338,7 +314,7 @@
                     </a>
                   </div>
                 </article>
-                <article class="swiper-slide">
+                <article class="swiper-slide campaign__slide">
                   <div class="campaign-card card-01">
                     <a href="" class="card-01__link">
                       <div class="card-01__img">
@@ -365,10 +341,10 @@
                 </article>
               </div>
               <!-- /swiper-wrapper -->
-              <div class="swiper-arrow__control u-desktop">
+              <div class="campaign__arrow-control u-desktop">
                 <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
+                <div id="js-campaign-prev" class="swiper-button-prev"></div>
+                <div id="js-campaign-next" class="swiper-button-next"></div>
               </div>
             </div>
             <!-- /swiper -->
