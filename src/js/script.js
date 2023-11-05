@@ -31,13 +31,23 @@ jQuery(function ($) {
   });
 
   // swiper メインビュー
-var swiper = new Swiper("#js-main-visual-swiper", {
+  const initSwiper = () => {
+    const slide01 = new Swiper("#js-main-visual-swiper", {
+      loop: true,
+      speed: 8000,
+      autoplay: {
+        delay: 0,
+      },
+    });
+  };
 
-})
+  window.addEventListener("load", function () {
+    initSwiper(); // ページ読み込み後に初期化
+  });
 
   // swiper campaign
   // overflow:hidden;したクラスを追記する↓
-  var campaign__slider = new Swiper(".campaign__slider #js-campaign-swiper", {
+  const campaign__slider = new Swiper(".campaign__slider #js-campaign-swiper", {
     loop: true,
     loopAdditionalSlides: 1,
     slidesPerView: "auto",
