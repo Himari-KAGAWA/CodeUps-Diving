@@ -76,19 +76,19 @@
 }
 
 .footer-nav__column {
-  margin-top: rem(21.76);
-  margin-left: rem(-1);
+  margin-top: rem(20.8);
+  margin-left: rem(-3.2);
   @include mq("md") {
-    width: 49.099099099099099099%;
+    width: 50%;
   }
 }
 
 .footer-nav__column--right {
-  margin-top: rem(21);
-  margin-left: rem(22);
+  margin-top: rem(19.84);
+  margin-left: rem(24.5);
   @include mq("md") {
-    width: 50.900900900900900901%;
-    margin-left: 11.904761904761904762%;
+    width: 50%;
+    margin-left: 13%;
   }
 }
 
@@ -96,7 +96,31 @@
   color: $base;
   @include mq("md") {
     flex-shrink: 0;
-    margin-left: rem(7);
+    margin-left: rem(10.24);
+  }
+}
+
+.footer-nav__items--2 {
+  color: $base;
+@include mq('md') {
+  flex-shrink: 0;
+margin-left: rem(4);
+}
+}
+
+.footer-nav__items--r {
+  color: $base;
+  @include mq('md') {
+    flex-shrink: 0;
+    margin-left: rem(-5.6);
+  }
+
+}
+.footer-nav__items--r2 {
+  color: $base;
+  @include mq('md') {
+    flex-shrink: 0;
+    margin-left: rem(4.8);
   }
 }
 
@@ -184,7 +208,7 @@
   display: inline-block;
   content: "";
   position: absolute;
-  left: rem(-10);
+  left: rem(-6.4);
   top: rem(20);
   width: rem(18);
   height: rem(18);
@@ -200,7 +224,7 @@
   display: inline-block;
   content: "";
   position: absolute;
-  left: rem(-10);
+  left: rem(-7.2);
   top: rem(28);
   width: rem(18);
   height: rem(18);
@@ -215,7 +239,7 @@
   display: inline-block;
   content: "";
   position: absolute;
-  left: rem(-8);
+  left: rem(-6.4);
   top: rem(20);
   width: rem(18);
   height: rem(18);
@@ -227,7 +251,7 @@
   display: inline-block;
   content: "";
   position: absolute;
-  left: rem(-8);
+  left: rem(-6.4);
   top: rem(28);
   width: rem(18);
   height: rem(18);
@@ -244,14 +268,14 @@
   display: inline-block;
   content: "";
   position: absolute;
-  left: rem(-8);
+  left: rem(-6.4);
   top: rem(20);
   width: rem(18);
   height: rem(18);
   background: transparent url(../images/common/icon-hitode.png) no-repeat center
     center / contain;
   @include mq("md") {
-    left: rem(-9);
+    left: rem(-8);
   }
 }
 
@@ -260,7 +284,7 @@
   text-align: center;
   margin-top: rem(13);
   @include mq("md") {
-    margin-top: rem(54);
+    margin-top: rem(55.2);
     width: rem(743);
     text-align: right;
   }

@@ -12,7 +12,7 @@
 }
 
 .voice__bg-img {
-  @include mq('md') {
+  @include mq("md") {
     content: "";
     position: absolute;
     left: 7%;
@@ -56,7 +56,7 @@
     flex-wrap: nowrap;
     justify-content: flex-start;
     gap: rem(40);
-    margin-top: rem(28.16);
+    margin-top: rem(28.48);
   }
 }
 
@@ -70,16 +70,17 @@
 
 .voice__link {
   text-align: center;
-  margin-top: rem(40);
+  margin-top: rem(40.8);
   margin-left: rem(-2);
   @include mq("md") {
+    margin-top: rem(40);
     margin-top: rem(80);
   }
 }
 
 .voice__link .button {
   margin-left: rem(-2);
-  @include mq('md') {
+  @include mq("md") {
     margin-left: rem(-5);
   }
 }

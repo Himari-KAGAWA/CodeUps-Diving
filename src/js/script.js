@@ -36,6 +36,7 @@ jQuery(function ($) {
       loop: true,
       slidesPerView: 1,
       speed: 8000,
+      allowTouchMove: false,
       autoplay: {
         delay: 0,
       },
@@ -52,7 +53,7 @@ jQuery(function ($) {
     loop: true,
     loopAdditionalSlides: 1,
     slidesPerView: "auto",
-    spaceBetween: 20,
+    spaceBetween: 24,
     grabCursor: true,
 
     // overflow:hidden;したクラスを追記する↓
@@ -66,7 +67,7 @@ jQuery(function ($) {
     // PC表示の時の要素間の指定
     breakpoints: {
       767: {
-        spaceBetween: 40,
+        spaceBetween: 38,
       },
     },
   });

@@ -126,7 +126,7 @@
           <div class="sp-nav__logo">
             <img src="./assets/images/common/logo-nav_sp.png" alt="CodeUps" />
           </div>
-          <div class="sp-nav__inner">
+          <div class="sp-nav__inner inner">
             <div class="sp-nav__column">
               <ul class="sp-nav__items">
                 <li class="sp-nav__heading_1">
@@ -382,6 +382,7 @@
       <!-- /campaign -->
       <!-- about-us -->
       <section id="about" class="about section">
+        <div class="about__footer-img"></div>
         <div class="about__inner inner">
           <div class="about__header section-header">
             <h2 class="section-header__engtitle">
@@ -408,12 +409,7 @@
                 </div>
               </div>
             </div>
-            <div class="about__footer u-desktop">
-              <img
-                src="./assets/images/common/pc/coral.png"
-                alt="サンゴとイソギンチャクのイラスト"
-              />
-            </div>
+            <!-- <div class="about__footer-img"></div> -->
           </div>
         </div>
       </section>
@@ -617,7 +613,7 @@
               <li class="price__table table-01">
                 <table>
                   <tr>
-                    <th>ライセンス講習</th>
+                    <th class="table-01__bottom--01">ライセンス講習</th>
                   </tr>
                   <tr>
                     <td>オープンウォーターダイバーコース</td>
@@ -695,17 +691,17 @@
                 </table>
               </li>
             </ul>
-            <div class="price__img u-mobile js-inview">
-              <img
-                src="./assets/images/common/price-sp.jpg"
+            <div class="price__img js-inview">
+              <picture>
+                <source
+                  srcset="./assets/images/common/pc/price-pc.jpg"
+                  media="(min-width:767px)"
+                />
+                <img
+                src="/assets/images/common/price-sp.jpg"
                 alt="”泳ぐウミガメの画像”"
               />
-            </div>
-            <div class="price__img u-desktop js-inview">
-              <img
-                src="./assets/images/common/pc/price-pc.jpg"
-                alt="サンゴと熱帯魚の群れの画像"
-              />
+              </picture>
             </div>
           </div>
           <div class="price__link">
@@ -831,7 +827,7 @@
                 <a href="#about">私たちについて</a>
               </li>
             </ul>
-            <ul class="footer-nav__items">
+            <ul class="footer-nav__items--2">
               <li class="footer-nav__item--heading_3">
                 <a href="#information">ダイビング情報</a>
               </li>
@@ -850,7 +846,7 @@
             </ul>
           </div>
           <div class="footer-nav__column--right">
-            <ul class="footer-nav__items">
+            <ul class="footer-nav__items--r">
               <li class="footer-nav__item--heading_5">
                 <a href="#voice">お客様の声</a>
               </li>
@@ -867,7 +863,7 @@
                 <a href="#">ファンダイビング</a>
               </li>
             </ul>
-            <ul class="footer-nav__items">
+            <ul class="footer-nav__items--r2">
               <li class="footer-nav__item--heading_7">
                 <a href="#">よくある質問</a>
               </li>

@@ -7,7 +7,8 @@ $drawer-color: $base; //ドロワー線の色
 .hamburger {
   position: absolute;
   top: 50%;
-  right: rem(14);
+  // top: calc(50% + rem(3.2));
+  right: rem(15);
   transform: translateY(-50%);
   z-index: 9999;
   @include mq("md") {
@@ -38,7 +39,7 @@ $drawer-color: $base; //ドロワー線の色
 /*is-OPEN時の動き*/
 .hamburger.is-open span:nth-child(1) {
   top: rem(8);
-  transform: rotate(38deg);
+  transform: translate(0.3rem, 0.18rem) rotate(37deg);
   width: rem(40);
 }
 
@@ -49,6 +50,6 @@ $drawer-color: $base; //ドロワー線の色
 
 .hamburger.is-open span:nth-child(3) {
   top: rem(-15);
-  transform: rotate(-38deg);
+  transform: translate(0.24rem, 0.18rem) rotate(-37deg);
   width: rem(40);
 }

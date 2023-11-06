@@ -30,20 +30,22 @@
 }
 
 .header__logo {
-  width: rem(107.84);
   position: relative;
   z-index: 8888;
-  top: rem(-2);
+  top: rem(-2.88);
   @include mq("md") {
     top: 0;
-    padding-top: rem(9.6);
+    padding-top: rem(10.4);
     width: rem(140.48);
     margin-left: rem(-3.2);
   }
 }
 
 .header__logo img {
-  width: 100%;
+  width: rem(109.12);
+  @include mq("md") {
+    width: rem(147.2);
+  }
 }
 
 .header__sp-nav {

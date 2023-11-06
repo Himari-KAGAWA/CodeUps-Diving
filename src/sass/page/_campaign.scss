@@ -6,8 +6,8 @@
 
 .campaign__inner {
   @include mq("md") {
-    margin-top: rem(40.8);
-    max-width: calc(50vw + rem(558));
+    margin-top: rem(41.6);
+    max-width: calc(50vw + rem(568));
     padding: rem(70) 0 0 0;
     margin-left: auto;
   }
@@ -18,7 +18,7 @@
   padding-right: rem(14);
   @include mq("md") {
     margin-bottom: rem(40);
-    padding-right: rem(200);
+    padding-right: rem(176);
     padding-top: rem(4);
   }
 }
@@ -26,7 +26,7 @@
 .campaign__header .section-header__jatitle {
   @include mq("md") {
     margin-top: rem(2.2);
-    padding-right: rem(2);
+    padding-right: 0;
   }
 }
 
@@ -41,18 +41,29 @@
   }
 }
 
+.campaign__slider swiper {
+  visibility: visible;
+}
+
+.campaign__slide {
+  width: max-content;
+}
+
 .campaign__link {
   padding: 0 rem(15);
   text-align: center;
   margin-top: rem(28);
+  margin-left: rem(-1.5);
   @include mq("md") {
-    margin-top: rem(70.4);
+    margin-top: rem(69.6);
+    margin-left: rem(-8);
   }
 }
 
 .campaign__link .button {
-  left: rem(-3);
+  margin-left: rem(-3);
   @include mq("md") {
-    left: rem(0);
+    margin-left: rem(2);
+
   }
 }

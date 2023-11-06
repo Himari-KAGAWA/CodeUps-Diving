@@ -12,7 +12,7 @@
 }
 
 .contact__inner {
-  padding-top: rem(40);
+  padding-top: rem(41.6);
   padding-bottom: rem(100);
   @include mq("md") {
     padding-top: rem(70.4);
@@ -49,7 +49,7 @@
 }
 
 .contact__content {
-  margin-top: rem(12.8);
+  margin-top: rem(13.6);
   text-align: center;
   @include mq("md") {
     display: flex;
@@ -98,7 +98,7 @@
   display: block;
   border-bottom: 1px solid $main; /* 下線のスタイルを設定 */
   width: 85.5%; /* 下線の幅を設定 */
-  margin: 0 auto; /* 横方向に中央寄せ */
+  margin: rem(-3) auto 0; /* 横方向に中央寄せ */
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   @include mq("md") {
     width: 100%;
@@ -126,7 +126,7 @@
 
 .contact__img {
   display: inline-block;
-  margin-top: rem(12.5);
+  margin-top: rem(14.4);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   @include mq("md") {
     margin-top: rem(24);
@@ -182,7 +182,7 @@
 .contact__text {
   font-size: rem(14);
   color: $main;
-  margin-top: rem(10.4);
+  margin-top: rem(11.2);
   line-height: 1.2857142857142857143;
 }
 

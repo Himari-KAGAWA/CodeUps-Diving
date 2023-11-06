@@ -1,9 +1,7 @@
 @use "global" as *;
 
 .about {
-  @include mq("md") {
-    padding-bottom: rem(44);
-  }
+  position: relative;
 }
 
 .about__inner {
@@ -17,7 +15,8 @@
 
 .about__header .section-header__jatitle {
   @include mq("md") {
-    margin-top: rem(3.2);
+    margin-top: rem(2.72);
+    margin-left: rem(-2);
   }
 }
 
@@ -60,7 +59,7 @@
     flex: 1 0 47.619047619047619048%;
     font-size: rem(80);
     line-height: 1.25;
-    margin-right: rem(40);
+    margin-right: rem(38.4);
     color: $base;
   }
 }
@@ -77,7 +76,7 @@
 
 .about__link {
   text-align: center;
-  margin-top: rem(26);
+  margin-top: rem(25.6);
   @include mq("md") {
     margin-top: rem(40);
   }
@@ -90,13 +89,16 @@
   }
 }
 
-.about__footer {
+.about__footer-img {
   @include mq("md") {
+    content: "";
     position: absolute;
-    max-width: rem(194);
-    width: 100%;
-    bottom: rem(-90);
-    right: rem(-97);
+    right: 5.75%;
+    bottom: -1.1%;
+    width: rem(194);
+    height: rem(181);
+    background: transparent url(../images/common/pc/coral.png) no-repeat center
+      center/contain;
     z-index: 1;
   }
 }

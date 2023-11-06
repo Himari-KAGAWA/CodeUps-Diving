@@ -4,7 +4,7 @@
   background-color: #ddf0f1;
   margin-top: rem(42.4);
   @include mq("md") {
-    margin-top: rem(40);
+    margin-top: rem(84.8);
   }
 }
 
@@ -17,9 +17,16 @@
   }
 }
 
+.information__header .section-header__engtitle {
+  @include mq("md") {
+    margin-left: rem(-2.8);
+  }
+}
+
 .information__header .section-header__jatitle {
   @include mq("md") {
-    margin-top: rem(3);
+    margin-top: rem(2.56);
+    margin-left: rem(-2);
   }
 }
 
@@ -69,6 +76,7 @@
   text-align: center;
   @include mq("md") {
     margin-top: rem(39.2);
+    margin-left: rem(-2);
   }
 }
 

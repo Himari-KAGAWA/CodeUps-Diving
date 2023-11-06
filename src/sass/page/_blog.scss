@@ -58,15 +58,17 @@
   font-size: rem(12);
   color: $main;
   line-height: 1;
-  margin-top: rem(7.2);
+  margin-top: rem(6.4);
+  margin-left: rem(-1);
   @include mq("md") {
     color: $base;
     margin-top: rem(5.6);
+    margin-left: rem(0);
   }
 }
 
 .blog__items {
-  margin-top: rem(29.6);
+  margin-top: rem(30.88);
   @include mq("md") {
     width: 100%;
     display: flex;
@@ -93,7 +95,7 @@
 }
 
 .blog__link {
-  margin-top: rem(40);
+  margin-top: rem(40.8);
   text-align: center;
   @include mq("md") {
     margin-top: rem(80);
