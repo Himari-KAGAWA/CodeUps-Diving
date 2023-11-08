@@ -19,11 +19,11 @@
   bottom: 0;
   right: 0;
   width: rem(48);
-  height: ren(48);
+  height: rem(48);
   z-index: 7777;
   @include mq("md") {
     width: rem(90);
-    height: ren(90);
+    height: rem(90);
   }
 }
 

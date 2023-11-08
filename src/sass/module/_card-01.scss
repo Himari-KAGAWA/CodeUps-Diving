@@ -46,9 +46,10 @@
 .card-01__title {
   font-weight: $regular;
   font-size: rem(16);
+  font-weight: $normal;
   margin-top: rem(4.8);
-  @include mq('md') {
-  margin-top: rem(4);
+  @include mq("md") {
+    margin-top: rem(4);
   }
 }
 

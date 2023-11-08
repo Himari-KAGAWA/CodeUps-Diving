@@ -35,7 +35,7 @@ jQuery(function ($) {
     const slide01 = new Swiper("#js-main-visual-swiper", {
       loop: true,
       slidesPerView: 1,
-      speed: 8000,
+      speed: 10000,
       allowTouchMove: false,
       autoplay: {
         delay: 0,
