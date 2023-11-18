@@ -7,11 +7,9 @@
   left: 0;
   width: 100%;
   height: rem(80);
-  padding: rem(24) 0;
   z-index: 8888;
   @include mq("md") {
     height: rem(90);
-    padding: 0;
   }
 }
 
@@ -20,6 +18,7 @@
 }
 
 .header__inner {
+  height: inherit;
   padding: 0 rem(12);
   display: flex;
   justify-content: space-between;
@@ -32,7 +31,7 @@
 .header__logo {
   position: relative;
   z-index: 8888;
-  top: rem(-2.88);
+  top: rem(3);
   @include mq("md") {
     top: 0;
     padding-top: rem(10.4);

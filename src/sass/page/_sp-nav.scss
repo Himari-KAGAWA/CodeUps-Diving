@@ -21,6 +21,8 @@
   display: flex;
   justify-content: center;
   padding-top: rem(24);
+  max-width: rem(400);
+  width: 100%;
 }
 
 .sp-nav__logo {
@@ -93,7 +95,7 @@
 }
 
 .sp-nav__heading_5 a {
-  padding-top: rem(20);
+  padding-top: rem(20.8);
   padding-bottom: rem(20);
 }
 

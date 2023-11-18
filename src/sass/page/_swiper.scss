@@ -2,22 +2,22 @@
 
 .swiper-button-prev,
 .swiper-rtl .swiper-button-next {
-  top: rem(29);
+  top: rem(26.4);
   left: calc(50% + rem(211.2));
 }
 
 .swiper-button-next,
 .swiper-rtl .swiper-button-prev {
-  top: rem(28.8);
+  top: rem(25);
   left: calc(50% + rem(371.2));
 }
 
 .swiper-button-prev {
   width: rem(80);
   height: rem(80);
-  margin-top: -20px;
-  background: url(../images/common/pc/arrow-prev.png) no-repeat
-    center center/contain;
+  margin-top: rem(-10);
+  background: url(../images/common/pc/arrow-prev.png) no-repeat center
+    center/contain;
   right: calc(50% - 600px);
   color: transparent;
   transition: all 0.4s ease 0s;
@@ -26,9 +26,9 @@
 .swiper-button-next {
   width: rem(80);
   height: rem(80);
-  margin-top: -20px;
-  background: url(../images/common/pc/arrow-next.png) no-repeat
-    center center/contain;
+  margin-top: rem(-10);
+  background: url(../images/common/pc/arrow-next.png) no-repeat center
+    center/contain;
   right: calc(50% - 600px);
   color: transparent;
   transition: all 0.4s ease 0s;

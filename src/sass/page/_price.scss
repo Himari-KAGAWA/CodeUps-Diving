@@ -3,15 +3,17 @@
 .price {
   background-color: #ddf0f1;
   @include mq("md") {
-    background: #ddf0f1 url(../images/common/pc/fish-illust_2.png) no-repeat;
-    background-position: 10% 94%;
-    background-size: 437px 201px;
+    position: relative;
   }
 }
 
 .price__inner {
+  max-width: rem(600);
+  width: 100%;
+  margin: auto;
   padding: rem(80) 0;
   @include mq("md") {
+    max-width: rem(1080);
     padding-top: rem(96);
     padding-bottom: rem(100);
   }
@@ -36,23 +38,26 @@
   flex-direction: column-reverse;
   @include mq("md") {
     flex-direction: row;
-    margin-top: rem(40.8);
+    margin-top: rem(39.2);
     max-width: rem(1080);
     overflow: hidden;
   }
 }
 
 .price__img {
+  overflow: hidden;
+  aspect-ratio: 345 / 227;
   @include mq("md") {
-    width: 100%;
+    aspect-ratio: 492 / 746;
     margin-left: 8.7037037037037037037%;
   }
 }
 
 .price__img img {
+  width: 100%;
+  height: auto;
   @include mq("md") {
     max-width: calc(1080px - 94px / 2);
-    height: auto;
   }
 }
 
@@ -60,14 +65,14 @@
   margin-top: rem(35.84);
   @include mq("md") {
     flex: 1 0 rem(493);
-    margin-top: 0;
+    margin-top: rem(2);
   }
 }
 
 .price__table + .price__table {
   margin-top: rem(30.8);
   @include mq("md") {
-    margin-top: rem(36);
+    margin-top: rem(37.6);
   }
 }
 
@@ -84,5 +89,18 @@
   left: rem(-2);
   @include mq("md") {
     left: rem(-4);
+  }
+}
+
+.price__bg-img {
+  @include mq("md") {
+    content: "";
+    position: absolute;
+    left: 6.99%;
+    bottom: 4.98%;
+    width: rem(437);
+    height: rem(201);
+    background: transparent url(../images/common/pc/fish-illust_2.png) no-repeat
+      center center / contain;
   }
 }

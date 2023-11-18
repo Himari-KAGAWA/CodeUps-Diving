@@ -6,10 +6,17 @@
 
 .campaign__inner {
   @include mq("md") {
-    margin-top: rem(41.6);
-    max-width: calc(50vw + rem(568));
-    padding: rem(70) 0 0 0;
-    margin-left: auto;
+    margin-top: rem(44.8);
+    padding-top: rem(60);
+  }
+}
+
+.campaign__slider {
+  margin-top: rem(24);
+  overflow: hidden;
+  margin-right: calc(50% - 50vw);
+  @include mq("md") {
+    margin-top: 0;
   }
 }
 
@@ -18,26 +25,16 @@
   padding-right: rem(14);
   @include mq("md") {
     margin-bottom: rem(40);
-    padding-right: rem(176);
-    padding-top: rem(4);
+    margin-top: rem(10);
+    margin-left: calc(50% - 50vw);
+    padding-right: 0;
   }
 }
 
 .campaign__header .section-header__jatitle {
   @include mq("md") {
-    margin-top: rem(2.2);
+    margin-top: rem(3.2);
     padding-right: 0;
-  }
-}
-
-.campaign__slider {
-  margin-top: rem(24);
-  padding-left: rem(15);
-  box-sizing: content-box;
-  overflow: hidden;
-  @include mq("md") {
-    margin-top: 0;
-    padding-left: rem(25);
   }
 }
 
@@ -46,14 +43,20 @@
 }
 
 .campaign__slide {
-  width: max-content;
+  width: rem(280);
+  height: auto;
+  margin-bottom: rem(9);
+  @include mq("md") {
+    margin-bottom: rem(10);
+    width: rem(334);
+  }
 }
 
 .campaign__link {
   padding: 0 rem(15);
   text-align: center;
-  margin-top: rem(28);
-  margin-left: rem(-1.5);
+  margin-top: rem(28.8);
+  margin-left: rem(-2.4);
   @include mq("md") {
     margin-top: rem(71.2);
     margin-left: rem(-8);
@@ -64,6 +67,5 @@
   margin-left: rem(-3);
   @include mq("md") {
     margin-left: rem(2);
-
   }
 }

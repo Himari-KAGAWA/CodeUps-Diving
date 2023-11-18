@@ -43,18 +43,17 @@
   transform: translateX(-50%);
 }
 
+.pc-nav__link.first:hover::after {
+  background: $base;
+  width: 80%;
+  left: 42%;
+}
+
 .pc-nav__link.last:hover::after {
   background: $base;
   width: 80%;
   left: 50%;
   transform: translateX(-34%);
-}
-
-.pc-nav__link.current::after {
-  background: $base;
-  width: 80%;
-  left: 50%;
-  transform: translateX(-60%);
 }
 
 .pc-nav__item a {
