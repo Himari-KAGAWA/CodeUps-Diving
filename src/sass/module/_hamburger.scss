@@ -34,7 +34,7 @@ $drawer-color: $base; //ドロワー線の色
 }
 
 .hamburger span:nth-child(3) {
-  top: rem(0);
+  top: rem(1);
 }
 /*is-OPEN時の動き*/
 .hamburger.is-open span:nth-child(1) {

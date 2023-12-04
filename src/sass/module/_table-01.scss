@@ -10,7 +10,7 @@
 .table-01 table th {
   text-align: left; /* 見出しは左寄せ */
   color: $font; /* $fontに適切な値を指定 */
-  padding-top: rem(4);
+  padding-top: rem(4.16);
   padding-bottom: rem(4);
   font-size: rem(16);
   @include mq("md") {

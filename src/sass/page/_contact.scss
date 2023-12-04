@@ -1,36 +1,51 @@
 @use "global" as *;
 
 .contact {
-  background: url(../images/common/pc/fish-illust_2.png) no-repeat;
-  background-position: 94.7% 2%;
-  background-size: rem(109) rem(50);
-  position: relative;
+  margin-bottom: rem(100.8);
   @include mq("md") {
-    background-size: rem(301) rem(138);
-    background-position: 95.5% 6%;
+    margin-bottom: rem(160);
   }
 }
 
-.contact__inner {
+.contact__bg-layout {
+  padding-top: rem(81.6);
   max-width: rem(600);
   width: 100%;
   margin: auto;
-  padding-top: rem(41.6);
-  padding-bottom: rem(100);
+  background-image: url(../images/common/pc/fish-illust_2.png);
+  background-repeat: no-repeat;
+  background-position: 94.5% 8.5%;
+  background-size: rem(109) rem(50);
   @include mq("md") {
-    max-width: rem(1080);
-    padding-top: rem(69.6);
-    padding-bottom: rem(160);
+    max-width: rem(1340);
+    background-size: rem(301) rem(138);
+    background-position: 100% 24%;
+    padding-top: rem(140);
+  }
+}
+
+.contact__wrapper-layout {
+  @include mq("md") {
+    padding-top: rem(79);
+    padding-bottom: rem(75.08);
   }
 }
 
 .contact__wrapper {
+  max-width: rem(600);
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
   @include mq("md") {
-    display: flex;
     max-width: rem(1080);
-    align-items: center;
     box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.25);
-    padding: rem(80) 10.3037% rem(80) rem(50);
+    padding-left: rem(50);
+    padding-right: 10.3037%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 2fr;
+    place-items: start;
     position: relative;
   }
 }
@@ -39,58 +54,28 @@
   @include mq("md") {
     content: "";
     position: absolute;
-    left: calc(50% + 31px);
+    left: calc(50% + rem(31));
+    top: 20%;
     border-left: 1px solid $main; /* 縦線のスタイルを設定 */
-    height: 61.5%; /* 高さを親要素と同じに設定 */
-  }
-}
-
-.contact__left {
-  @include mq("md") {
-    flex: 1 0 37.037037%;
-    // padding-right: rem(82);
-  }
-}
-
-.contact__content {
-  margin-top: rem(13.6);
-  text-align: center;
-  @include mq("md") {
-    display: flex;
-    margin-top: 0;
-  }
-}
-
-.contact__address {
-  position: relative;
-  @include mq("md") {
-    position: static;
-  }
-}
-
-.contact__address span {
-  position: absolute;
-  left: calc(50% - rem(34));
-  top: 0;
-  transform: translateX(-25%);
-  @include mq("md") {
-    position: static;
+    height: calc(100% - rem(163.2)); /* 高さを親要素と同じに設定 */
   }
 }
 
 .contact__logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* 中央寄せ */
-  text-align: center; /* テキストも中央寄せ */
-  text-align: justify;
+  width: 85.51%;
+  text-align: center;
+  position: relative;
   @include mq("md") {
     width: rem(440);
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    margin-top: rem(2);
   }
 }
 
-.contact__logo img {
-  width: rem(180);
+.contact__logo picture {
+  display: inline-block;
+  width: 61.02%;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   @include mq("md") {
     width: rem(200);
@@ -98,66 +83,91 @@
 }
 
 .contact__logo::after {
-  content: ""; /* 仮想要素を使用して下線を追加 */
+  content: ""; /* 疑似要素を使用して下線を追加 */
+  position: absolute;
+  bottom: rem(6.4);
   display: block;
   border-bottom: 1px solid $main; /* 下線のスタイルを設定 */
-  width: 85.5%; /* 下線の幅を設定 */
-  margin: rem(-3) auto 0; /* 横方向に中央寄せ */
+  width: 100%; /* 下線の幅を設定 */
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   @include mq("md") {
     width: 100%;
+    bottom: rem(-4);
     box-shadow: none;
     margin-top: rem(8);
   }
 }
 
+.contact__content {
+  width: 100%;
+  margin-top: rem(7.2);
+  text-align: center;
+  @include mq("md") {
+    max-width: rem(440);
+    margin-top: rem(24.8);
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    display: flex;
+  }
+}
+
 .contact__store-info {
+  width: rem(146);
   line-height: 1.75;
+  text-indent: 0.0016em;
   letter-spacing: 0.0016em;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  margin: auto;
   @include mq("md") {
-    text-align-last: left;
-    margin-right: rem(21);
-    margin-top: rem(20.8);
+    margin: 0;
+    flex: 0 0 rem(146);
+    text-align: left;
     text-shadow: none;
   }
 }
 
 .contact__address {
+  display: inline-block;
   font-style: normal;
-  font-weight: $regular;
+  margin-left: rem(-8);
+  @include mq("md") {
+    margin-left: 0;
+  }
 }
 
-.contact__img {
+.contact__map {
   display: inline-block;
+  max-width: rem(600);
+  width: 85.51%;
   margin-top: rem(14.4);
+  @include mq("md") {
+    width: rem(273);
+    margin-top: rem(2);
+    margin-left: rem(21);
+  }
+}
+
+.contact__map iframe {
+  width: 100%;
+  aspect-ratio: 295 / 160;
+  overflow: hidden;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   @include mq("md") {
-    margin-top: rem(24);
-    max-width: rem(273);
-    aspect-ratio: 273/148;
-    overflow: hidden;
+    aspect-ratio: 273 / 148;
     box-shadow: none;
   }
 }
 
-.contact__img img {
-  width: rem(295);
-}
-
-.contact__right {
-  margin-top: rem(34.4);
-  @include mq("md") {
-    margin-top: 0;
-    flex: 1 0 29.166666%;
-    padding-left: 11.5%;
-  }
-}
-
 .contact__header {
+  margin-top: rem(35.2);
   text-align: center;
   text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   @include mq("md") {
+    margin-top: rem(20.8);
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    justify-self: end;
+    align-items: center;
     text-shadow: none;
   }
 }
@@ -172,26 +182,32 @@
 
 .contact__engtitle-reverse {
   color: $main;
+  @include mq('md') {
+    vertical-align: middle;
+  }
 }
 
 .contact__jatitle {
   line-height: 1;
   color: $main;
-  margin-top: rem(-9);
+  margin-top: rem(-11);
 }
 
 .contact__text {
   font-size: rem(14);
   color: $main;
-  margin-top: rem(8);
+  margin-top: rem(7.2);
   line-height: 1.2857142857142857143;
+  @include mq("md") {
+    margin-top: rem(8);
+  }
 }
 
 .contact__link {
-  margin-top: rem(39.2);
+  margin-top: rem(40);
   text-align: center;
   @include mq("md") {
-    margin-top: rem(40.8);
+    margin-top: rem(40);
   }
 }
 
@@ -200,8 +216,4 @@
   @include mq("md") {
     box-shadow: none;
   }
-}
-
-.contact__link .button {
-  left: rem(-2);
 }

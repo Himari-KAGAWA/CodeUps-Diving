@@ -2,8 +2,35 @@
 
 .price {
   background-color: #ddf0f1;
+  padding-top: rem(80);
+  padding-bottom: rem(81.6);
   @include mq("md") {
-    position: relative;
+    padding-top: rem(95.5);
+    padding-bottom: 0;
+  }
+}
+.price__header {
+  // margin-top: rem(80);
+  @include mq("md") {
+    // margin-top: rem(100);
+  }
+}
+
+.price__header .section-header__jatitle {
+  @include mq("md") {
+    margin-top: rem(3.5);
+  }
+}
+
+.price__bg-layout {
+  @include mq("md") {
+    max-width: rem(1240);
+    margin: auto;
+    background-image: url(../images/common/pc/fish-illust_2.png);
+    background-repeat: no-repeat;
+    background-position: 0 92.5%;
+    background-size: rem(437) rem(201);
+    padding-bottom: rem(100);
   }
 }
 
@@ -11,26 +38,11 @@
   max-width: rem(600);
   width: 100%;
   margin: auto;
-  padding: rem(80) 0;
   @include mq("md") {
     max-width: rem(1080);
-    padding-top: rem(96);
-    padding-bottom: rem(100);
   }
 }
 
-.price__header .section-header__engtitle {
-  @include mq("md") {
-    margin-left: rem(-5.3);
-  }
-}
-
-.price__header .section-header__jatitle {
-  @include mq("md") {
-    margin-top: rem(2.4);
-    margin-left: rem(-5.3);
-  }
-}
 
 .price__wrapper {
   margin-top: rem(27.2);
@@ -45,8 +57,8 @@
 }
 
 .price__img {
-  overflow: hidden;
   aspect-ratio: 345 / 227;
+  overflow: hidden;
   @include mq("md") {
     aspect-ratio: 492 / 746;
     margin-left: 8.7037037037037037037%;
@@ -77,30 +89,10 @@
 }
 
 .price__link {
-  margin-top: rem(36);
+  margin-top: rem(35.2);
   text-align: center;
   @include mq("md") {
-    margin-top: rem(80);
-    margin-left: rem(1);
+    margin-top: rem(77.76);
   }
 }
 
-.price__link .button {
-  left: rem(-2);
-  @include mq("md") {
-    left: rem(-4);
-  }
-}
-
-.price__bg-img {
-  @include mq("md") {
-    content: "";
-    position: absolute;
-    left: 6.99%;
-    bottom: 4.98%;
-    width: rem(437);
-    height: rem(201);
-    background: transparent url(../images/common/pc/fish-illust_2.png) no-repeat
-      center center / contain;
-  }
-}

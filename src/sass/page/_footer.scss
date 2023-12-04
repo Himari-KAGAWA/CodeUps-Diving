@@ -11,23 +11,14 @@
   }
 }
 
-.footer-inner {
-  max-width: rem(400);
+.footer__wrapper {
+  max-width: rem(380);
   width: 100%;
   margin: auto;
   @include mq("md") {
     max-width: rem(1008);
-  }
-}
-
-.footer-nav__content {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  @include mq("md") {
-    max-width: rem(1008);
-    justify-content: start;
-    margin-top: rem(4.48);
+    box-sizing: content-box;
+    margin: 0;
   }
 }
 
@@ -62,7 +53,7 @@
   @include mq("md") {
     width: rem(32);
     height: rem(32);
-    transition: opacity 0.4s ease 0s;
+    transition: opacity 0.3s ease 0s;
   }
 }
 
@@ -74,76 +65,98 @@
   opacity: 0.7;
 }
 
-.footer-nav__column,
-.footer-nav__column--right {
+.footer-nav__content {
+  color: $base;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: auto;
+  margin-top: rem(28.8);
   @include mq("md") {
+    max-width: rem(1008);
+    width: 100%;
     display: flex;
     justify-content: space-between;
+    // margin-left: rem(8);
+    margin-top: rem(12);
+  }
+}
+
+.footer-nav__items1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  margin-left: rem(22);
+  @include mq("md") {
+    margin-left: rem(23);
+  }
+}
+
+.footer-nav__items1 .footer-nav__item {
+  margin-left: rem(2);
+  @include mq("md") {
+    margin-left: 0;
+  }
+}
+
+.footer-nav__items2 {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  margin-left: rem(22);
+  margin-top: rem(16);
+  @include mq("md") {
     margin-top: 0;
+    margin-left: rem(34);
   }
 }
 
-.footer-nav__column {
-  margin-top: rem(20.8);
-  margin-left: rem(-3.2);
+.footer-nav__items3 {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  margin-left: rem(33);
   @include mq("md") {
-    width: 50%;
+    margin-left: rem(35);
   }
 }
 
-.footer-nav__column--right {
-  margin-top: rem(19.84);
-  margin-left: rem(24.5);
+.footer-nav__items4 {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  margin-left: rem(33);
+  margin-top: rem(16);
   @include mq("md") {
-    width: 50%;
-    margin-left: 13%;
-  }
-}
-
-.footer-nav__items {
-  color: $base;
-  @include mq("md") {
-    flex-shrink: 0;
-    margin-left: rem(10.24);
-  }
-}
-
-.footer-nav__items--2 {
-  color: $base;
-  @include mq("md") {
-    flex-shrink: 0;
-    margin-left: rem(4);
-  }
-}
-
-.footer-nav__items--r {
-  color: $base;
-  @include mq("md") {
-    flex-shrink: 0;
-    margin-left: rem(-4.8);
-  }
-}
-.footer-nav__items--r2 {
-  color: $base;
-  @include mq("md") {
-    flex-shrink: 0;
-    margin-left: rem(4.8);
+    margin-left: rem(34);
+    margin-top: 0;
   }
 }
 
 .footer-nav__item a {
   display: inline-block;
+  color: inherit;
   font-weight: $regular;
   font-size: rem(16);
   line-height: 1.125;
-  margin-left: rem(16);
   padding-top: rem(12);
   padding-bottom: rem(12);
-  transition: opacity 0.4s ease 0s;
+  transition: opacity 0.3s ease 0s;
 }
 
 .footer-nav__item:hover a {
   opacity: 0.7;
+}
+
+.footer-nav__item--heading_2 {
+  margin-top: rem(16);
+}
+
+.footer-nav__item--heading_4 {
+  margin-top: rem(16);
+}
+
+.footer-nav__item--heading_6 {
+  margin-top: rem(16);
+}
+
+.footer-nav__item--heading_8 {
+  margin-top: rem(16);
 }
 
 .footer-nav__item--heading_1 a,
@@ -158,8 +171,9 @@
   font-weight: $bold;
   font-size: rem(16);
   line-height: 1.125;
-  margin-left: rem(14);
-  transition: opacity 0.4s ease 0s;
+  padding-top: rem(12);
+  padding-bottom: rem(12);
+  transition: opacity 0.3s ease 0s;
 }
 
 .footer-nav__item--heading_1:hover a,
@@ -171,49 +185,6 @@
 .footer-nav__item--heading_7:hover a,
 .footer-nav__item--heading_8:hover a {
   opacity: 0.7;
-}
-
-.footer-nav__item--heading_1 a {
-  padding-top: rem(18.88);
-  padding-bottom: rem(12);
-}
-
-.footer-nav__item--heading_2 a {
-  padding-top: rem(28);
-  padding-bottom: rem(20);
-}
-
-.footer-nav__item--heading_3 a {
-  padding-top: rem(20);
-  padding-bottom: rem(12);
-}
-
-.footer-nav__item--heading_4 a {
-  padding-top: rem(28);
-  padding-bottom: rem(12);
-}
-
-.footer-nav__item--heading_5 a {
-  padding-top: rem(20);
-  padding-bottom: rem(20);
-}
-
-.footer-nav__item--heading_6 a {
-  padding-top: rem(20);
-  padding-bottom: rem(12);
-}
-
-.footer-nav__item--heading_7 a {
-  padding-top: rem(28);
-  padding-bottom: rem(20);
-  @include mq("md") {
-    padding-top: rem(19.2);
-  }
-}
-
-.footer-nav__item--heading_8 a {
-  padding-top: rem(20);
-  padding-bottom: rem(20);
 }
 
 .footer-nav__item--heading_1,
@@ -228,89 +199,34 @@
 }
 
 .footer-nav__item--heading_1::before,
-.footer-nav__item--heading_3::before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: rem(-6.4);
-  top: rem(20);
-  width: rem(18);
-  height: rem(18);
-  background: transparent url(../images/common/icon-hitode.png) no-repeat center
-    center / contain;
-  @include mq("md") {
-    left: rem(-8);
-  }
-}
-
+.footer-nav__item--heading_2::before,
+.footer-nav__item--heading_3::before,
 .footer-nav__item--heading_4::before,
-.footer-nav__item--heading_2:before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: rem(-7.2);
-  top: rem(28);
-  width: rem(18);
-  height: rem(18);
-  background: transparent url(../images/common/icon-hitode.png) no-repeat center
-    center / contain;
-  @include mq("md") {
-    left: rem(-8);
-  }
-}
-
-.footer-nav__item--heading_5::before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: rem(-6.4);
-  top: rem(20);
-  width: rem(18);
-  height: rem(18);
-  background: transparent url(../images/common/icon-hitode.png) no-repeat center
-    center / contain;
-}
-
-.footer-nav__item--heading_7::before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: rem(-6.4);
-  top: rem(28);
-  width: rem(18);
-  height: rem(18);
-  background: transparent url(../images/common/icon-hitode.png) no-repeat center
-    center / contain;
-  @include mq("md") {
-    left: rem(-9);
-    top: rem(20);
-  }
-}
-
+.footer-nav__item--heading_5::before,
 .footer-nav__item--heading_6::before,
+.footer-nav__item--heading_7::before,
 .footer-nav__item--heading_8::before {
   display: inline-block;
   content: "";
   position: absolute;
-  left: rem(-6.4);
-  top: rem(20);
+  left: rem(-20.8);
+  top: rem(11.2);
   width: rem(18);
   height: rem(18);
   background: transparent url(../images/common/icon-hitode.png) no-repeat center
     center / contain;
   @include mq("md") {
-    left: rem(-8);
+    left: rem(-22);
   }
 }
 
 .footer__corporate {
   width: 100%;
   text-align: center;
-  margin-top: rem(13);
+  margin-top: rem(20);
   @include mq("md") {
-    margin-top: rem(53.44);
+    margin-top: rem(62.4);
     margin: auto;
-    max-width: rem(1008);
   }
 }
 

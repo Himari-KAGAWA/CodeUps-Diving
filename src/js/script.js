@@ -17,9 +17,11 @@ jQuery(function ($) {
     if ($(".js-hamburger").hasClass("is-active")) {
       $(".js-hamburger").removeClass("is-active");
       $(".js-sp-nav").fadeOut(300);
+      $("body").removeClass("no-scroll"); // スクロールバー非表示
     } else {
       $(".js-hamburger").addClass("is-active");
       $(".js-sp-nav").fadeIn(300);
+      $("body").addClass("no-scroll");
     }
   });
 
@@ -28,17 +30,17 @@ jQuery(function ($) {
     $(".js-hamburger").removeClass("is-active");
     $(".js-hamburger").removeClass("is-open");
     $(".js-sp-nav").fadeOut(300);
+    $("body").removeClass("no-scroll"); // ナビ内のリンクがクリックされたらno-scrollクラスを外す
   });
 
   // swiper メインビュー
   const initSwiper = () => {
     const slide01 = new Swiper("#js-main-visual-swiper", {
       loop: true,
-      slidesPerView: 1,
-      speed: 10000,
-      allowTouchMove: false,
+      speed: 3000,
+      effect: "fade",
       autoplay: {
-        delay: 0,
+        delay: 3500,
       },
     });
   };
@@ -53,7 +55,7 @@ jQuery(function ($) {
     loop: true,
     loopAdditionalSlides: 1,
     slidesPerView: "auto",
-    spaceBetween: 22,
+    spaceBetween: 23,
     grabCursor: true,
 
     // overflow:hidden;したクラスを追記する↓

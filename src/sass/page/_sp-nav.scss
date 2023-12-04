@@ -2,27 +2,30 @@
 
 .sp-nav {
   display: none;
+  background-color: $main;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: $main;
   width: 100%;
   height: 100vh;
-  overflow-y: auto;
-  z-index: 8888;
+  overflow-y: scroll;
+  z-index: 7777;
 }
 
 .sp-nav.is-active {
   display: block;
+  @include mq("md") {
+    display: none;
+  }
 }
 
-.sp-nav__inner {
-  display: flex;
-  justify-content: center;
-  padding-top: rem(24);
-  max-width: rem(400);
+.sp-nav__header {
   width: 100%;
+  height: rem(80);
+  background-color: $main;
+  position: fixed;
+  z-index: 8888;
 }
 
 .sp-nav__logo {
@@ -34,172 +37,132 @@
   width: rem(102);
 }
 
-.sp-nav__column {
-  width: 48.115942%;
-  margin-top: rem(3);
-  margin-left: rem(-5);
+.sp-nav__inner {
+  max-width: rem(380);
+  width: 100%;
 }
 
-.sp-nav__column--right {
-  width: 43.4782608%;
-  margin-left: rem(8);
-}
-
-.sp-nav__items {
+.sp-nav__content {
   color: $base;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: auto;
+  margin-top: rem(92);
+}
+
+.sp-nav__items1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  margin-left: rem(22);
+}
+
+.sp-nav__items2 {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  margin-left: rem(22);
+  margin-top: rem(16);
+}
+
+.sp-nav__items3 {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  margin-left: rem(22);
+}
+
+.sp-nav__items4 {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  margin-left: rem(22);
+  margin-top: rem(16);
 }
 
 .sp-nav__item a {
   display: inline-block;
+  color: inherit;
   font-weight: $regular;
   font-size: rem(16);
-  line-height: 1.12;
-  margin-left: rem(14.4);
+  line-height: 1.125;
   padding-top: rem(12);
   padding-bottom: rem(12);
+  transition: opacity 0.3s ease 0s;
 }
 
-.sp-nav__heading_1 a,
-.sp-nav__heading_2 a,
-.sp-nav__heading_3 a,
-.sp-nav__heading_4 a,
-.sp-nav__heading_5 a,
-.sp-nav__heading_6 a,
-.sp-nav__heading_7 a,
-.sp-nav__heading_8 a {
+.sp-nav__item:hover a {
+  opacity: 0.7;
+}
+
+.sp-nav__item:hover a {
+  opacity: 0.7;
+}
+
+.sp-nav__item--heading_2 {
+  margin-top: rem(16);
+}
+
+.sp-nav__item--heading_4 {
+  margin-top: rem(16);
+}
+
+.sp-nav__item--heading_6 {
+  margin-top: rem(16);
+}
+
+.sp-nav__item--heading_8 {
+  margin-top: rem(16);
+}
+
+.sp-nav__item--heading_1 a,
+.sp-nav__item--heading_2 a,
+.sp-nav__item--heading_3 a,
+.sp-nav__item--heading_4 a,
+.sp-nav__item--heading_5 a,
+.sp-nav__item--heading_6 a,
+.sp-nav__item--heading_7 a,
+.sp-nav__item--heading_8 a {
   display: inline-block;
   font-weight: $bold;
   font-size: rem(16);
   line-height: 1.125;
-  margin-left: rem(14);
-}
-
-.sp-nav__heading_1 a {
-  padding-top: rem(18.88);
+  padding-top: rem(12);
   padding-bottom: rem(12);
+  transition: opacity 0.3s ease 0s;
 }
 
-.sp-nav__heading_2 a {
-  padding-top: rem(28);
-  padding-bottom: rem(20);
+.sp-nav_item--heading_1:hover a,
+.sp-nav_item--heading_2:hover a,
+.sp-nav_item--heading_3:hover a,
+.sp-nav_item--heading_4:hover a,
+.sp-nav_item--heading_5:hover a,
+.sp-nav_item--heading_6:hover a,
+.sp-nav_item--heading_7:hover a,
+.sp-nav__item--heading_8:hover a {
+  opacity: 0.7;
 }
 
-.sp-nav__heading_3 a {
-  padding-top: rem(20);
-  padding-bottom: rem(12);
-}
-
-.sp-nav__heading_4 a {
-  padding-top: rem(28);
-  padding-bottom: rem(12);
-}
-
-.sp-nav__heading_5 a {
-  padding-top: rem(20.8);
-  padding-bottom: rem(20);
-}
-
-.sp-nav__heading_6 a {
-  padding-top: rem(20);
-  padding-bottom: rem(13.12);
-}
-
-.sp-nav__heading_7 a {
-  padding-top: rem(28);
-  padding-bottom: rem(20);
-  @include mq("md") {
-    padding-top: rem(20.5);
-  }
-}
-
-.sp-nav__heading_8 a {
-  padding-top: rem(20);
-  padding-bottom: rem(20);
-}
-
-.sp-nav__heading_1,
-.sp-nav__heading_2,
-.sp-nav__heading_3,
-.sp-nav__heading_4,
-.sp-nav__heading_5,
-.sp-nav__heading_6,
-.sp-nav__heading_7,
-.sp-nav__heading_8 {
+.sp-nav__item--heading_1,
+.sp-nav__item--heading_2,
+.sp-nav__item--heading_3,
+.sp-nav__item--heading_4,
+.sp-nav__item--heading_5,
+.sp-nav__item--heading_6,
+.sp-nav__item--heading_7,
+.sp-nav__item--heading_8 {
   position: relative;
 }
 
-.sp-nav__heading_1::before {
+.sp-nav__item--heading_1::before,
+.sp-nav__item--heading_2::before,
+.sp-nav__item--heading_3::before,
+.sp-nav__item--heading_4::before,
+.sp-nav__item--heading_5::before,
+.sp-nav__item--heading_6::before,
+.sp-nav__item--heading_7::before,
+.sp-nav__item--heading_8::before {
   display: inline-block;
   content: "";
   position: absolute;
-  left: rem(-10);
-  top: rem(18);
-  width: rem(18);
-  height: rem(18);
-  background: transparent url(../images/common/icon-hitode.png) no-repeat center
-    center / contain;
-}
-
-.sp-nav__heading_3::before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: rem(-10);
-  top: rem(20);
-  width: rem(18);
-  height: rem(18);
-  background: transparent url(../images/common/icon-hitode.png) no-repeat center
-    center / contain;
-}
-
-.sp-nav__heading_4::before,
-.sp-nav__heading_2:before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: rem(-10);
-  top: rem(28);
-  width: rem(18);
-  height: rem(18);
-  background: transparent url(../images/common/icon-hitode.png) no-repeat center
-    center / contain;
-}
-
-.sp-nav__heading_5::before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: rem(-8);
-  top: rem(20);
-  width: rem(18);
-  height: rem(18);
-  background: transparent url(../images/common/icon-hitode.png) no-repeat center
-    center / contain;
-}
-
-.sp-nav__heading_7::before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: rem(-8);
-  top: rem(28);
-  width: rem(18);
-  height: rem(18);
-  background: transparent url(../images/common/icon-hitode.png) no-repeat center
-    center / contain;
-  @include mq("md") {
-    left: rem(-8);
-    top: rem(20);
-  }
-}
-
-.sp-nav__heading_6::before,
-.sp-nav__heading_8::before {
-  display: inline-block;
-  content: "";
-  position: absolute;
-  left: rem(-8);
-  top: rem(20);
+  left: rem(-20.8);
+  top: rem(11.2);
   width: rem(18);
   height: rem(18);
   background: transparent url(../images/common/icon-hitode.png) no-repeat center

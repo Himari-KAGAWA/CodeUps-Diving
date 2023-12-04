@@ -29,7 +29,7 @@
 
 .card-02__header {
   border-bottom: rem(1) solid $main;
-  padding-bottom: rem(3.04);
+  padding-bottom: rem(4);
   margin-top: rem(17.312);
   @include mq("md") {
     padding-bottom: rem(3.84);
@@ -50,7 +50,7 @@
 }
 
 .card-02__content {
-  margin-top: rem(15.84);
+  margin-top: rem(15.2);
   @include mq('md') {
     margin-top: rem(16);
   }

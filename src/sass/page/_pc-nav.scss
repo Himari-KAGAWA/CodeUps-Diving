@@ -2,6 +2,7 @@
 
 .pc-nav {
   position: relative;
+  right: rem(20.48);
   z-index: 8888;
 }
 
@@ -18,16 +19,24 @@
 
 .pc-nav__item {
   flex-shrink: 0;
+  padding: 0 rem(20);
 }
 
 .pc-nav__link {
+  display: inline-block;
+  font-family: $english-family;
+  font-weight: $regular;
+  font-size: rem(18);
+  color: $base;
+  line-height: 1;
+  padding: rem(16) 0;
   position: relative;
 }
 
 .pc-nav__link::after {
   content: "";
   position: absolute;
-  bottom: rem(16);
+  bottom: rem(8);
   left: 50%; /* 中央からスタート */
   transform: translateX(-50%); /* 中央に配置 */
   width: 0;
@@ -38,32 +47,9 @@
 
 .pc-nav__link:hover::after {
   background: $base;
-  width: 70%;
+  width: 100%;
   left: 50%;
   transform: translateX(-50%);
-}
-
-.pc-nav__link.first:hover::after {
-  background: $base;
-  width: 80%;
-  left: 42%;
-}
-
-.pc-nav__link.last:hover::after {
-  background: $base;
-  width: 80%;
-  left: 50%;
-  transform: translateX(-34%);
-}
-
-.pc-nav__item a {
-  display: inline-block;
-  font-family: $english-family;
-  font-weight: $regular;
-  font-size: rem(18);
-  color: $base;
-  line-height: 1;
-  padding: rem(27.008) rem(20) rem(27.008) rem(20);
 }
 
 .pc-nav__item:first-child a {
