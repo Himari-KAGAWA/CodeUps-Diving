@@ -1,29 +1,13 @@
 @use "global" as *;
 
 .about {
-  margin-bottom: rem(80);
-  @include mq("md") {
-    margin-bottom: rem(0);
-  }
+  position: relative;
 }
 
 .about.section {
   margin-top: rem(81);
-  @include mq('md') {
-  margin-top: rem(137.6);
-  }
-}
-
-.about__bg-layout {
   @include mq("md") {
-    padding-bottom: rem(164);
-    max-width: rem(1280);
-    width: 100%;
-    margin: auto;
-    background-image: url(../images/common/pc/coral.png);
-    background-repeat: no-repeat;
-    background-position: 99.7% 88.5%;
-    background-size: rem(194) rem(181);
+    margin-top: rem(137.6);
   }
 }
 
@@ -42,50 +26,45 @@
   }
 }
 
-.about__items {
-  margin-top: rem(26.56);
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: 2fr;
+.about__img-wrapper {
+  position: relative;
+  margin-top: rem(50);
   @include mq("md") {
-    margin-top: rem(39.2);
-    grid-template-rows: 1fr;
+    margin-top: rem(120);
   }
 }
 
-.about__bg-item1 {
+.about__img-left {
+  display: block;
+  position: absolute;
   width: 37.101449275362318841%;
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
+  margin-top: rem(-26);
+  z-index: 1;
   @include mq("md") {
     width: 37.038%;
+    margin-top: rem(-80);
   }
 }
 
-.about__bg-item2 {
+.about__img-right {
   width: 81.5%;
-  margin-top: 7.95%;
-  grid-column: 1 / 2;
-  grid-row: 1 / 2;
-  justify-self: end;
-  z-index: -1;
+  margin-left: auto;
   @include mq("md") {
     width: 81.481481481481481481%;
-    margin-top: 7.3%;
   }
 }
 
-.about__body {
+.about__contents {
   width: 100%;
-  grid-column: 1 / 3;
-  grid-row: 2 / 3;
   @include mq("md") {
-    grid-row: 1 / 2;
-    justify-self: end;
-    margin-top: rem(200);
-    margin-right: rem(40);
-    max-width: rem(840);
+    position: absolute;
+    top: rem(306);
+    left: calc(50% + rem(88));
+    transform: translateX(-50%);
     display: flex;
+    max-width: rem(840);
+    padding-right: rem(20);
+    box-sizing: content-box;
     z-index: 2;
   }
 }
@@ -128,4 +107,11 @@
   @include mq("md") {
     margin-top: rem(39.2);
   }
+}
+
+.about__img-icon {
+  width: rem(194);
+  position: absolute;
+  right: calc(50% - min(48%, rem(640)));
+  bottom: rem(-90);
 }

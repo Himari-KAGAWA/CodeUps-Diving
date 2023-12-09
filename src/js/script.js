@@ -57,6 +57,10 @@ jQuery(function ($) {
     slidesPerView: "auto",
     spaceBetween: 23,
     grabCursor: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
 
     // overflow:hidden;したクラスを追記する↓
     // Navigation arrows
