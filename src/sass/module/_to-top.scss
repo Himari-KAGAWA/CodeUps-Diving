@@ -1,65 +1,22 @@
 @use "global" as *;
 
 .to-top {
-  display: inline-block;
   position: fixed;
-  bottom: rem(23);
   right: rem(15);
-  z-index: 7777;
+  bottom: rem(16);
   display: none;
+  z-index: 8888;
+  @include mq("md") {
+    right: rem(20);
+    bottom: rem(20);
+  }
+}
+
+.to-top__link {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.6);
   @include mq('md') {
-  bottom: rem(20);
-  right: rem(15);
-  }
-}
-
-.to-top picture {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: rem(48);
-  height: rem(48);
-  z-index: 7777;
-  @include mq("md") {
-    width: rem(90);
-    height: rem(90);
-  }
-}
-
-.to-top__shadow {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  background: transparent url(../images/common/totop-arrow-sp.png) no-repeat
-    center center/contain;
-  width: rem(48);
-  height: rem(48);
-  z-index: 6666;
-  @include mq("md") {
-    background: transparent url(../images/common/pc/totop-arrow-pc.png)
-      no-repeat center center/contain;
-    width: rem(90);
-    height: rem(90);
-  }
-}
-
-.to-top__shadow::before {
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  /* シャドウのスタイル（insetを追加して内側に配置） */
-  box-shadow: inset 0 0 0 45px rgba(255, 255, 255, 0.3); /* 内側にシャドウを設定 */
-  border-radius: 50%; /* 丸い形状にする */
-  @include mq("md") {
-    left: rem(5);
-    width: 89%;
-    height: 89%;
+    box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
   }
 }
 

@@ -36,13 +36,14 @@
 
 .about__img-left {
   display: block;
-  position: absolute;
   width: 37.101449275362318841%;
-  margin-top: rem(-26);
+  position: absolute;
+  top: rem(-26);
+  left: rem(0);
   z-index: 1;
   @include mq("md") {
     width: 37.038%;
-    margin-top: rem(-80);
+    top: rem(-80);
   }
 }
 

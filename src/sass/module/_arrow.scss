@@ -1,0 +1,43 @@
+@use "global" as *;
+
+.arrow {
+  width: rem(48);
+  height: rem(48);
+  border: rem(1) solid $main;
+  border-radius: 100%;
+  position: relative;
+  @include mq("md") {
+    width: rem(80);
+    height: rem(80);
+  }
+}
+
+.arrow::before {
+  background-color: #408f95;
+  border-radius: 100vh;
+  content: "";
+  position: absolute;
+  top: rem(16);
+  right: calc(50% - rem(1));
+  transform: translateY(calc(-50% - rem(3))) rotate(-50deg);
+  width: rem(10);
+  height: rem(1);
+  @include mq('md') {
+    top: rem(26);
+  }
+}
+
+.arrow::after {
+  background-color: #408f95;
+  border-radius: 100vh;
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translateY(-50%);
+  width: rem(1);
+  height: rem(28);
+  @include mq('md') {
+    height: rem(40);
+  }
+}
