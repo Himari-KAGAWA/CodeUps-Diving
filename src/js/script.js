@@ -78,16 +78,34 @@ jQuery(function ($) {
     },
   });
 
-  // スクロール検知
-  jQuery(window).on("scroll", function () {
-    // トップから200px以上スクロールしたら
-    if (200 < jQuery(this).scrollTop()) {
-      // is-showクラスをつける
-      jQuery(".to-top").addClass("is-show");
-    } else {
-      // 100pxを下回ったらis-showクラスを削除
-      jQuery(".to-top").removeClass("is-show");
-    }
+  // スクロール検知＆to-topアイコン制御
+  jQuery(document).ready(function ($) {
+    var toTop = $(".to-top");
+    var footer = $("footer");
+    var originalBottom = parseInt(toTop.css("bottom")); // 初期のbottom値を取得
+
+    $(window).on("scroll", function () {
+      var scrollPos = $(this).scrollTop();
+      var windowHeight = $(this).height();
+
+      if (scrollPos > 200) {
+        // スクロールが200px以上の場合
+        toTop.addClass("is-show");
+      } else {
+        // スクロールが200px以下の場合
+        toTop.removeClass("is-show");
+      }
+
+      if (scrollPos >= footer.offset().top - windowHeight) {
+        // フッターの近くに到達した場合
+        var newBottom =
+          scrollPos + windowHeight - (footer.offset().top - originalBottom);
+        toTop.css("bottom", newBottom + "px");
+      } else {
+        // フッターの近くに到達していない場合
+        toTop.css("bottom", originalBottom + "px");
+      }
+    });
   });
 
   // ヘッダー色変更
