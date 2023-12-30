@@ -12,9 +12,14 @@
   font-size: rem(32);
   line-height: 1.25;
   color: $font;
-  @include mq('md') {
-  font-size: rem(40);
+  @include mq("md") {
+    font-size: rem(40);
   }
+}
+
+.section-header__engtitle::first-letter {
+  color: $main;
+  text-transform: uppercase;
 }
 
 .section-header__engtitle--w {
@@ -24,9 +29,9 @@
   line-height: 1.25;
   color: $font;
   color: $base;
-  @include mq('md') {
+  @include mq("md") {
     font-size: rem(40);
-    }
+  }
 }
 
 .section-header__jatitle {
@@ -47,13 +52,5 @@
   color: $main;
   text-align: center;
   margin-top: rem(4);
-  color: $base;
-}
-
-.section-header__engtitle-reverse {
-  color: $main;
-}
-
-.section-header__engtitle-reverse--w {
   color: $base;
 }

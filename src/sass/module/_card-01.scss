@@ -115,20 +115,3 @@
   opacity: 0.8;
   transition: opacity 0.3s;
 }
-
-.card-01__price--space {
-  font-family: $english-family_2nd;
-  font-weight: $bold;
-  color: $font;
-  line-height: 1;
-  font-size: rem(20);
-  text-decoration: line-through;
-  text-decoration-color: #c94800;
-  text-decoration-thickness: 3px;
-  margin-right: rem(12);
-  @include mq("md") {
-    font-size: rem(24);
-    margin-right: rem(17.6);
-    margin-left: rem(-21.76);
-  }
-}

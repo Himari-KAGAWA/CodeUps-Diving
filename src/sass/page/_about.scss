@@ -4,13 +4,6 @@
   position: relative;
 }
 
-.about.section {
-  margin-top: rem(81);
-  @include mq("md") {
-    margin-top: rem(137.6);
-  }
-}
-
 .about__header .section-header__jatitle {
   @include mq("md") {
     margin-top: rem(1.92);

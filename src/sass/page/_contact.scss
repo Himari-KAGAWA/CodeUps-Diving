@@ -154,8 +154,9 @@
   color: $font;
 }
 
-.contact__engtitle-reverse {
+.contact__engtitle::first-letter {
   color: $main;
+  text-transform: uppercase;
   @include mq("md") {
     vertical-align: middle;
   }

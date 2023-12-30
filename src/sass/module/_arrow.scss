@@ -13,7 +13,7 @@
 }
 
 .arrow::before {
-  background-color: #408f95;
+  background-color: $main;
   border-radius: 100vh;
   content: "";
   position: absolute;
@@ -22,13 +22,13 @@
   transform: translateY(calc(-50% - rem(3))) rotate(-50deg);
   width: rem(10);
   height: rem(1);
-  @include mq('md') {
+  @include mq("md") {
     top: rem(26);
   }
 }
 
 .arrow::after {
-  background-color: #408f95;
+  background-color: $main;
   border-radius: 100vh;
   content: "";
   position: absolute;
@@ -37,7 +37,37 @@
   transform: translateY(-50%);
   width: rem(1);
   height: rem(28);
-  @include mq('md') {
+  @include mq("md") {
     height: rem(40);
   }
 }
+
+.arrow--x {
+  position: relative;
+}
+
+.arrow--x::before {
+  content: "";
+  position: absolute;
+  top: calc(50%);
+  right: rem(-50);
+  transform: translateY(calc(-50% - rem(3))) rotate(42deg);
+  width: rem(10);
+  height: rem(1);
+  background-color: $base;
+  transition: background-color 0.3s ease 0s;
+}
+
+.arrow--x::after {
+  content: "";
+  position: absolute;
+  top: calc(50%);
+  right: rem(-48);
+  transform: translateY(-50%);
+  width: rem(40);
+  height: rem(1);
+  background-color: $base;
+  transition: background-color 0.3s ease 0s;
+}
+
+
