@@ -26,7 +26,7 @@
   }
 }
 
-.price__wrapper {
+.price__contents {
   margin-top: rem(27.2);
   display: flex;
   flex-direction: column-reverse;
@@ -63,10 +63,39 @@
   }
 }
 
-.price__table + .price__table {
+.price__courses + .price__courses {
   margin-top: rem(30.8);
   @include mq("md") {
     margin-top: rem(37.6);
+  }
+}
+
+.price__course {
+  border-bottom: 1px solid $main;
+  font-size: rem(16);
+  font-weight: $bold;
+  line-height: 1.5;
+  padding-bottom: rem(3);
+}
+
+.price__corse-menus {
+  display: flex;
+  justify-content: space-between;
+  margin-top: rem(8);
+}
+
+.price__corse-menu {
+  font-size: rem(14);
+  @include mq("md") {
+    font-size: rem(16);
+  }
+}
+
+.price__corse-price {
+  font-size: rem(14);
+  margin-left: rem(8);
+  @include mq("md") {
+    font-size: rem(16);
   }
 }
 

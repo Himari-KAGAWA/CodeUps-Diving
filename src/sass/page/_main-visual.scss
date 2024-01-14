@@ -46,38 +46,9 @@
   }
 }
 
-.main-visual-img {
+.main-visual__img img {
+  display: block;
   width: 100%;
   height: 100vh;
-}
-
-.main-visual__img--1 {
-  background-image: url(../images/common/mv-sp_1.jpg);
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
-  @include mq("md") {
-    background-image: url(../images/common/pc/mv-pc_1.jpg);
-  }
-}
-
-.main-visual__img--2 {
-  background: url(../images/common/mv-sp_2.jpg) no-repeat top center / cover;
-  @include mq("md") {
-    background-image: url(../images/common/pc/mv-pc_2.jpg);
-  }
-}
-
-.main-visual__img--3 {
-  background: url(../images/common/mv-sp_3.jpg) no-repeat top center / cover;
-  @include mq("md") {
-    background-image: url(../images/common/pc/mv-pc_3.jpg);
-  }
-}
-
-.main-visual__img--4 {
-  background: url(../images/common/mv-sp_4.jpg) no-repeat top center / cover;
-  @include mq("md") {
-    background-image: url(../images/common/pc/mv-pc_4.jpg);
-  }
+  object-fit: cover;
 }

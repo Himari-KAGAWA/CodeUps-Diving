@@ -42,11 +42,11 @@
   }
 }
 
-.arrow--x {
+.arrow-x {
   position: relative;
 }
 
-.arrow--x::before {
+.arrow-x::before {
   content: "";
   position: absolute;
   top: calc(50%);
@@ -58,7 +58,7 @@
   transition: background-color 0.3s ease 0s;
 }
 
-.arrow--x::after {
+.arrow-x::after {
   content: "";
   position: absolute;
   top: calc(50%);

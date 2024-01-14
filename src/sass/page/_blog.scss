@@ -47,65 +47,10 @@
   text-align: center;
 }
 
-.blog__engtitle {
-  font-family: $english-family;
-  font-weight: $regular;
-  font-size: rem(32);
-  line-height: 1.25;
-  color: $font;
-  @include mq("md") {
-    color: $base;
-    font-size: rem(40);
-  }
-}
-
-.blog__engtitle::first-letter {
-  color: $main;
-  text-transform: uppercase;
-  @include mq('md') {
-  color: $base;
-  }
-}
-
-.blog__engtitle-reverse {
-  color: $main;
-  @include mq("md") {
-    color: $base;
-  }
-}
-
-.blog__jatitle {
-  font-size: rem(12);
-  color: $main;
-  line-height: 1;
-  margin-top: rem(6.4);
-  @include mq("md") {
-    color: $base;
-    margin-top: rem(5.6);
-  }
-}
-
 .blog__items {
   margin-top: rem(30.88);
   @include mq("md") {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
     margin-top: rem(83.2);
-  }
-}
-
-.blog__item {
-  margin: auto;
-  @include mq("md") {
-    margin: 0;
-  }
-}
-
-.blog__item + .blog__item {
-  margin-top: rem(39.2);
-  @include mq("md") {
-    margin-top: 0;
   }
 }
 

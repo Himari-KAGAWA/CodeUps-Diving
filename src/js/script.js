@@ -35,7 +35,7 @@ jQuery(function ($) {
 
   // swiper メインビュー
   const initSwiper = () => {
-    const slide01 = new Swiper("#js-main-visual-swiper", {
+    const slide01 = new Swiper(".js-main-visual-swiper", {
       loop: true,
       speed: 3000,
       effect: "fade",
@@ -51,7 +51,7 @@ jQuery(function ($) {
 
   // swiper campaign
   // overflow:hidden;したクラスを追記する↓
-  const campaign__slider = new Swiper(".campaign__slider #js-campaign-swiper", {
+  const campaign__slider = new Swiper(".campaign__slider .js-campaign-swiper", {
     loop: true,
     loopAdditionalSlides: 1,
     slidesPerView: "auto",
@@ -65,8 +65,8 @@ jQuery(function ($) {
     // overflow:hidden;したクラスを追記する↓
     // Navigation arrows
     navigation: {
-      nextEl: "#js-campaign-next",
-      prevEl: "#js-campaign-prev",
+      nextEl: ".js-campaign-next",
+      prevEl: ".js-campaign-prev",
       clickable: true,
     },
 

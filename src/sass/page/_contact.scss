@@ -146,28 +146,6 @@
   }
 }
 
-.contact__engtitle {
-  font-family: $english-family;
-  font-weight: $regular;
-  font-size: rem(80);
-  line-height: 1;
-  color: $font;
-}
-
-.contact__engtitle::first-letter {
-  color: $main;
-  text-transform: uppercase;
-  @include mq("md") {
-    vertical-align: middle;
-  }
-}
-
-.contact__jatitle {
-  line-height: 1;
-  color: $main;
-  margin-top: rem(-11);
-}
-
 .contact__text {
   font-size: rem(14);
   color: $main;
