@@ -52,12 +52,9 @@
   margin-top: rem(4);
 }
 
-.section-header__jatitle--white {
-  @include mq("md") {
-    color: $base;
-  }
-}
-
 .section-header__jatitle--layout {
   margin-top: rem(-6);
+  @include mq("md") {
+    margin-top: 0;
+  }
 }
