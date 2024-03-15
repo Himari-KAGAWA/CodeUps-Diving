@@ -35,7 +35,7 @@ jQuery(function ($) {
 
   // swiper メインビュー
   const initSwiper = () => {
-    const slide01 = new Swiper(".js-main-visual-swiper", {
+    const swiper = new Swiper(".js-main-visual-swiper", {
       loop: true,
       speed: 3000,
       effect: "fade",
@@ -176,5 +176,167 @@ jQuery(function ($) {
         counter = 1;
       }
     });
+  });
+
+  // サイドバー：アコーディオン
+  $(".js-archive").on("click", function () {
+    $(this).find(".js-open").stop().slideToggle(300);
+    $(this).toggleClass("is-open");
+  });
+
+  // FAQ：アコーディオン
+  $(".js-faq").on("click", function () {
+    $(this).find(".js-faq-open").stop().slideToggle(300);
+    $(this).toggleClass("is-open");
+  });
+
+  // タブ切替：information
+  $(function () {
+    $(".page-information__tabs li").click(function () {
+      var index = $(".page-information__tabs li").index(this); //何番目のタブがクリックされたかを格納
+      $(".page-information__tabs li").removeClass("is-active");
+      $(this).addClass("is-active");
+      $(".page-information__tabs .page-information__tab-panel")
+        .removeClass("is-active")
+        .eq(index)
+        .addClass("is-active"); //○番目のコンテンツのみを表示
+    });
+  });
+
+  //タブへダイレクトリンクの実装：information
+  $(function () {
+    //リンクからハッシュを取得
+    var hash = location.hash;
+    hash = (hash.match(/^#panel\d+$/) || [])[0];
+
+    //リンクにハッシュが入っていればtabnameに格納
+    if ($(hash).length) {
+      var tabname = hash.slice(1);
+    } else {
+      var tabname = "panel1";
+    }
+
+    //コンテンツ非表示・タブを非アクティブ
+    $(".page-information__tabs li").removeClass("is-active");
+    $(".page-information__tabs .page-information__tab-panel").removeClass(
+      "is-active"
+    );
+
+    //何番目のタブかを格納
+    var tabno = $(
+      ".page-information__tabs .page-information__tab-panel#" + tabname
+    ).index();
+
+    //コンテンツ表示
+    $(".page-information__tabs .page-information__tab-panel")
+      .eq(tabno)
+      .addClass("is-active");
+
+    //タブのアクティブ化
+    $(".page-information__tabs li").eq(tabno).addClass("is-active");
+
+    // タブへスクロール
+    var headerHeight = $(".header").height() + 24; // ヘッダーの高さを取得
+    var targetOffset = $(".page-information__tabs").offset().top; // タブの位置を取得
+    var scrollTo = targetOffset - headerHeight; // スクロール位置を計算
+    $("html, body").scrollTop(scrollTo); // スクロール実行
+  });
+
+  // モーダル
+  // 変数に要素を入れる
+  var trigger = $(".modal__trigger"),
+    wrapper = $(".modal__wrapper"),
+    layer = $(".modal__layer"),
+    container = $(".modal__container"),
+    content = $(".modal__content");
+
+  // 『モーダルを開くボタン』をクリックしたら、『モーダル本体』を表示
+  $(trigger).click(function () {
+    $(wrapper).fadeIn(400);
+
+    // クリックされた画像の元のimg画像を取得して、置き換える
+    var originalImgSrc = $(this).find("img").attr("src");
+    var originalImgAlt = $(this).find("img").attr("alt");
+
+    // モーダルの中身をクリアしてから新しい画像を追加
+    $(content)
+      .empty()
+      .html('<img src="' + originalImgSrc + '" alt="' + originalImgAlt + '">');
+
+    // スクロール位置を戻す
+    $(container).scrollTop(0);
+
+    // サイトのスクロールを禁止にする
+    $("html, body").css("overflow", "hidden");
+  });
+
+  // 『背景』と『画像』をクリックしたら、『モーダル本体』を非表示
+  $(layer)
+    .add(content)
+    .click(function () {
+      $(wrapper).fadeOut(400);
+
+      // サイトのスクロール禁止を解除する
+      $("html, body").removeAttr("style");
+    });
+
+  // タブ絞り込み：page-campaign,page-voice
+  $(function () {
+    // 変数を要素をセット
+    var $filter = $(".js-tab-btn [data-filter]"),
+      $item = $(".js-panel [data-item]");
+
+    // カテゴリをクリックしたら
+    $filter.click(function (e) {
+      // デフォルトの動作をキャンセル
+      e.preventDefault();
+      var $this = $(this);
+
+      // クリックしたカテゴリにクラスを付与
+      $filter.removeClass("is-show");
+      $this.addClass("is-show");
+
+      // クリックした要素のdata属性を取得
+      var $filterItem = $this.attr("data-filter");
+
+      // データ属性が ALL なら全ての要素を表示
+      if ($filterItem == "ALL") {
+        $item
+          .removeClass("is-show")
+          .fadeOut()
+          .promise()
+          .done(function () {
+            $item.addClass("is-show").fadeIn();
+          });
+        // all 以外の場合は、クリックした要素のdata属性の値を同じ値のアイテムを表示
+      } else {
+        $item
+          .removeClass("is-show")
+          .fadeOut()
+          .promise()
+          .done(function () {
+            $item
+              .filter('[data-item = "' + $filterItem + '"]')
+              .addClass("is-show")
+              .fadeIn();
+          });
+      }
+    });
+  });
+
+  // タブ絞り込み用ダイレクトリンク
+  $(document).ready(function () {
+    // ページロード時にURLのハッシュを読み込んで該当のカテゴリを表示
+    var hash = window.location.hash;
+    if (hash) {
+      var $filterItem = hash.substr(1);
+      $(".js-tab-btn [data-filter='" + $filterItem + "']").click();
+
+      // カテゴリの位置を取得し、ヘッダーの高さ＋24pxを加えてスクロール位置を計算
+      var headerHeight = $(".header").height() + 24;
+      var targetOffset = $(".category-list__items").offset().top;
+      var scrollTo = targetOffset - headerHeight;
+      $("html, body").scrollTop(scrollTo);
+    }
   });
 });

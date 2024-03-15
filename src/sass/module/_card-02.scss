@@ -48,7 +48,7 @@
 
 .card-02__content {
   margin-top: rem(15.2);
-  @include mq('md') {
+  @include mq("md") {
     margin-top: rem(16);
   }
 }

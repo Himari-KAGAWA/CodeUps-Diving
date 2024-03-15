@@ -1,0 +1,22 @@
+@use "global" as *;
+
+.sidebar-header__title {
+  display: flex;
+  align-items: center;
+  padding-left: rem(16);
+  background: transparent; /*背景透明に*/
+  border-left: solid rem(8) $main; /*左線*/
+  color: $font;
+  font-size: rem(24);
+  line-height: 1;
+  font-weight: $regular;
+}
+
+.sidebar-header__title img {
+  width: 50px;
+  height: 50px;
+}
+
+.sidebar-header__title span {
+  margin-left: rem(8);
+}

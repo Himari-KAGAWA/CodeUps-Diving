@@ -42,3 +42,10 @@ $font: #0D2936;
 body.no-scroll {
   overflow: hidden;
 }
+
+html {
+  scroll-padding-top: rem(104);
+  @include mq("md") {
+    scroll-padding-top: rem(114);
+  }
+}

@@ -1,0 +1,171 @@
+@use "global" as *;
+
+.sub-mv {
+  width: 100%;
+  height: rem(460);
+  position: relative;
+  @include mq("md") {
+    height: rem(548);
+  }
+}
+
+.sub-mv__inner {
+  padding: 0 rem(15);
+  height: inherit;
+  @include mq("md") {
+    height: inherit;
+  }
+}
+
+.sub-mv__bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: rem(460);
+  height: inherit;
+  @include mq("md") {
+    height: rem(548);
+  }
+}
+
+.sub-mv__bg--campaign::before {
+  background: url(../images/common/page-campaign-head.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    background: url(../images/common/pc/page-campaign-head_pc.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sub-mv__bg--about::before {
+  background: url(../images/common/page-about-head.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    background: url(../images/common/pc/page-about-head_pc.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sub-mv__bg--info::before {
+  background: url(../images/common/page-info-head.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    background: url(../images/common/pc/page-info-head_pc.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sub-mv__bg--blog::before {
+  background: url(../images/common/page-blog-head.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    background: url(../images/common/pc/page-blog-head_pc.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sub-mv__bg--voice::before {
+  background: url(../images/common/page-voice-head.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    background: url(../images/common/pc/page-voice-head_pc.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sub-mv__bg--price::before {
+  background: url(../images/common/page-price-head.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    background: url(../images/common/pc/page-price-head_pc.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sub-mv__bg--faq::before {
+  background: url(../images/common/page-faq-head.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    background: url(../images/common/pc/page-faq-head_pc.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sub-mv__bg--contact::before {
+  background: url(../images/common/page-contact-head.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    background: url(../images/common/pc/page-contact-head_pc.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sub-mv__bg--siteMap::before,
+.sub-mv__bg--terms::before,
+.sub-mv__bg--privacy::before {
+  background: url(../images/common/page-common-head.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  @include mq("md") {
+    background: url(../images/common/pc/page-common-head_pc.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+.sub-mv__header {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  @include mq("md") {
+    transform: translateY(0);
+  }
+}
+
+.sub-mv__title {
+  color: $base;
+  font-family: $english-family_2nd;
+  font-size: rem(40);
+  font-weight: $regular;
+  line-height: 1;
+  @include mq("md") {
+    font-size: rem(80);
+    line-height: 1.25;
+  }
+}
+
+.sub-mv__title::first-letter {
+  text-transform: uppercase;
+}
+
+.sub-mv__title--two::first-letter {
+  text-transform: uppercase;
+}
+
+.sub-mv__title-uppercase {
+  text-transform: uppercase;
+}
+
+.sub-mv__title--upper {
+  text-transform: uppercase;
+}

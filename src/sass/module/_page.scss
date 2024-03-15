@@ -1,0 +1,47 @@
+@use "global" as *;
+
+.page {
+  position: relative;
+}
+
+.page__icon::before {
+  background: url(../images/common/pc/fish-illust.png) no-repeat;
+  background-size: contain;
+  content: "";
+  width: rem(120);
+  height: rem(55);
+  position: absolute;
+  top: rem(-24);
+  left: calc(50% - min(48%, rem(170)));
+  z-index: -1;
+  @include mq("md") {
+    width: rem(301);
+    height: rem(138);
+    top: rem(-70);
+    left: calc(50% - min(43%, rem(673)));
+  }
+}
+
+.page__icon--about::after {
+  background: url(../images/common/pc/fish-illust.png) no-repeat;
+  background-size: contain;
+  content: "";
+  width: rem(120);
+  height: rem(55);
+  position: absolute;
+  top: rem(-24);
+  left: calc(50% - min(48%, rem(170)));
+  @include mq("md") {
+    width: rem(301);
+    height: rem(138);
+    top: rem(-150);
+    left: calc(50% - min(43%, rem(673)));
+  }
+}
+
+.page__wrapper {
+  @include mq("lg") {
+    display: flex;
+    justify-content: space-between;
+  }
+}

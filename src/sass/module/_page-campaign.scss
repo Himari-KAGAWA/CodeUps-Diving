@@ -1,0 +1,24 @@
+@use "global" as *;
+
+.page-campaign {
+}
+
+.page-campaign__card-items {
+  margin: rem(40) auto 0;
+  max-width: rem(500);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: rem(40);
+  @include mq("md") {
+    max-width: rem(1130);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2 1fr);
+    gap: rem(80) rem(40);
+  }
+}
+
+.page-campaign__card-item:hover .card-01__img {
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}

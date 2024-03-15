@@ -5,7 +5,6 @@
   width: 100%;
   height: 100%;
   color: $font;
-  display: flex;
 }
 
 .card-01__link {
@@ -60,6 +59,7 @@
 }
 
 .card-01__lead {
+  font-size: rem(14);
   @include mq("md") {
     font-size: rem(16);
     margin-left: rem(-15);
@@ -108,7 +108,46 @@
   }
 }
 
-.card-01__link:hover .card-01__img img {
-  opacity: 0.8;
-  transition: opacity 0.3s;
+.card-01__title--page {
+  font-size: 16px;
+  font-weight: $normal;
+  @include mq("md") {
+    margin-top: rem(10);
+    font-size: 24px;
+    line-height: 1;
+  }
+}
+
+.card-01__lower-unit {
+  display: none;
+  margin-top: rem(24);
+  @include mq("md") {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: justify;
+  }
+}
+
+.card-01__lower-unit .period {
+  margin-top: rem(30);
+  color: $main;
+  font-family: $english-family_2nd;
+  font-weight: $bold;
+  line-height: 1.125;
+}
+
+.card-01__lower-unit .click-here {
+  margin: rem(7) auto 0;
+  color: $main;
+  font-size: 14px;
+  line-height: 1.285714;
+}
+
+.card-01__lower-unit .click-here--hide {
+  visibility: hidden;
+}
+
+.card-01__lower-unit-link {
+  margin-top: rem(16);
 }

@@ -70,4 +70,24 @@
   transition: background-color 0.3s ease 0s;
 }
 
+.arrow-x--400::before {
+  background-color: $main;
+  right: rem(-56);
+}
 
+.arrow-x--400::after {
+  background-color: $main;
+  right: rem(-54);
+}
+
+.arrow-x--submit {
+  position: relative;
+}
+
+.arrow-x--submit::before {
+  right: rem(-58);
+}
+
+.arrow-x--submit::after {
+  right: rem(-56);
+}

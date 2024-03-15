@@ -24,17 +24,18 @@
 
 .footer-nav__logo {
   margin: 0 auto;
+  width: rem(120);
   @include mq("md") {
     display: flex;
+    width: rem(200);
     margin: 0;
   }
 }
 
 .footer-nav__logo img {
-  width: rem(120);
-  @include mq("md") {
-    width: rem(200);
-  }
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .footer-nav__sns {
@@ -191,5 +192,12 @@
     font-size: rem(13);
     line-height: 1.2857142857142857143;
     letter-spacing: 0.032rem;
+  }
+}
+
+.footer--404 {
+  padding-top: rem(88);
+  @include mq("md") {
+    padding-top: rem(228);
   }
 }

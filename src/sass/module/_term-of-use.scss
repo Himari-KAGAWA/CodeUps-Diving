@@ -1,0 +1,50 @@
+@use "global" as *;
+
+.term-of-use__inner {
+  padding: 0 rem(15);
+  max-width: rem(600);
+  width: 100%;
+  margin: auto;
+  color: $font;
+  line-height: 2;
+  color: $font;
+  @include mq("md") {
+    padding: 0 rem(25);
+    max-width: rem(800);
+  }
+}
+
+.term-of-use__title {
+  color: $font;
+  font-size: rem(24);
+  font-weight: $normal;
+  line-height: 1;
+  @include mq('md') {
+    font-size: rem(32);
+  }
+}
+
+.term-of-use__text {
+  margin-top: rem(40);
+}
+
+.term-of-use__list {
+  margin-top: rem(40);
+}
+
+.term-of-use__list .term-of-use__item {
+  margin-left: rem(15);
+  list-style-type: decimal;
+}
+
+.term-of-use__list-point > .term-of-use__item {
+  position: relative;
+  margin-left: rem(14);
+}
+
+.term-of-use__list-point > .term-of-use__item::before {
+  content: "・";
+  position: absolute;
+  top: 0;
+  left: rem(-18);
+}

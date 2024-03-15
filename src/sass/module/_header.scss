@@ -14,7 +14,7 @@
 }
 
 .header.is-color {
-  background-color: #9A9A9A;
+  background-color: #9a9a9a;
 }
 
 .header__inner {
@@ -30,21 +30,21 @@
 
 .header__logo {
   position: relative;
-  z-index: 8888;
+  z-index: 7777;
   top: rem(3);
+  width: rem(102);
   @include mq("md") {
     top: 0;
     padding-top: rem(10.4);
-    width: rem(140.48);
     margin-left: rem(-3.2);
+    width: rem(133);
   }
 }
 
 .header__logo img {
-  width: rem(109.12);
-  @include mq("md") {
-    width: rem(147.2);
-  }
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .header__sp-nav {

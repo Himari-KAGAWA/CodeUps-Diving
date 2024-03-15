@@ -22,6 +22,7 @@
   text-transform: uppercase;
 }
 
+.section-header__jatitle--white,
 .section-header__engtitle--white {
   @include mq("md") {
     color: $base;
