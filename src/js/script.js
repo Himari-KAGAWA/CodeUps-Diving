@@ -235,11 +235,13 @@ jQuery(function ($) {
     //タブのアクティブ化
     $(".page-information__tabs li").eq(tabno).addClass("is-active");
 
-    // タブへスクロール
-    var headerHeight = $(".header").height() + 24; // ヘッダーの高さを取得
-    var targetOffset = $(".page-information__tabs").offset().top; // タブの位置を取得
-    var scrollTo = targetOffset - headerHeight; // スクロール位置を計算
-    $("html, body").scrollTop(scrollTo); // スクロール実行
+    // タブへスクロール（タブへのダイレクトリンクの場合にのみ実行）
+    if (hash) {
+      var headerHeight = $(".header").height() + 24; // ヘッダーの高さを取得
+      var targetOffset = $(".page-information__tabs").offset().top; // タブの位置を取得
+      var scrollTo = targetOffset - headerHeight; // スクロール位置を計算
+      $("html, body").scrollTop(scrollTo); // スクロール実行
+    }
   });
 
   // モーダル

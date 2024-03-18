@@ -17,7 +17,7 @@ background-color: $main;
     width: rem(665);
     height: rem(594);
     top: rem(142);
-    left: 12.5%;
+    left: 13.5%;
   }
 }
 
@@ -28,7 +28,7 @@ background-color: $main;
 
 .not-found__message {
   font-size: rem(80);
-  padding-top: rem(52);
+  padding-top: rem(60);
   color: #fff;
   font-family: $english-family_2nd;
   font-weight: $regular;
@@ -36,13 +36,13 @@ background-color: $main;
   letter-spacing: 0.5em;
   text-indent: 0.5em;
   @include mq("md") {
-    padding-top: rem(120);
+    padding-top: rem(132);
     font-size: rem(160);
   }
 }
 
 .not-found__text {
-  margin-top: rem(8);
+  margin-top: rem(2);
   color: $base;
   line-height: 1.5;
   @include mq("md") {
@@ -51,8 +51,8 @@ background-color: $main;
 }
 
 .not-found__link {
-  margin-top: rem(40);
+  margin-top: rem(42);
   @include mq("md") {
-    margin-top: rem(80);
+    margin-top: rem(82);
   }
 }

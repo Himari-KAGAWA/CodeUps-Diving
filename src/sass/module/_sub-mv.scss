@@ -151,7 +151,45 @@
   @include mq("md") {
     font-size: rem(80);
     line-height: 1.25;
+    letter-spacing: 0.01em;
   }
+}
+
+.sub-mv__title--info {
+  @include mq("md") {
+    letter-spacing: -0.001em;
+  }
+}
+
+.sub-mv__title--blog {
+  @include mq("md") {
+    letter-spacing: 0;
+  }
+}
+
+.sub-mv__title--price {
+  @include mq("md") {
+    letter-spacing: -0.01em;
+  }
+}
+
+.sub-mv__title--siteMap {
+  @include mq('md') {
+    letter-spacing: 0.0075em;
+    text-indent: 0.0075em;
+  }
+}
+
+.sub-mv__title--privacy {
+  @include mq('md') {
+    letter-spacing: -0.0055em;
+    text-indent: -0.0055em;
+  }
+}
+
+.sub-mv__title--terms {
+  letter-spacing: 0.003em;
+  text-indent: 0.003em;
 }
 
 .sub-mv__title::first-letter {
@@ -168,4 +206,23 @@
 
 .sub-mv__title--upper {
   text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.sub-mv__icon::after {
+  background: url(../images/common/pc/fish-illust.png) no-repeat;
+  background-size: contain;
+  content: "";
+  width: rem(120);
+  height: rem(55);
+  position: absolute;
+  bottom: rem(-110);
+  left: calc(50% - min(48%, rem(172.8)));
+  z-index: -1;
+  @include mq("md") {
+    width: rem(301);
+    height: rem(138);
+    bottom: rem(-246);
+    left: calc(50% - min(43%, rem(673)));
+  }
 }

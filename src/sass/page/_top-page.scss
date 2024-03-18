@@ -2,14 +2,53 @@
 
 .top-page {
   margin-top: rem(52);
-  @include mq('md') {
-  margin-top: rem(150);
+  @include mq("md") {
+    margin-top: rem(150);
+  }
+}
+
+.top-page--campaign {
+  margin-top: rem(52);
+  @include mq("md") {
+    margin-top: rem(148.8);
   }
 }
 
 .top-page--siteMap {
-  margin-top: rem(32);
-  @include mq('md') {
-  margin-top: rem(130);
+  margin-top: rem(39);
+  @include mq("md") {
+    margin-top: rem(138);
+  }
 }
+
+.top-page--about {
+  margin-top: rem(-10);
+}
+
+.top-page--info {
+  margin-top: rem(120);
+  @include mq("md") {
+    margin-top: rem(150);
+  }
+}
+
+.top-page--thx {
+  margin-top: rem(51);
+  @include mq("md") {
+    margin-top: rem(148.8);
+  }
+}
+
+.top-page--privacy {
+  margin-top: rem(56);
+  @include mq("md") {
+    margin-top: rem(156);
+  }
+}
+
+.top-page--terms {
+  margin-top: rem(56);
+  @include mq('md') {
+  margin-top: rem(156);
+  }
 }

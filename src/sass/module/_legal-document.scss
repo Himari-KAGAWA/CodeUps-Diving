@@ -1,0 +1,87 @@
+@use "global" as *;
+
+.legal-document__inner {
+  padding: 0 rem(15);
+  max-width: rem(600);
+  width: 100%;
+  margin: auto;
+  color: $font;
+  line-height: 2;
+  @include mq("md") {
+    padding: 0 rem(25);
+    max-width: rem(848);
+  }
+}
+
+.legal-document__title {
+  color: $font;
+  font-size: rem(24);
+  font-weight: $normal;
+  line-height: 1;
+  @include mq("md") {
+    font-size: rem(32);
+  }
+}
+
+.legal-document__text {
+  margin-top: rem(47);
+}
+
+.legal-document__text:nth-of-type(2) {
+  margin-top: rem(32);
+}
+
+.legal-document__text:nth-of-type(3) {
+  margin-top: rem(32);
+}
+
+.legal-document__list {
+  margin-top: rem(31);
+  @include mq("md") {
+    margin-top: rem(32);
+  }
+}
+
+.legal-document__list:nth-of-type(2) {
+  margin-top: 0;
+}
+
+.legal-document__list:nth-of-type(3) {
+  margin-top: 0;
+}
+
+.legal-document__list:nth-of-type(4) {
+  margin-top: 0;
+}
+
+.legal-document__list .legal-document__item {
+  margin-left: rem(23);
+  list-style-type: decimal;
+  @include mq("md") {
+    margin-left: rem(22);
+  }
+}
+
+.legal-document__list-point > .legal-document__item {
+  position: relative;
+  margin-left: rem(15);
+}
+
+.legal-document__list-point > .legal-document__item::before {
+  content: "・";
+  position: absolute;
+  top: 0;
+  left: rem(-16);
+}
+
+.legal-document__list-point:nth-of-type(1) {
+  margin-top: rem(32);
+}
+
+.legal-document__list-point:nth-of-type(2) {
+  margin-top: 0;
+}
+
+.legal-document__list-point:nth-of-type(2) .legal-document__item {
+  margin-top: rem(32);
+}

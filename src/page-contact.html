@@ -200,7 +200,9 @@
                 <li
                   class="sp-nav__item sp-nav__item--bold sp-nav__item--layout"
                 >
-                  <a href="./page-privacy.html">プライバシー<br class="u-mobile" />ポリシー</a>
+                  <a href="./page-privacy.html"
+                    >プライバシー<br class="u-mobile" />ポリシー</a
+                  >
                 </li>
                 <li
                   class="sp-nav__item sp-nav__item--bold sp-nav__item--layout"
@@ -224,23 +226,24 @@
       <section class="sub-mv sub-mv__bg sub-mv__bg--contact">
         <div class="sub-mv_inner">
           <div class="sub-mv__header">
-            <h1 class="sub-mv__title">contact</h1>
+            <h1 class="sub-mv__title sub-mv__title--price">contact</h1>
           </div>
         </div>
+        <div class="sub-mv__icon"></div>
       </section>
       <!-- breadcrumbs -->
       <nav class="breadcrumb top-breadcrumb" aria-label="Breadcrumb">
         <div class="breadcrumb__inner inner">
           <ol class="breadcrumb__list">
             <li class="breadcrumb__item">
-              <a class="breadcrumb__link" href="#">TOP</a>
+              <a class="breadcrumb__link" href="./index.html">TOP</a>
             </li>
             <li class="breadcrumb__item">
               <div class="breadcrumb__arrow"></div>
             </li>
             <li class="breadcrumb__item">
-              <a class="breadcrumb__link" href="#" aria-current="location"
-                >お問い合わせ</a
+              <span aria-current="location"
+                >お問い合わせ</span
               >
             </li>
           </ol>
@@ -250,7 +253,6 @@
 
       <!-- page-contents -->
       <div class="page top-page">
-        <div class="page__icon"></div>
         <div class="page__content page-contact">
           <div class="page-contact__inner">
             <div class="page-contact__form-wrapper">
@@ -316,11 +318,11 @@
                       >
                       <span class="required">必須</span>
                     </dt>
-                    <dd class="page-contact__input">
+                    <dd class="page-check__input">
                       <p class="page-contact__checkBox-wrap">
                         <input
                           type="checkbox"
-                          name="your-check"
+                          id="your-check"
                           value="ダイビング講習について"
                           required
                         />ダイビング講習について<br />
@@ -339,7 +341,7 @@
                       </p>
                     </dd>
                   </div>
-                  <div class="page-contact__item">
+                  <div class="page-contact__select">
                     <dt class="page-contact__item-title">
                       <label for="your-campaign">キャンペーン</label>
                     </dt>
@@ -357,7 +359,7 @@
                       </select>
                     </dd>
                   </div>
-                  <div class="page-contact__item page-contact__item--massage">
+                  <div class="page-contact__item-massage">
                     <dt class="page-contact__item-title">
                       <label for="your-message" class="is-required"
                         >お問合せ内容</label
@@ -365,11 +367,7 @@
                       <span class="required">必須</span>
                     </dt>
                     <dd class="page-message__input">
-                      <textarea
-                        name="message"
-                        id="your-message"
-                        required
-                      ></textarea>
+                      <textarea name="message" id="your-message" required></textarea>
                     </dd>
                   </div>
                 </dl>
@@ -380,7 +378,7 @@
                       <label
                         for="form-privacy"
                         class="page-contact__privacy-label"
-                        ><a href="#" class="page-contact__privacy-link"
+                        ><a href="./page-privacy.html" class="page-contact__privacy-link"
                           >個人情報の取り扱いについて</a
                         >同意のうえ<br class="u-mobile" />送信します。</label
                       >
@@ -410,7 +408,7 @@
       <a href="#top" class="to-top__link arrow"></a>
     </div>
     <!-- footer -->
-    <footer class="footer section">
+    <footer class="footer top-footer--contact">
       <div class="footer__inner inner">
         <div class="footer__wrapper footer-nav">
           <div class="footer-nav__logo">
@@ -506,7 +504,9 @@
               <li
                 class="footer-nav__item footer-nav__item-bold footer-nav__item--layout"
               >
-                <a href="./page-privacy.html">プライバシー<br class="u-mobile" />ポリシー</a>
+                <a href="./page-privacy.html"
+                  >プライバシー<br class="u-mobile" />ポリシー</a
+                >
               </li>
               <li
                 class="footer-nav__item footer-nav__item-bold footer-nav__item--layout"

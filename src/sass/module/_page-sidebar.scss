@@ -10,7 +10,7 @@
 }
 
 .page-sidebar__articles {
-  margin-top: rem(30);
+  margin-top: rem(24);
 }
 
 .page-sidebar__article + .page-sidebar__article {
@@ -27,7 +27,7 @@
 }
 
 .page-sidebar__comment-card {
-  margin-top: rem(30);
+  margin-top: rem(24);
 }
 
 .page-sidebar__articles .card-02__img {
@@ -77,16 +77,16 @@
 
 .page-sidebar__comment-link {
   text-align: center;
-  margin-top: rem(44);
+  margin-top: rem(41.6);
 }
 
 .page-sidebar__campaign-link {
   text-align: center;
-  margin-top: rem(40);
+  margin-top: rem(39.2);
 }
 
 .page-sidebar__campaign-cards {
-  margin-top: rem(30);
+  margin-top: rem(24);
 }
 
 .page-sidebar__campaign-card + .page-sidebar__campaign-card {
@@ -106,7 +106,7 @@
 }
 
 .page-sidebar__year {
-  margin-left: rem(32);
+  margin-left: rem(28);
 }
 
 .page-sidebar__year:not(:first-of-type) {
@@ -115,13 +115,13 @@
 
 .page-sidebar__month {
   display: none;
-  margin-left: rem(56);
-  margin-top: rem(4);
+  margin-left: rem(53.6);
+  margin-top: rem(6.4);
 }
 
 .page-sidebar__month-item a {
   display: block;
-  padding: rem(6) 0;
+  padding: rem(7.76) 0;
 }
 
 .page-sidebar__month-item {
@@ -137,13 +137,74 @@
   border-width: rem(11) 0 rem(11) rem(18);
   border-color: transparent transparent transparent $main;
   position: absolute;
-  top: 0;
-  left: rem(-32);
+  top: rem(5);
+  left: rem(-27.2);
   bottom: 0;
   margin: auto;
   transition: transform 0.3s ease 0s;
 }
 
+.page-sidebar__archive-list {
+  margin-top: rem(29);
+  margin-left: rem(3);
+}
+
+.page-sidebar__archive-list + .page-sidebar__archive-list {
+  margin-top: rem(6.88);
+  margin-left: rem(4);
+  @include mq('md') {
+    margin-top: rem(5);
+  }
+}
+
 .page-sidebar__archive-list.is-open .page-sidebar__year::before {
   transform: rotate(90deg);
+}
+
+.page-sidebar__articles .card-02__date {
+  vertical-align: top;
+}
+
+.page-sidebar__articles .card-02__title {
+  line-height: 1;
+}
+
+.page-sidebar__campaign-card .card-01__title {
+  text-align: center;
+  margin-top: 0;
+}
+
+.page-sidebar__campaign-card .card-01__img {
+  aspect-ratio: 294 / 188;
+}
+
+.page-sidebar__campaign-card .card-01__img img {
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-sidebar__campaign-card .card-01__body {
+  padding: rem(16) rem(23) rem(24);
+}
+
+.page-sidebar__campaign-card .card-01__content {
+  margin-top: rem(8);
+}
+
+.page-sidebar__campaign-card .card-01__lead {
+  font-size: rem(14);
+  line-height: 1.5;
+  margin-left: 0;
+}
+
+.page-sidebar__campaign-card .card-01__discount {
+  font-size: rem(32);
+  line-height: 1;
+  letter-spacing: -0.024em;
+  margin-top: rem(10);
+}
+
+.page-sidebar__campaign-card .card-01__price {
+  font-size: rem(20);
+  line-height: 1; /* 100% */
 }

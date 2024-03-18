@@ -8,12 +8,13 @@
 }
 
 .page-thanks__message {
-  max-width: 622px;
+  max-width: rem(622);
   width: 100%;
   margin: auto;
   text-align: center;
+  color: $font;
+  line-height: 1.125;
 }
-
 
 .page-thanks__complete {
   text-align: center;
@@ -22,4 +23,6 @@
 
 .page-thanks__text {
   margin-top: rem(40);
+  color: $font;
+  line-height: 1.45;
 }

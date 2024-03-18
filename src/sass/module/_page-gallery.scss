@@ -9,7 +9,7 @@
   margin: rem(40) auto 0;
   @include mq("md") {
     max-width: rem(1130);
-    margin-top: rem(80);
+    margin-top: rem(76.8);
   }
 }
 
@@ -76,5 +76,8 @@
   width: rem(301);
   position: absolute;
   top: rem(-80);
-  right: calc(50% - min(48%, 42.0625rem));
+  right: calc(50% - min(48%, rem(640)));
+  @include mq('md') {
+  top: rem(-75.2);
+  }
 }

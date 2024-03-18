@@ -227,20 +227,21 @@
             <h1 class="sub-mv__title">about us</h1>
           </div>
         </div>
+        <div class="sub-mv__icon"></div>
       </section>
       <!-- breadcrumbs -->
       <nav class="breadcrumb top-breadcrumb" aria-label="Breadcrumb">
         <div class="breadcrumb__inner inner">
           <ol class="breadcrumb__list">
             <li class="breadcrumb__item">
-              <a class="breadcrumb__link" href="#">TOP</a>
+              <a class="breadcrumb__link" href="./index.html">TOP</a>
             </li>
             <li class="breadcrumb__item">
               <div class="breadcrumb__arrow"></div>
             </li>
             <li class="breadcrumb__item">
-              <a class="breadcrumb__link" href="#" aria-current="location"
-                >私たちについて</a
+              <span aria-current="location"
+                >私たちについて</span
               >
             </li>
           </ol>
@@ -249,11 +250,9 @@
       <!-- /breadcrumbs -->
 
       <!-- page-contents -->
-      <div class="page top-page">
-        <div class="page__icon page__icon--about"></div>
+      <div class="page top-page--about">
         <div class="page__inner">
-          <div class="page__content">
-            <div class="page-about top-page-about">
+          <div class="page__content page-about top-page-about">
               <div class="page-about__inner inner">
                 <div class="page-about__img-wrapper">
                   <div class="page-about__img-left">
@@ -281,7 +280,6 @@
                   ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。<br />ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキスト
                 </p>
               </div>
-            </div>
 
             <!-- gallery -->
             <section class="page-galley top-page-gallery">
@@ -370,11 +368,11 @@
         <!-- /page-contents -->
 
         <!-- contact -->
-        <section id="contact" class="contact section">
+        <section class="lower-contact top-lower-contact contact">
           <div class="contact__inner inner">
             <div class="contact__wrapper">
               <div class="contact__info">
-                <div class="contact__logo">
+                <div class="contact__logo contact__logo--page">
                   <picture>
                     <source
                       srcset="./assets/images/common/pc/logo-contact.svg"
@@ -388,7 +386,7 @@
                     />
                   </picture>
                 </div>
-                <div class="contact__access">
+                <div class="contact__access contact__access--page2">
                   <div class="contact__store-info">
                     <address class="contact__address">沖縄県那覇市1-1</address>
                     <p>TEL:<a href="tel:0120-000-0000">0120-000-0000</a></p>
@@ -413,21 +411,25 @@
                   >
                     contact
                   </div>
-                  <h2 class="section-header__jatitle section-header__jatitle--layout">
+                  <h2
+                    class="section-header__jatitle section-header__jatitle--page"
+                  >
                     お問い合わせ
                   </h2>
                 </div>
-                <p class="contact__text">ご予約・お問い合わせはコチラ</p>
+                <p class="contact__text contact__text--page2">
+                  ご予約・お問い合わせはコチラ
+                </p>
                 <div class="contact__link">
                   <a href="./page-contact.html" class="link-button"
-                    >View more
+                    >Contact us
                     <span class="arrow-x"></span>
                   </a>
                 </div>
               </div>
             </div>
           </div>
-          <div class="contact__img-icon">
+          <div class="contact__img-icon contact__img-icon--page">
             <img
               src="./assets/images/common/pc/fish-illust_2.png"
               alt="魚の群れのアイコン"
@@ -439,11 +441,11 @@
       </div>
       <!-- /contact -->
     </main>
-    <div class="to-top" style="">
+    <div class="to-top to-top--page" style="">
       <a href="#top" class="to-top__link arrow"></a>
     </div>
     <!-- footer -->
-    <footer class="footer section">
+    <footer class="footer top-footer">
       <div class="footer__inner inner">
         <div class="footer__wrapper footer-nav">
           <div class="footer-nav__logo">
@@ -474,7 +476,7 @@
               </li>
             </ul>
           </div>
-          <div class="footer-nav__content">
+          <div class="footer-nav__content footer-nav__content--page2">
             <ul class="footer-nav__items1">
               <li class="footer-nav__item footer-nav__item-bold">
                 <a href="./page-campaign.html">キャンペーン</a>
@@ -539,7 +541,9 @@
               <li
                 class="footer-nav__item footer-nav__item-bold footer-nav__item--layout"
               >
-                <a href="./page-privacy.html">プライバシー<br class="u-mobile" />ポリシー</a>
+                <a href="./page-privacy.html"
+                  >プライバシー<br class="u-mobile" />ポリシー</a
+                >
               </li>
               <li
                 class="footer-nav__item footer-nav__item-bold footer-nav__item--layout"
@@ -555,7 +559,7 @@
           </div>
         </div>
       </div>
-      <div class="footer__corporate">
+      <div class="footer__corporate footer__corporate--page">
         <small>
           Copyright © 2021 - 2023 CodeUps LLC. All Rights Reserved.
         </small>

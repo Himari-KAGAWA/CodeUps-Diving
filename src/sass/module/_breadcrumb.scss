@@ -11,7 +11,7 @@
   border: rem(1) solid;
   border-color: $font $font transparent transparent;
   transform: rotate(45deg);
-  margin-left: rem(8);
+  margin-left: rem(6.4);
   margin-top: rem(3);
 }
 
@@ -26,6 +26,11 @@
   color: $font;
   font-size: rem(14);
   line-height: 1;
+  margin-left: rem(-1);
+}
+
+.breadcrumb__item .prev {
+  color: $font;
   margin-left: rem(8);
 }
 
@@ -34,14 +39,6 @@
   color: $font;
   font-size: rem(14);
   line-height: 1;
-}
-
-.breadcrumb--404 {
-  background-color: $main;
-  padding-top: rem(88);
-  @include mq("md") {
-    padding-top: rem(98);
-  }
 }
 
 .breadcrumb__item--404 a {
@@ -58,8 +55,8 @@
 
 .breadcrumb--404 {
   background-color: $main;
-  padding-top: rem(88);
+  padding-top: rem(85);
   @include mq('md') {
-  padding-top: rem(98);
+  padding-top: rem(95);
   }
 }

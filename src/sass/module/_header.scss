@@ -14,7 +14,8 @@
 }
 
 .header.is-color {
-  background-color: #9a9a9a;
+  // background-color: #9a9a9a;
+  background-color: rgba(13, 41, 54, 0.8);
 }
 
 .header__inner {
@@ -32,12 +33,12 @@
   position: relative;
   z-index: 7777;
   top: rem(3);
-  width: rem(102);
+  width: rem(108);
   @include mq("md") {
     top: 0;
     padding-top: rem(10.4);
     margin-left: rem(-3.2);
-    width: rem(133);
+    width: rem(140.8);
   }
 }
 

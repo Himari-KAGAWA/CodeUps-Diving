@@ -34,18 +34,19 @@
 .page-price__header {
   background-color: $main;
   @include mq("md") {
-    flex: 1 1 28.571428%;
+    flex: 1 1 28.3%;
     align-self: stretch;
     position: relative;
   }
 }
 
 .page-price__header-content {
-  padding: rem(8);
+  padding: rem(7.2);
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
   @include mq("md") {
+    padding: rem(8);
     flex-direction: column;
     width: 100%;
     position: absolute;
@@ -98,19 +99,20 @@
 }
 
 .page-price__corse-menus dt {
-  padding: rem(5) rem(8) rem(5) rem(16);
+  padding: rem(6.4) rem(9.6) rem(3.2) rem(12.8);
   width: 69.565217%;
-  height: rem(60);
+  height: rem(60.3333333333);
   border-right: rem(1) solid $main;
   border-left: rem(1) solid $main;
   border-bottom: rem(1) solid $main;
   text-align: center;
   align-self: center;
+  color: $font;
   @include mq("md") {
-    width: 68%;
+    width: 67.75%;
+    height: rem(59);
     text-align: left;
-    padding-top: rem(17);
-    padding-bottom: rem(18);
+    padding: rem(17) rem(8) rem(18) rem(15);
   }
 }
 
@@ -121,13 +123,15 @@
 
 .page-price__corse-menus dd {
   padding: rem(17) rem(16) rem(18) rem(8);
-  width: calc(100% - 69.565217%);
-  height: rem(60);
+  width: calc(100% - 69.5653%);
+  height: rem(60.3333333333);
   border-right: rem(1) solid $main;
   border-bottom: rem(1) solid $main;
   text-align: right;
   align-self: center;
+  color: $font;
   @include mq("md") {
-    width: calc(100% - 68%);
+    height: rem(59);
+    width: calc(100% - 67.75%);
   }
 }

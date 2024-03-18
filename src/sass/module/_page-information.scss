@@ -12,7 +12,6 @@
     max-width: rem(1130);
     gap: 8.333333%;
   }
-
 }
 
 .page-information__tab-nav {
@@ -35,14 +34,18 @@
   padding: rem(10) rem(16);
   box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.25);
   line-height: 1.5;
-  cursor:pointer;
+  cursor: pointer;
   transition: color 0.3s ease 0s, background-color 0.3s ease 0s;
   @include mq("md") {
-    font-size: rem(24);
-    padding: rem(33) rem(26);
+    font-size: rem(20);
+    padding: rem(34) rem(26) rem(32);
     box-shadow: none;
     line-height: 1;
     text-align: right;
+    letter-spacing: 0.024em;
+  }
+  @include mq("lg") {
+    font-size: rem(24);
   }
 }
 
@@ -54,31 +57,73 @@
   padding: rem(10) rem(16);
   line-height: 1.5;
   @include mq("md") {
-    font-size: rem(24);
+    font-size: rem(20);
     width: 100%;
-    padding: rem(33) rem(16);
+    padding: rem(33) rem(18);
     line-height: 1;
+  }
+  @include mq("lg") {
+    font-size: rem(24);
   }
 }
 
-.page-information__tab-nav::after {
+#tab1.page-information__tab-nav::after {
   @include mq("md") {
-    background: url(../images/common/pc/whale-icon-g.svg) no-repeat;
-    background-size: contain;
     content: "";
+    position: absolute;
     width: rem(64);
     height: rem(64);
-    position: absolute;
     top: 50%;
-    left: rem(20);
+    left: rem(30.4);
     transform: translateY(-50%);
+    background: $main;
+    mask: url(../images/common/pc/whale-icon-g.svg);
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    -webkit-mask: url(../images/common/pc/whale-icon-g.svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
     transition: color 0.3s ease 0s;
   }
 }
 
-.page-information__tab-nav:nth-child(2)::after {
+#tab2.page-information__tab-nav::after {
   @include mq("md") {
-    left: rem(14);
+    content: "";
+    position: absolute;
+    width: rem(64);
+    height: rem(64);
+    top: 50%;
+    left: rem(17);
+    transform: translateY(-50%);
+    background: $main;
+    mask: url(../images/common/pc/shark-icon-g.svg) ;
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    -webkit-mask: url(../images/common/pc/shark-icon-g.svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    transition: color 0.3s ease 0s;
+  }
+}
+
+#tab3.page-information__tab-nav::after {
+  @include mq("md") {
+    content: "";
+    position: absolute;
+    width: rem(64);
+    height: rem(64);
+    top: 50%;
+    left: rem(30.4);
+    transform: translateY(-50%);
+    background: $main;
+    mask: url(../images/common/pc/fish-icon-g.svg);
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    -webkit-mask: url(../images/common/pc/fish-icon-g.svg);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    transition: color 0.3s ease 0s;
   }
 }
 
@@ -91,23 +136,24 @@
   }
 }
 
-.page-information__tab-nav.is-active::after,
-.page-information__tab-nav:hover::after {
+#tab1.page-information__tab-nav:hover::after,
+#tab2.page-information__tab-nav:hover::after,
+#tab3.page-information__tab-nav:hover::after {
   @include mq("md") {
-    background: url(../images/common/pc/whale-icon-w.svg) no-repeat;
-    background-size: contain;
+    background: $base;
   }
 }
 
-.page-information .u-tablet {
-  display: block;
+#tab1.page-information__tab-nav.is-active::after,
+#tab2.page-information__tab-nav.is-active::after,
+#tab3.page-information__tab-nav.is-active::after {
   @include mq("md") {
-    display: none;
+    background: $base;
   }
 }
 
 .page-information__tab-panels {
-  margin-top: rem(16);
+  margin-top: rem(14);
   max-width: rem(500);
   box-sizing: content-box;
   width: 100%;
@@ -120,9 +166,12 @@
 
 .page-information__tab-panel {
   display: none;
-  padding: rem(24);
+  padding: rem(22) rem(24) rem(24) rem(24);
   border: 1px solid $main;
   background-color: $base;
+  @include mq("md") {
+    padding: rem(22) rem(24) rem(24) rem(24);
+  }
 }
 
 .page-information__tab-panel.is-active {
@@ -148,16 +197,27 @@
 }
 
 .page-information__title {
-  border-bottom: 1px solid $main;
-  font-size: 1.25rem;
-  font-weight: 700;
+  border-bottom: rem(1) solid $main;
+  font-size: rem(24);
+  font-weight: $bold;
+  padding-bottom: rem(4.48);
+  color: $font;
   line-height: 1.2;
-  padding-bottom: rem(5);
+  @include mq("md") {
+    padding-bottom: rem(5);
+  }
 }
 
 .page-information__desc {
-  margin-top: rem(8);
   color: #000;
+  margin-top: rem(8.42);
+  letter-spacing: -0.036em;
+  padding-right: rem(12);
+  @include mq("md") {
+    letter-spacing: -0.02em;
+    margin-top: rem(8);
+    padding-right: rem(14);
+  }
 }
 
 .page-information__img {
