@@ -242,9 +242,7 @@
               <div class="breadcrumb__arrow"></div>
             </li>
             <li class="breadcrumb__item">
-              <span aria-current="location"
-                >お問い合わせ</span
-              >
+              <span aria-current="location">お問い合わせ</span>
             </li>
           </ol>
         </div>
@@ -322,22 +320,26 @@
                       <p class="page-contact__checkBox-wrap">
                         <input
                           type="checkbox"
-                          id="your-check"
+                          id="check-1"
                           value="ダイビング講習について"
                           required
-                        />ダイビング講習について<br />
+                        /><label for="check-1">ダイビング講習について</label
+                        ><br />
                         <input
                           type="checkbox"
+                          id="check-2"
                           name="your-check"
                           value="ファンダイビングについて"
                           required
-                        />ファンダイビングについて<br />
+                        /><label for="check-2">ファンダイビングについて</label
+                        ><br />
                         <input
                           type="checkbox"
+                          id="check-3"
                           name="your-check"
                           value="体験ダイビングについて"
                           required
-                        />体験ダイビングについて
+                        /><label for="check-3">体験ダイビングについて</label>
                       </p>
                     </dd>
                   </div>
@@ -367,18 +369,29 @@
                       <span class="required">必須</span>
                     </dt>
                     <dd class="page-message__input">
-                      <textarea name="message" id="your-message" required></textarea>
+                      <textarea
+                        name="message"
+                        id="your-message"
+                        required
+                      ></textarea>
                     </dd>
                   </div>
                 </dl>
                 <div class="page-contact__footer">
                   <div class="page-contact__privacy-wrapper">
                     <div class="page-contact__privacy">
-                      <input type="checkbox" name="privacy" id="form-privacy" />
+                      <input
+                        type="checkbox"
+                        name="privacy"
+                        id="form-privacy"
+                        required
+                      />
                       <label
                         for="form-privacy"
                         class="page-contact__privacy-label"
-                        ><a href="./page-privacy.html" class="page-contact__privacy-link"
+                        ><a
+                          href="./page-privacy.html"
+                          class="page-contact__privacy-link"
                           >個人情報の取り扱いについて</a
                         >同意のうえ<br class="u-mobile" />送信します。</label
                       >

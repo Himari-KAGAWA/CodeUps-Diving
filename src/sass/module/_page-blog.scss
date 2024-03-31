@@ -1,16 +1,10 @@
 @use "global" as *;
 
-.page-blog {
-}
+// .page-blog {
+//   max-width: rem(600);
+//   width: 96.521739130434782609%;
+//   margin: auto;
+//   @include mq("md") {
 
-.page-blog__items.blog-cards {
-  max-width: rem(600);
-  width: 96.521739130434782609%;
-  margin: auto;
-  @include mq("md") {
-    max-width: rem(706);
-    width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-    gap: rem(78.4) rem(40);
-  }
-}
+//   }
+// }

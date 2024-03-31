@@ -2,14 +2,11 @@
 
 .pagination {
   margin: 0 auto;
-  max-width: rem(344);
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  gap: rem(12);
+  justify-content: center;
   color: $main;
-  @include mq("md") {
-    max-width: rem(441.6);
-  }
 }
 
 .pagination a,
@@ -41,11 +38,16 @@
   display: inline-flex;
   height: rem(38);
   justify-content: center;
-  transition: 0.3s ease;
+  transition: color 0.3s ease;
   width: rem(38);
 }
 
 .pagination span.current {
+  background-color: $main;
+  color: $base;
+}
+
+.pagination a:hover {
   background-color: $main;
   color: $base;
 }
@@ -67,6 +69,7 @@
   height: rem(12);
   transform: translateX(rem(3)) rotate(45deg);
   width: rem(12);
+  transition: 0.3s ease;
 }
 
 .pagination__next::before {
@@ -76,6 +79,17 @@
   height: rem(12);
   transform: translateX(rem(-3)) rotate(-45deg);
   width: rem(12);
+  transition: 0.3s ease;
+}
+
+.pagination__prev:hover::before {
+  border-bottom: rem(1) solid $base;
+  border-left: rem(1) solid $base;
+}
+
+.pagination__next:hover::before {
+  border-bottom: rem(1) solid $base;
+  border-right: rem(1) solid $base;
 }
 
 .pagination--detail {
@@ -84,7 +98,7 @@
 
 .pagination.top-pagination {
   margin-top: rem(40);
-  @include mq('md') {
+  @include mq("md") {
     margin-top: rem(81.6);
   }
 }
@@ -104,4 +118,5 @@
   margin-top: rem(80);
   @include mq("md") {
     margin-top: rem(72);
-}}
+  }
+}

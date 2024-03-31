@@ -22,8 +22,11 @@
 }
 
 .top-page--about {
-  margin-top: rem(-10);
-}
+    margin-top: rem(50);
+    @include mq("md") {
+      margin-top: rem(230);
+    }
+  }
 
 .top-page--info {
   margin-top: rem(120);
@@ -48,7 +51,7 @@
 
 .top-page--terms {
   margin-top: rem(56);
-  @include mq('md') {
-  margin-top: rem(156);
+  @include mq("md") {
+    margin-top: rem(156);
   }
 }

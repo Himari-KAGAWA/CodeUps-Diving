@@ -1,7 +1,6 @@
 @use "global" as *;
 
-.term-of-use__inner {
-  padding: 0 rem(15);
+.term-of-use__inner.inner {
   max-width: rem(600);
   width: 100%;
   margin: auto;
@@ -9,7 +8,6 @@
   line-height: 2;
   color: $font;
   @include mq("md") {
-    padding: 0 rem(25);
     max-width: rem(848);
   }
 }
@@ -24,19 +22,16 @@
   }
 }
 
-.term-of-use__text {
+.term-of-use p:nth-of-type(1) {
   margin-top: rem(47);
 }
 
-.term-of-use__text:nth-of-type(2) {
+.term-of-use p {
   margin-top: rem(32);
 }
 
-.term-of-use__list {
+.term-of-use ol {
   margin-top: rem(32);
-}
-
-.term-of-use__list .term-of-use__item {
   margin-left: rem(23);
   list-style-type: decimal;
   @include mq('md') {
@@ -44,14 +39,19 @@
   }
 }
 
-.term-of-use__list-point > .term-of-use__item {
-  position: relative;
-  margin-left: rem(15);
+.term-of-use ul {
+  line-height: 2;
+  text-indent: 0.8em;
 }
 
-.term-of-use__list-point > .term-of-use__item::before {
-  content: "・";
-  position: absolute;
-  top: 0;
-  left: rem(-16);
+.term-of-use ul li::before {
+  background-color: $font;
+  border-radius: 100%;
+  content: "";
+  display: inline-block;
+  height: 0.25rem;
+  left: -0.39375rem;
+  position: relative;
+  top: -0.3125rem;
+  width: 0.25rem;
 }

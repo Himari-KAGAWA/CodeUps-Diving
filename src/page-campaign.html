@@ -245,9 +245,7 @@
               <div class="breadcrumb__arrow"></div>
             </li>
             <li class="breadcrumb__item">
-              <span aria-current="location"
-                >キャンペーン</span
-              >
+              <span aria-current="location">キャンペーン</span>
             </li>
           </ol>
         </div>
@@ -259,41 +257,44 @@
         <div class="page__inner inner">
           <div class="page__content page-campaign">
             <div class="page-campaign__nav category-list">
+              <!-- JS切り替えここにjs-tab-btn -->
               <div class="category-list__tabs">
-                <ul class="category-list__items js-tab-btn">
+                <ul class="category-list__items">
                   <li class="category-list__item">
-                    <span
+                    <a href="#"
                       class="category-list__item-link category category--link is-show"
                       data-filter="ALL"
-                      >ALL</span
+                      >ALL</a
                     >
                   </li>
                   <li class="category-list__item">
-                    <span
+                    <a href="#"
                       class="category-list__item-link category category--link"
                       data-filter="tab01"
-                      >ライセンス講習</span
+                      >ライセンス講習</a
                     >
                   </li>
                   <li class="category-list__item">
-                    <span
+                    <a href="#"
                       class="category-list__item-link category category--link"
                       data-filter="tab02"
-                      >ファンダイビング</span
+                      >ファンダイビング</a
                     >
                   </li>
                   <li class="category-list__item">
-                    <span
+                    <a href="#"
                       class="category-list__item-link category category--link"
                       data-filter="tab03"
-                      >体験ダイビング</span
+                      >体験ダイビング</a
                     >
                   </li>
                 </ul>
-                <div class="page-campaign__card-items js-panel">
+                </div>
+                <!-- JS切り替え:ここにjs-panel -->
+                <div class="page-campaign__card-items">
                   <!-- campaign-card -->
                   <div
-                    class="page-campaign__card-item card-01 is-show"
+                    class="page-campaign__card-item card-01"
                     data-item="tab01"
                   >
                     <div class="card-01__link">
@@ -477,108 +478,108 @@
               </div>
             </div>
           </div>
-      </div>
-
-      <!-- /page-contents -->
-
-      <!-- pagination -->
-      <div class="u-mobile">
-        <div class="pagination top-pagination">
-          <a href="#" class="pagination__prev"></a>
-          <span class="current">1</span>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#" class="pagination__next"></a>
         </div>
-      </div>
-      <div class="u-desktop">
-        <div class="pagination top-pagination">
-          <a href="#" class="pagination__prev"></a>
-          <span class="current">1</span>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">4</a>
-          <a href="#">5</a>
-          <a href="#">6</a>
-          <a href="#" class="pagination__next"></a>
+
+        <!-- /page-contents -->
+
+        <!-- pagination -->
+        <div class="u-mobile">
+          <div class="pagination top-pagination">
+            <a href="#" class="pagination__prev"></a>
+            <span class="current">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#" class="pagination__next"></a>
+          </div>
         </div>
-      </div>
+        <div class="u-desktop">
+          <div class="pagination top-pagination">
+            <a href="#" class="pagination__prev"></a>
+            <span class="current">1</span>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#" class="pagination__next"></a>
+          </div>
+        </div>
 
-      <!-- /pagination -->
+        <!-- /pagination -->
 
-      <!-- contact -->
-      <section class="lower-contact top-lower-contact contact">
-        <div class="contact__inner inner">
-          <div class="contact__wrapper">
-            <div class="contact__info">
-              <div class="contact__logo contact__logo--page">
-                <picture>
-                  <source
-                    srcset="./assets/images/common/pc/logo-contact.svg"
-                    media="(min-width:768px)"
-                  />
-                  <img
-                    src="./assets/images/common/logo-contact.png"
-                    alt="CodeUps"
-                    width="174"
-                    height="65"
-                  />
-                </picture>
-              </div>
-              <div class="contact__access contact__access--page2">
-                <div class="contact__store-info">
-                  <address class="contact__address">沖縄県那覇市1-1</address>
-                  <p>TEL:<a href="tel:0120-000-0000">0120-000-0000</a></p>
-                  <p>営業時間:8:30-19:00</p>
-                  <p>定休日:毎週火曜日</p>
+        <!-- contact -->
+        <section class="lower-contact top-lower-contact contact">
+          <div class="contact__inner inner">
+            <div class="contact__wrapper">
+              <div class="contact__info">
+                <div class="contact__logo contact__logo--page">
+                  <picture>
+                    <source
+                      srcset="./assets/images/common/pc/logo-contact.svg"
+                      media="(min-width:768px)"
+                    />
+                    <img
+                      src="./assets/images/common/logo-contact.png"
+                      alt="CodeUps"
+                      width="174"
+                      height="65"
+                    />
+                  </picture>
                 </div>
-                <div class="contact__map">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.0378408422885!2d139.96050337620395!3d35.72528787257302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601880e228629bdb%3A0xed622313a1e48d27!2z5Lit5bGx56u26aas5aC0!5e0!3m2!1sja!2sjp!4v1701989823861!5m2!1sja!2sjp"
-                    style="border: 0"
-                    allowfullscreen=""
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                  ></iframe>
+                <div class="contact__access contact__access--page2">
+                  <div class="contact__store-info">
+                    <address class="contact__address">沖縄県那覇市1-1</address>
+                    <p>TEL:<a href="tel:0120-000-0000">0120-000-0000</a></p>
+                    <p>営業時間:8:30-19:00</p>
+                    <p>定休日:毎週火曜日</p>
+                  </div>
+                  <div class="contact__map">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.0378408422885!2d139.96050337620395!3d35.72528787257302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601880e228629bdb%3A0xed622313a1e48d27!2z5Lit5bGx56u26aas5aC0!5e0!3m2!1sja!2sjp!4v1701989823861!5m2!1sja!2sjp"
+                      style="border: 0"
+                      allowfullscreen=""
+                      loading="lazy"
+                      referrerpolicy="no-referrer-when-downgrade"
+                    ></iframe>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="contact__inquiry">
-              <div class="contact__header section-header">
-                <div
-                  class="section-header__engtitle section-header__engtitle--contact"
-                >
-                  contact
+              <div class="contact__inquiry">
+                <div class="contact__header section-header">
+                  <div
+                    class="section-header__engtitle section-header__engtitle--contact"
+                  >
+                    contact
+                  </div>
+                  <h2
+                    class="section-header__jatitle section-header__jatitle--page"
+                  >
+                    お問い合わせ
+                  </h2>
                 </div>
-                <h2
-                  class="section-header__jatitle section-header__jatitle--page"
-                >
-                  お問い合わせ
-                </h2>
-              </div>
-              <p class="contact__text contact__text--page2">
-                ご予約・お問い合わせはコチラ
-              </p>
-              <div class="contact__link">
-                <a href="./page-contact.html" class="link-button"
-                  >Contact us
-                  <span class="arrow-x"></span>
-                </a>
+                <p class="contact__text contact__text--page2">
+                  ご予約・お問い合わせはコチラ
+                </p>
+                <div class="contact__link">
+                  <a href="./page-contact.html" class="link-button"
+                    >Contact us
+                    <span class="arrow-x"></span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="contact__img-icon contact__img-icon--page">
-          <img
-            src="./assets/images/common/pc/fish-illust_2.png"
-            alt="魚の群れのアイコン"
-            width="109"
-            height="50"
-          />
-        </div>
-      </section>
-      <!-- /contact -->
+          <div class="contact__img-icon contact__img-icon--page">
+            <img
+              src="./assets/images/common/pc/fish-illust_2.png"
+              alt="魚の群れのアイコン"
+              width="109"
+              height="50"
+            />
+          </div>
+        </section>
+        <!-- /contact -->
       </div>
     </main>
     <div class="to-top to-top--page" style="">

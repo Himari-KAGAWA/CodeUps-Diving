@@ -174,14 +174,14 @@
 }
 
 .sub-mv__title--siteMap {
-  @include mq('md') {
+  @include mq("md") {
     letter-spacing: 0.0075em;
     text-indent: 0.0075em;
   }
 }
 
 .sub-mv__title--privacy {
-  @include mq('md') {
+  @include mq("md") {
     letter-spacing: -0.0055em;
     text-indent: -0.0055em;
   }
@@ -225,4 +225,8 @@
     bottom: rem(-246);
     left: calc(50% - min(43%, rem(673)));
   }
+}
+
+.sub-mv__icon--about::after {
+  z-index: 1;
 }

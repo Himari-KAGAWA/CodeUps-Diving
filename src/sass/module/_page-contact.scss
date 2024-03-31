@@ -139,15 +139,15 @@
 .page-contact__input input[type="text"]:focus,
 .page-contact__input input[type="text"]:focus,
 .page-contact__input input[type="email"]:focus {
-  border: rem(2) solid $main;
-  outline: 0;
+  box-shadow: 0px 0px 0px 1px rgba(64, 143, 149, 1),
+    0px 0px 3px 2px rgba(64, 143, 149, 0.2);
   transition: all 0.3s ease 0s;
 }
 
 .page-message__input textarea:hover,
 .page-message__input textarea:focus {
-  border: rem(2) solid $main;
-  outline: 0;
+  box-shadow: 0px 0px 0px 1px rgba(64, 143, 149, 1),
+    0px 0px 3px 2px rgba(64, 143, 149, 0.2);
   transition: all 0.3s ease 0s;
 }
 
@@ -199,8 +199,8 @@
 }
 
 .page-check__input input[type="checkbox"]:hover {
-  border: rem(2) solid $main;
-  outline: 0;
+  box-shadow: 0px 0px 0px 1px rgba(64, 143, 149, 1),
+    0px 0px 2px 2px rgba(64, 143, 149, 0.2);
   transition: all 0.3s ease 0s;
 }
 
@@ -236,7 +236,7 @@
   transition: transform 0.3s ease 0s;
   @include mq("md") {
     right: rem(16);
-    top: calc(50% + rem(4));
+    top: calc(50% + rem(13));
     transform: rotate(90deg) translateY(-50%);
   }
 }
@@ -317,8 +317,8 @@
 .page-contact__privacy
   input[type="checkbox"]:hover
   + .page-contact__privacy-label::before {
-  border: rem(2) solid $main;
-  outline: 0;
+    box-shadow: 0px 0px 0px 1px rgba(64, 143, 149, 1),
+    0px 0px 3px 2px rgba(64, 143, 149, 0.2);
   transition: all 0.3s ease 0s;
 }
 
@@ -368,29 +368,26 @@
   }
 }
 
-.page-contact__input input[type="text"]:invalid,
-.page-contact__input input[type="email"]:invalid {
+.wpcf7-form-control-wrap.is-error input.wpcf7-not-valid,
+.wpcf7-form-control-wrap.is-error textarea.wpcf7-not-valid {
   border: 1px solid #c94800;
   background: rgba(201, 72, 0, 0.2);
 }
 
-.page-select__input select:invalid {
+.wpcf7-form-control-wrap.is-error input.wpcf7-not-valid,
+.wpcf7-form-control-wrap.is-error textarea.wpcf7-not-valid {
   border: 1px solid #c94800;
   background: rgba(201, 72, 0, 0.2);
 }
 
-.page-message__input textarea:invalid {
+.wpcf7-form-control-wrap.is-error .wpcf7-not-valid [type="checkbox"] {
   border: 1px solid #c94800;
   background: rgba(201, 72, 0, 0.2);
 }
 
-.page-contact__input input[type="checkbox"]:invalid {
-  border: 1px solid #c94800;
-  background: rgba(201, 72, 0, 0.2);
-}
-
-.page-contact__privacy
-  input[type="checkbox"]:invalid
+.wpcf7-form-control-wrap.is-error
+  .wpcf7-not-valid
+  [type="checkbox"]
   + .page-contact__privacy-label::before {
   border: 1px solid #c94800;
   background: rgba(201, 72, 0, 0.2);

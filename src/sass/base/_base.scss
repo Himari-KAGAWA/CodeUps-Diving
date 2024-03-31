@@ -49,9 +49,9 @@ a {
 }
 
 html {
-  scroll-padding-top: rem(104);
+  scroll-padding-top: rem(184);
   @include mq("md") {
-    scroll-padding-top: rem(114);
+    scroll-padding-top: rem(224);
   }
 }
 

@@ -14,3 +14,11 @@
     margin-top: 0;
   }
 }
+
+.blog-cards--2col {
+  width: 100%;
+  @include mq("md") {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(78.4) rem(40);
+  }
+}

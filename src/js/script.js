@@ -108,23 +108,23 @@ jQuery(function ($) {
     });
   });
 
-  // ヘッダー色変更
-  // ヘッダークラス名付与
-  let header = $(".header");
-  // ヘッダーの高さ取得
-  let headerHeight = $(".header").height();
-  // メインビューの高さを取得
-  let height = $(".main-visual").height();
-  // メインビューの高さ - ヘッダーの高さ
-  $(window).scroll(function () {
-    if ($(this).scrollTop() > height - headerHeight) {
-      // 指定px以上のスクロールでクラス名付与
-      header.addClass("is-color");
-    } else {
-      // クラス名が付いてたら削除
-      header.removeClass("is-color");
-    }
-  });
+  // // ヘッダー色変更
+  // // ヘッダークラス名付与
+  // let header = $(".header");
+  // // ヘッダーの高さ取得
+  // let headerHeight = $(".header").height();
+  // // メインビューの高さを取得
+  // let height = $(".main-visual").height();
+  // // メインビューの高さ - ヘッダーの高さ
+  // $(window).scroll(function () {
+  //   if ($(this).scrollTop() > height - headerHeight) {
+  //     // 指定px以上のスクロールでクラス名付与
+  //     header.addClass("is-color");
+  //   } else {
+  //     // クラス名が付いてたら削除
+  //     header.removeClass("is-color");
+  //   }
+  // });
 
   // スムーススクロール
   // #から始まるURLがクリックされた時
@@ -245,42 +245,50 @@ jQuery(function ($) {
   });
 
   // モーダル
-  // 変数に要素を入れる
-  var trigger = $(".modal__trigger"),
-    wrapper = $(".modal__wrapper"),
-    layer = $(".modal__layer"),
-    container = $(".modal__container"),
-    content = $(".modal__content");
+  // ギャラリーの各画像要素を取得
+  const triggers = document.querySelectorAll(".js-modal__trigger");
 
-  // 『モーダルを開くボタン』をクリックしたら、『モーダル本体』を表示
-  $(trigger).click(function () {
-    $(wrapper).fadeIn(400);
+  // モーダル内の画像要素を取得
+  const modalImage = document.querySelector(".modal__img");
 
-    // クリックされた画像の元のimg画像を取得して、置き換える
-    var originalImgSrc = $(this).find("img").attr("src");
-    var originalImgAlt = $(this).find("img").attr("alt");
+  // クリックイベントリスナーを追加
+  triggers.forEach((trigger) => {
+    trigger.addEventListener("click", () => {
+      // クリックされた画像のパスを取得
+      const imagePath = trigger.querySelector("img").getAttribute("src");
 
-    // モーダルの中身をクリアしてから新しい画像を追加
-    $(content)
-      .empty()
-      .html('<img src="' + originalImgSrc + '" alt="' + originalImgAlt + '">');
+      // モーダル内の画像要素に画像を表示
+      modalImage.innerHTML = `<img src="${imagePath}" alt="画像">`;
 
-    // スクロール位置を戻す
-    $(container).scrollTop(0);
+      // モーダルを表示
+      const modal = document.querySelector(".js-modal");
+      modal.classList.add("active");
 
-    // サイトのスクロールを禁止にする
-    $("html, body").css("overflow", "hidden");
+      // 背景を固定してスクロールしないようにする
+      document.body.style.overflow = "hidden";
+
+      // モーダルを表示するために、displayプロパティを変更
+      modal.style.display = "block";
+    });
   });
 
-  // 『背景』と『画像』をクリックしたら、『モーダル本体』を非表示
-  $(layer)
-    .add(content)
-    .click(function () {
-      $(wrapper).fadeOut(400);
+  // モーダルの背景と画像をクリックして閉じるイベントリスナー
+  const modalBackground = document.querySelector(".modal__bg");
+  modalBackground.addEventListener("click", closeModal);
 
-      // サイトのスクロール禁止を解除する
-      $("html, body").removeAttr("style");
-    });
+  modalImage.addEventListener("click", closeModal);
+
+  function closeModal() {
+    // モーダルを非表示
+    const modal = document.querySelector(".js-modal");
+    modal.classList.remove("active");
+
+    // 背景のスクロールを有効にする
+    document.body.style.overflow = "auto";
+
+    // モーダルを非表示するために、displayプロパティを変更
+    modal.style.display = "none";
+  }
 
   // タブ絞り込み：page-campaign,page-voice
   $(function () {
