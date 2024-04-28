@@ -45,7 +45,7 @@
   position: absolute;
   top: 50%;
   right: rem(16);
-  transform: translateY(-50%) rotate(-90deg);
+  transform: translateY(-50%) rotate(0deg);
   transition: transform 0.3s ease 0s;
   @include mq("md") {
     width: rem(32);
@@ -54,7 +54,7 @@
 }
 
 .faq-item.is-open .faq-item__question::after {
-  transform: translateY(-50%) rotate(0);
+  transform: translateY(-50%) rotate(-90deg);
 }
 
 .faq-item__answer {

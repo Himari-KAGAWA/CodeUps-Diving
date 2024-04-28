@@ -12,17 +12,14 @@
   }
 }
 
-.page-blogDtail1__header {
-  padding-bottom: rem(8);
-  border-bottom: rem(1) solid $main;
-  padding-bottom: rem(6);
-}
-
 .page-blogDtail__title {
   color: $font;
+  font-weight: $bold;
   font-size: rem(24);
-  line-height: 1;
+  line-height: 1.5;
   margin-top: rem(8);
+  border-bottom: rem(1) solid $main;
+  padding-bottom: rem(6);
   @include mq("md") {
     font-size: rem(32);
   }
@@ -37,7 +34,7 @@
   letter-spacing: -0.024em;
 }
 
-.page-blogDtail__content figure {
+.page-blogDtail__img {
   margin-top: rem(24);
   overflow: hidden;
   aspect-ratio: 345 / 231;
@@ -47,7 +44,7 @@
   }
 }
 
-.page-blogDtail__content figure img {
+.page-blogDtail__img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
