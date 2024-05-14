@@ -5107,4 +5107,24 @@ span.wpcf7-spinner {
     margin-left: 0;
   }
 }
+
+.page-blogDtail__content .wp-block-image {
+  margin-top: rem(24);
+  overflow: hidden;
+  aspect-ratio: 345 / 231;
+}
+
+@media screen and (min-width: 768px) {
+  .page-blogDtail__content .wp-block-image {
+    margin-top: rem(40);
+    aspect-ratio: 700 / 468;
+  }
+}
+
+.page-blogDtail__content .wp-block-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /*# sourceMappingURL=style.css.map */
