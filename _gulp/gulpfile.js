@@ -161,7 +161,8 @@ const jsBabel = () => {
 // ブラウザーシンク
 const browserSyncOption = {
   notify: false,
-  server: "../dist/",
+  // server: "../dist/",
+  proxy: "diving-codeups.local",
 };
 const browserSyncFunc = () => {
   browserSync.init(browserSyncOption);
