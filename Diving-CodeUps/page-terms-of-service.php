@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+
 <main>
   <section class="sub-mv sub-mv__bg sub-mv__bg--terms">
     <div class="sub-mv_inner">
@@ -19,16 +20,18 @@
   <div class="page top-page--terms">
     <section class="term-of-use">
       <div class="term-of-use__inner inner">
-        <h2 class="term-of-use__title"><?php the_title(); ?></h2>
+        <h2 class="term-of-use__title"><?php echo esc_html(get_the_title()); ?></h2>
 
         <?php if (have_posts()) : ?>
-          <?php while (have_posts()) : ?>
-            <?php the_post(); ?>
-            <?php the_content(); ?>
+          <?php while (have_posts()) : the_post(); ?>
+            <div class="term-of-use__content">
+              <?php the_content(); ?>
+            </div>
           <?php endwhile; ?>
         <?php endif; ?>
 
       </div>
+
     </section>
     <!-- /page-contents -->
   </div>

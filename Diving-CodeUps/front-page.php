@@ -14,35 +14,41 @@
 
         <!-- Slides -->
         <?php
-        // ループで画像を取得する
-        for ($i = 1; $i <= 4; $i++) :
-          // SP版画像の取得
-          $mv_sp_group = get_field('mv_sp');
-          $sp_image_url = $mv_sp_group['imgSP' . $i]['url'];
-          $sp_image_alt = $mv_sp_group['imgSP' . $i]['alt'];
+        // SP版画像とPC版画像のフィールドを取得
+        $mv_sp_group = get_field('mv_sp');
+        $mv_pc_group = get_field('mv_pc');
 
-          // PC版画像の取得
-          $mv_pc_group = get_field('mv_pc');
-          $pc_image_url = $mv_pc_group['imgPC' . $i]['url'];
-          $pc_image_alt = $mv_pc_group['imgPC' . $i]['alt'];
+        // 画像フィールドが取得できたかを確認
+        if ($mv_sp_group && $mv_pc_group) :
+          // ループで画像を取得する
+          for ($i = 1; $i <= 4; $i++) :
+            // SP版画像の取得
+            $sp_image_url = $mv_sp_group['imgSP' . $i]['url'];
+            $sp_image_alt = $mv_sp_group['imgSP' . $i]['alt'];
 
-          // 画像が存在する場合のみ表示
-          if ($sp_image_url && $pc_image_url) :
+            // PC版画像の取得
+            $pc_image_url = $mv_pc_group['imgPC' . $i]['url'];
+            $pc_image_alt = $mv_pc_group['imgPC' . $i]['alt'];
+
+            // 画像が存在する場合のみ表示
+            if ($sp_image_url && $pc_image_url) :
         ?>
-            <div class="swiper-slide main-visual__slide">
-              <div class="main-visual__img">
-                <picture>
-                  <!-- PC版画像 -->
-                  <source srcset="<?php echo esc_url($pc_image_url); ?>" media="(min-width: 768px)" />
-                  <!-- スマホ版画像 -->
-                  <img src="<?php echo esc_url($sp_image_url); ?>" alt="<?php echo esc_attr($sp_image_alt); ?>" />
-                </picture>
+              <div class="swiper-slide main-visual__slide">
+                <div class="main-visual__img">
+                  <picture>
+                    <!-- PC版画像 -->
+                    <source srcset="<?php echo esc_url($pc_image_url); ?>" media="(min-width: 768px)" />
+                    <!-- スマホ版画像 -->
+                    <img src="<?php echo esc_url($sp_image_url); ?>" alt="<?php echo esc_attr($sp_image_alt); ?>" />
+                  </picture>
+                </div>
               </div>
-            </div>
-          <?php endif; ?>
-        <?php endfor; ?>
+            <?php endif; ?>
+          <?php endfor; ?>
+        <?php else : ?>
+          <p>画像が見つかりませんでした。</p>
+        <?php endif; ?>
         <!-- /Slides -->
-
 
       </div>
     </div>
@@ -63,7 +69,6 @@
         <div class="campaign__swiper swiper js-campaign-swiper">
           <!-- swiper-wrapper -->
           <div class="swiper-wrapper">
-
             <!-- Campaign Slides -->
             <?php
             // 新着6件のカスタム投稿を取得
@@ -73,44 +78,60 @@
               'orderby' => 'date',
               'order' => 'DESC',
             );
-            $query = new WP_Query($args); ?>
+            $query = new WP_Query($args);
+            ?>
             <!-- サブループとしてカスタム投稿をループ -->
             <?php if ($query->have_posts()) : ?>
               <?php while ($query->have_posts()) : $query->the_post(); ?>
                 <!-- campaign card -->
                 <article class="campaign__slide swiper-slide">
                   <div class="card-01">
-                    <div class="card-01__link">
+                    <!-- 投稿のパーマリンクをリンクとして追加 -->
+                    <a href="<?php the_permalink(); ?>" class="card-01__link">
                       <div class="card-01__img">
+                        <!-- アイキャッチ画像の表示 -->
                         <?php if (has_post_thumbnail()) : ?>
-                          <?php the_post_thumbnail(); ?>
+                          <?php the_post_thumbnail('medium'); ?>
                         <?php else : ?>
-                          <img src="<?php echo get_template_directory_uri(); ?>/images/common/noimg.jpg" alt="No image" width="280" height="188">
+                          <!-- アイキャッチ画像がない場合のデフォルト画像 -->
+                          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/noimg.jpg" alt="<?php echo esc_attr('No image'); ?>" width="280" height="188">
                         <?php endif; ?>
                       </div>
                       <div class="card-01__body">
                         <div class="card-01__header">
-                          <div class="category"><?php echo get_the_terms(get_the_ID(), 'campaign_category')[0]->name; ?></div>
+                          <div class="category">
+                            <!-- カテゴリー名の表示 -->
+                            <?php
+                            $terms = get_the_terms(get_the_ID(), 'campaign_category');
+                            if ($terms && !is_wp_error($terms)) {
+                              echo esc_html($terms[0]->name);
+                            }
+                            ?>
+                          </div>
+                          <!-- 投稿のタイトルを表示 -->
                           <h3 class="card-01__title"><?php the_title(); ?></h3>
                         </div>
                         <div class="card-01__content">
                           <p class="card-01__lead">全部コミコミ(お一人様)</p>
                           <p class="card-01__discount">
-                            <span class="card-01__price">¥<?php the_field('standard') ?></span>
-                            ¥<?php the_field('special') ?>
+                            <span class="card-01__price">¥<?php echo esc_html(get_field('standard')); ?></span>
+                            ¥<?php echo esc_html(get_field('special')); ?>
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </article>
                 <!-- /campaign card -->
               <?php endwhile; ?>
+              <?php wp_reset_postdata(); ?>
+            <?php else : ?>
+              <!-- キャンペーンが見つからない場合のメッセージ -->
+              <p>キャンペーンが見つかりませんでした。</p>
             <?php endif; ?>
-            <?php wp_reset_postdata(); ?>
-            <!-- Campaign Slides -->
-
+            <!-- /Campaign Slides -->
           </div>
+
           <!-- /swiper-wrapper -->
         </div>
         <!-- /swiper -->
@@ -137,11 +158,12 @@
       </div>
       <div class="about__img-wrapper">
         <div class="about__img-left">
-          <img src="<?php echo get_template_directory_uri(); ?>/images/common/about-bg.jpg" alt="シーサーの画像" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/about-bg.jpg" alt="<?php echo esc_attr('シーサーの画像'); ?>" />
         </div>
         <div class="about__img-right">
-          <img src="<?php echo get_template_directory_uri(); ?>/images/common/about-bg_2.jpg" alt="熱帯魚の画像" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/about-bg_2.jpg" alt="<?php echo esc_attr('熱帯魚の画像'); ?>" />
         </div>
+
       </div>
       <div class="about__contents">
         <div class="about__lead">Dive into<br />the Ocean</div>
@@ -158,7 +180,8 @@
       </div>
     </div>
     <div class="about__img-icon u-desktop">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/common/pc/coral.png" alt="サンゴのアイコン" width="194" height="181" />
+      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/coral.png" alt="<?php echo esc_attr('サンゴのアイコン'); ?>" width="194" height="181" />
+
     </div>
   </section>
   <!-- /about-us -->
@@ -171,7 +194,7 @@
       </div>
       <div class="information__wrapper">
         <div class="information__img js-inview">
-          <img src="<?php echo get_template_directory_uri(); ?>/images/common/information.jpg" alt="サンゴと熱帯魚の画像" width="345" height="227" />
+          <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/information.jpg" alt="<?php echo esc_attr('サンゴと熱帯魚の画像'); ?>" width="345" height="227" />
         </div>
         <div class="information__content">
           <p class="information__title">ライセンス講習</p>
@@ -202,41 +225,53 @@
       <div class="blog__items blog-cards">
 
         <?php
+        // 投稿を取得するためのクエリ引数を設定
         $args = array(
           'post_type' => 'post',
-          'posts_per_page' => 3 //表示させたい投稿の数
+          'posts_per_page' => 3 // 表示させたい投稿の数
         );
+        // 新しいWP_Queryオブジェクトを作成
         $the_query = new WP_Query($args);
         ?>
 
         <?php if ($the_query->have_posts()) : ?>
-          <?php while ($the_query->have_posts()) : ?>
-            <?php $the_query->the_post(); ?>
+          <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <!-- blog card -->
             <article class="blog-cards__item card-02">
+              <!-- 投稿のパーマリンクをリンクとして追加 -->
               <a href="<?php the_permalink(); ?>" class="card-02__link">
                 <div class="card-02__img">
+                  <!-- アイキャッチ画像の表示 -->
                   <?php if (has_post_thumbnail()) : ?>
-                    <?php the_post_thumbnail(); ?>
+                    <?php the_post_thumbnail('medium'); ?>
                   <?php else : ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/common/noimg.jpg" alt="No image" width="301" height="201">
+                    <!-- アイキャッチ画像がない場合のデフォルト画像 -->
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/noimg.jpg" alt="No image" width="301" height="201">
                   <?php endif; ?>
                 </div>
                 <div class="card-02__header">
-                  <time class="card-02__date" datetime="<?php the_time('c') ?>"><?php the_time('Y.m/d'); ?></time>
+                  <!-- 投稿日時を表示 -->
+                  <time class="card-02__date" datetime="<?php echo get_the_date('c'); ?>"><?php echo get_the_date('Y.m/d'); ?></time>
+                  <!-- 投稿のタイトルを表示 -->
                   <h3 class="card-02__title"><?php the_title(); ?></h3>
                 </div>
                 <div class="card-02__content">
-                  <?php the_content(); ?>
+                  <!-- 投稿の抜粋を表示 -->
+                  <?php the_excerpt(); ?>
                 </div>
               </a>
             </article>
             <!-- /blog card -->
           <?php endwhile; ?>
+          <!-- クエリの投稿データをリセット -->
+          <?php wp_reset_postdata(); ?>
+        <?php else : ?>
+          <!-- 投稿が見つからない場合のメッセージ -->
+          <p>投稿が見つかりませんでした。</p>
         <?php endif; ?>
-        <?php wp_reset_postdata(); ?>
 
       </div>
+
       <div class="blog__link">
         <a href="<?php echo esc_url(home_url('/blog')); ?>" class="link-button">View more
           <span class="arrow-x"></span>
@@ -244,7 +279,8 @@
       </div>
     </div>
     <div class="blog__img-icon u-desktop">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/common/pc/blog-fish-illust.png" alt="魚の群れのアイコン" width="437" height="201" />
+      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/blog-fish-illust.png" alt="<?php echo esc_attr('魚の群れのアイコン'); ?>" width="437" height="201" />
+
     </div>
   </section>
   <!-- /blog -->
@@ -265,7 +301,8 @@
           'orderby' => 'date',
           'order' => 'DESC',
         );
-        $query = new WP_Query($args); ?>
+        $query = new WP_Query($args);
+        ?>
 
         <!-- サブループとしてカスタム投稿をループ -->
         <?php if ($query->have_posts()) : ?>
@@ -275,38 +312,47 @@
               <div class="card-03__header">
                 <div class="card-03__left">
                   <div class="card-03__attribute">
-                    <p><?php the_field('age') ?>代(<?php the_field('gender') ?>)</p>
-                    <span class="category"><?php echo get_the_terms(get_the_ID(), 'voice_category')[0]->name; ?></span>
+                    <p><?php echo esc_html(get_field('age')); ?>代(<?php echo esc_html(get_field('gender')); ?>)</p>
+                    <?php
+                    $terms = get_the_terms(get_the_ID(), 'voice_category');
+                    if ($terms && !is_wp_error($terms)) :
+                      $term = $terms[0];
+                    ?>
+                      <span class="category"><?php echo esc_html($term->name); ?></span>
+                    <?php endif; ?>
                   </div>
-                  <h3 class="card-03__title">
-                    <?php the_title(); ?>
-                  </h3>
+                  <h3 class="card-03__title"><?php the_title(); ?></h3>
                 </div>
                 <div class="card-03__img js-inview">
                   <?php if (has_post_thumbnail()) : ?>
                     <?php the_post_thumbnail(); ?>
                   <?php else : ?>
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/common/noimg.jpg" alt="No image" while="151" height="117">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/noimg.jpg" alt="No image" width="151" height="117">
                   <?php endif; ?>
                 </div>
               </div>
               <div class="card-03__content">
                 <?php
-                if (mb_strlen($post->post_content, 'UTF-8') > 170) {
-                  $content = mb_substr(strip_tags($post->post_content), 0, 170, 'UTF-8');
-                  echo $content . '……';
+                $content = get_the_content();
+                if (mb_strlen($content, 'UTF-8') > 170) {
+                  $content = mb_substr(strip_tags($content), 0, 170, 'UTF-8');
+                  echo esc_html($content) . '……';
                 } else {
-                  echo strip_tags($post->post_content);
+                  echo esc_html(strip_tags($content));
                 }
                 ?>
               </div>
             </div>
-            <!-- Voice-card -->
+            <!-- /Voice-card -->
           <?php endwhile; ?>
+          <?php wp_reset_postdata(); ?>
+        <?php else : ?>
+          <!-- 投稿が見つからない場合のメッセージ -->
+          <p>投稿が見つかりませんでした。</p>
         <?php endif; ?>
-        <?php wp_reset_postdata(); ?>
 
       </div>
+
       <div class="voice__link">
         <a href="<?php echo esc_url(home_url('/voice')); ?>" class="link-button">View more
           <span class="arrow-x"></span>
@@ -314,10 +360,10 @@
       </div>
     </div>
     <div class="voice__img-icon u-desktop">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/common/pc/fish-illust.png" alt="魚の群れのアイコン" width="301" height="138" />
+      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/fish-illust.png" alt="<?php echo esc_attr('魚の群れのアイコン'); ?>" width="301" height="138" />
     </div>
     <div class="voice__img-icon2 u-desktop">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/common/pc/seahorse-illust.png" alt="タツノオトシゴのアイコン" width="71" height="162" />
+      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/seahorse-illust.png" alt="<?php echo esc_attr('タツノオトシゴのアイコン'); ?>" width="71" height="162" />
     </div>
   </section>
   <!-- /voice -->
@@ -332,111 +378,131 @@
         <div class="price__items">
 
           <!-- ライセンス講習 -->
-          <div class="price__courses">
-            <h3 class="price__course">ライセンス講習</h3>
-            <dl class="price__course-list">
+          <?php
+          $courses = SCF::get_option_meta('theme-options', 'license'); // オプションページからライセンス講習の情報を取得
+          if (!empty($courses)) : // 講習情報が空でないかチェック
+          ?>
+            <div class="price__courses">
+              <h3 class="price__course">ライセンス講習</h3>
+              <dl class="price__course-list">
+                <!-- データ -->
+                <?php
+                foreach ($courses as $courseItem) : // 各講習情報をループで表示
+                  if (isset($courseItem['title_license'])) : // タイトルが設定されているかチェック
+                    $fullTitle = esc_html($courseItem['title_license'] . ' ' . $courseItem['subTitle_license']); // タイトルとサブタイトルを結合してエスケープ処理
+                ?>
+                    <div class="price__course-menus">
+                      <dt class="price__course-menu">
+                        <!-- // タイトルとサブタイトルを表示 -->
+                        <?php echo $fullTitle; ?>
+                      </dt>
+                      <!-- 価格をフォーマットして表示 -->
+                      <dd class="price__course-price">¥<?php echo number_format(intval($courseItem['price_license'])); ?></dd>
+                    </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              </dl>
+            </div>
+            <!-- 講習情報がない場合の処理終了 -->
+          <?php endif; ?>
 
-              <!-- data -->
-              <?php
-              $courses = SCF::get_option_meta('theme-options', 'license');
-              if (!empty($courses)) {
-                foreach ($courses as $course => $courseItem) {
-                  $fullTitle = esc_html($courseItem['title_license'] . ' ' . $courseItem['subTitle_license']);
-              ?>
-                  <div class="price__corse-menus">
-                    <dt class="price__corse-menu">
-                      <?php echo $fullTitle; ?>
-                    </dt>
-                    <dd class="price__corse-price">¥<?php echo esc_html($courseItem['price_license']); ?></dd>
-                  </div>
-              <?php
-                }
-              }
-              ?>
-
-            </dl>
-          </div>
 
           <!-- 体験ダイビング -->
-          <div class="price__courses">
-            <h3 class="price__course">体験ダイビング</h3>
-            <dl class="price__course-list">
+          <?php
+          $courses = SCF::get_option_meta('theme-options', 'experience'); // オプションページから体験ダイビングの情報を取得
+          if (!empty($courses)) : // 講習情報が空でないかチェック
+          ?>
+            <div class="price__courses">
+              <h3 class="price__course">体験ダイビング</h3>
+              <dl class="price__course-list">
+                <!-- データ -->
+                <?php
+                foreach ($courses as $courseItem) : // 各講習情報をループで表示
+                  if (isset($courseItem['title_experience'])) : // タイトルが設定されているかチェック
+                    $fullTitle = esc_html($courseItem['title_experience'] . ' ' . $courseItem['subTitle_experience']); // タイトルとサブタイトルを結合してエスケープ処理
+                ?>
+                    <div class="price__course-menus">
+                      <dt class="price__course-menu">
+                        <!-- タイトルとサブタイトルを表示 -->
+                        <?php echo $fullTitle; ?>
+                      </dt>
+                      <!--  価格をフォーマットして表示 -->
+                      <dd class="price__course-price">¥<?php echo number_format(intval($courseItem['price_experience'])); ?></dd>
+                    </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              </dl>
+            </div>
+            <!-- 講習情報がない場合の処理終了 -->
+          <?php endif; ?>
 
-              <!-- data -->
-              <?php
-              $courses = SCF::get_option_meta('theme-options', 'experience');
-              if (!empty($courses)) {
-                foreach ($courses as $course => $courseItem) {
-                  $fullTitle = esc_html($courseItem['title_experience'] . ' ' . $courseItem['subTitle_experience']);
-              ?>
-                  <div class="price__corse-menus">
-                    <dt class="price__corse-menu">
-                      <?php echo $fullTitle; ?>
-                    </dt>
-                    <dd class="price__corse-price">¥<?php echo esc_html($courseItem['price_experience']); ?></dd>
-                  </div>
-              <?php
-                }
-              }
-              ?>
-            </dl>
-          </div>
 
           <!-- ファンダイビング -->
-          <div class="price__courses">
-            <h3 class="price__course">ファンダイビング</h3>
-            <dl class="price__course-list">
+          <?php
+          $courses = SCF::get_option_meta('theme-options', 'fun'); // オプションページからファンダイビングの情報を取得
+          if (!empty($courses)) : // 講習情報が空でないかチェック
+          ?>
+            <div class="price__courses">
+              <h3 class="price__course">ファンダイビング</h3>
+              <dl class="price__course-list">
+                <!-- データ -->
+                <?php
+                foreach ($courses as $courseItem) : // 各講習情報をループで表示
+                  if (isset($courseItem['title_fun'])) : // タイトルが設定されているかチェック
+                    $fullTitle = esc_html($courseItem['title_fun'] . ' ' . $courseItem['subTitle_fun']); // タイトルとサブタイトルを結合してエスケープ処理
+                ?>
+                    <div class="price__course-menus">
+                      <dt class="price__course-menu">
+                        <!-- // タイトルとサブタイトルを表示 -->
+                        <?php echo $fullTitle; ?>
+                      </dt>
+                      <!-- 価格をフォーマットして表示 -->
+                      <dd class="price__course-price">¥<?php echo number_format(intval($courseItem['price_fun'])); ?></dd>
+                    </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              </dl>
+            </div>
+            <!-- 講習情報がない場合の処理終了 -->
+          <?php endif; ?>
 
-              <!-- data -->
-              <?php
-              $courses = SCF::get_option_meta('theme-options', 'fun');
-              if (!empty($courses)) {
-                foreach ($courses as $course => $courseItem) {
-                  $fullTitle = esc_html($courseItem['title_fun'] . ' ' . $courseItem['subTitle_fun']);
-              ?>
-                  <div class="price__corse-menus">
-                    <dt class="price__corse-menu">
-                      <?php echo $fullTitle; ?>
-                    </dt>
-                    <dd class="price__corse-price">¥<?php echo esc_html($courseItem['price_fun']); ?></dd>
-                  </div>
-              <?php
-                }
-              }
-              ?>
-            </dl>
-          </div>
 
           <!-- スペシャルダイビング -->
-          <div class="price__courses">
-            <h3 class="price__course">スペシャルダイビング</h3>
-            <dl class="price__course-list">
+          <?php
+          $courses = SCF::get_option_meta('theme-options', 'special'); // オプションページからスペシャルダイビングの情報を取得
+          if (!empty($courses)) : // 講習情報が空でないかチェック
+          ?>
+            <div class="price__courses">
+              <h3 class="price__course">スペシャルダイビング</h3>
+              <dl class="price__course-list">
+                <!-- データ -->
+                <?php
+                foreach ($courses as $courseItem) : // 各講習情報をループで表示
+                  if (isset($courseItem['title_special'])) : // タイトルが設定されているかチェック
+                    $fullTitle = esc_html($courseItem['title_special'] . ' ' . $courseItem['subTitle_special']); // タイトルとサブタイトルを結合してエスケープ処理
+                ?>
+                    <div class="price__course-menus">
+                      <dt class="price__course-menu">
+                        <!-- タイトルとサブタイトルを表示 -->
+                        <?php echo $fullTitle; ?>
+                      </dt>
+                      <!-- 価格をフォーマットして表示 -->
+                      <dd class="price__course-price">¥<?php echo number_format(intval($courseItem['price_special'])); ?></dd>
+                    </div>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              </dl>
+            </div>
+            <!--  講習情報がない場合の処理終了 -->
+          <?php endif; ?>
 
-              <!-- data -->
-              <?php
-              $courses = SCF::get_option_meta('theme-options', 'special');
-              if (!empty($courses)) {
-                foreach ($courses as $course => $courseItem) {
-                  $fullTitle = esc_html($courseItem['title_special'] . ' ' . $courseItem['subTitle_special']);
-              ?>
-                  <div class="price__corse-menus">
-                    <dt class="price__corse-menu">
-                      <?php echo $fullTitle; ?>
-                    </dt>
-                    <dd class="price__corse-price">¥<?php echo esc_html($courseItem['price_special']); ?></dd>
-                  </div>
-              <?php
-                }
-              }
-              ?>
-            </dl>
-          </div>
+
         </div>
 
         <div class="price__img js-inview">
           <picture>
-            <source srcset="<?php echo get_template_directory_uri(); ?>/images/common/pc/price-pc.jpg" media="(min-width:768px)" />
-            <img src="<?php echo get_template_directory_uri(); ?>/images/common/price-sp.jpg" alt="泳ぐウミガメの画像" width="345" height="227" />
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/price-pc.jpg" media="(min-width:768px)" />
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/price-sp.jpg" alt="<?php echo esc_attr('泳ぐウミガメの画像'); ?>" width="345" height="227" />
           </picture>
         </div>
       </div>
@@ -447,7 +513,7 @@
       </div>
     </div>
     <div class="price__img-icon u-desktop">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/common/pc/fish-illust_2.png" alt="" width="437" height="201" />
+      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/fish-illust_2.png" alt="<?php echo esc_attr('魚の群れイラスト画像'); ?>" width="437" height="201" />
     </div>
   </section>
   <!-- /price -->

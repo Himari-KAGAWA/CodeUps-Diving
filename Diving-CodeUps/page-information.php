@@ -41,10 +41,10 @@
                 </div>
                 <div class="page-information__img js-inview">
                   <picture>
-                    <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri(); ?>/images/common/pc/page-info-panel-pc_01.jpg
-                          " />
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/common/page-info-panel_01.jpg" alt="ダイビングをするダイバー達の画像" />
+                    <source media="(min-width: 768px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/page-info-panel-pc_01.jpg" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/page-info-panel_01.jpg" alt="<?php echo esc_attr('ダイビングをするダイバー達の画像'); ?>" />
                   </picture>
+
                 </div>
               </div>
             </div>
@@ -58,10 +58,10 @@
                 </div>
                 <div class="page-information__img js-inview">
                   <picture>
-                    <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri(); ?>/images/common/pc/page-info-panel-pc_02.jpg
-                          " />
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/common/page-info-panel_02.jpg" alt="ダイビングをするダイバー達の画像" />
+                    <source media="(min-width: 768px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/page-info-panel-pc_02.jpg" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/page-info-panel_02.jpg" alt="<?php echo esc_attr('ダイビングをするダイバー達の画像'); ?>" />
                   </picture>
+
                 </div>
               </div>
             </div>
@@ -75,9 +75,8 @@
                 </div>
                 <div class="page-information__img js-inview">
                   <picture>
-                    <source media="(min-width: 768px)" srcset="<?php echo get_template_directory_uri(); ?>/images/common/pc/page-info-panel-pc_03.jpg
-                          " />
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/common/page-info-panel_03.jpg" alt="ダイビングをするダイバー達の画像" />
+                    <source media="(min-width: 768px)" srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/page-info-panel-pc_03.jpg" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/page-info-panel_03.jpg" alt="<?php echo esc_attr('ダイビングをするダイバー達の画像'); ?>" />
                   </picture>
                 </div>
               </div>

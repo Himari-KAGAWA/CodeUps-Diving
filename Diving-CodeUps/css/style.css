@@ -956,6 +956,7 @@ a {
 
 .faq-item__question-text {
   color: #fff;
+  text-align: left;
 }
 
 .faq-item__question::before {
@@ -1690,7 +1691,7 @@ page-about .about__contents--page {
   width: 100%;
 }
 
-.page-blogDtail__title {
+.page-blogDetail__title {
   border-bottom: 0.0625rem solid #408f95;
   color: #0d2936;
   font-size: 1.5rem;
@@ -1700,7 +1701,7 @@ page-about .about__contents--page {
   padding-bottom: 0.375rem;
 }
 
-.page-blogDtail__date {
+.page-blogDetail__date {
   color: #0d2936;
   font-family: "Lato", sans-serif;
   font-size: 0.875rem;
@@ -1709,34 +1710,34 @@ page-about .about__contents--page {
   vertical-align: top;
 }
 
-.page-blogDtail__img {
+.page-blogDetail__img {
   aspect-ratio: 345/231;
   margin-top: 1.5rem;
   overflow: hidden;
 }
 
-.page-blogDtail__img img {
+.page-blogDetail__img img {
   -o-object-fit: cover;
   height: 100%;
   object-fit: cover;
   width: 100%;
 }
 
-.page-blogDtail__content p {
+.page-blogDetail__content p {
   margin-top: 1.5rem;
 }
 
-.page-blogDtail__content ul {
+.page-blogDetail__content ul {
   line-height: 1.7;
   margin-left: 1.6875rem;
   margin-top: 1.49rem;
 }
 
-.page-blogDtail__content ul li {
+.page-blogDetail__content ul li {
   position: relative;
 }
 
-.page-blogDtail__content ul li::before {
+.page-blogDetail__content ul li::before {
   background: url(../images//common/icon-hitode-g.png) no-repeat;
   background-size: contain;
   content: "";
@@ -2414,7 +2415,7 @@ page-about .about__contents--page {
   flex: 1 1 71.428571%;
 }
 
-.price-list__corse-menus {
+.price-list__course-menus {
   align-items: stretch;
   border-bottom: none;
   display: flex;
@@ -2423,11 +2424,11 @@ page-about .about__contents--page {
   width: 100%;
 }
 
-.price-list__corse-menus:nth-of-type(1) {
+.price-list__course-menus:nth-of-type(1) {
   border-top: 0.0625rem solid #408f95;
 }
 
-.price-list__corse-menus dt {
+.price-list__course-menus dt {
   align-self: center;
   border-bottom: 0.0625rem solid #408f95;
   border-left: 0.0625rem solid #408f95;
@@ -2439,12 +2440,12 @@ page-about .about__contents--page {
   width: 69.565217%;
 }
 
-.price-list__corse-menus--mt dt {
+.price-list__course-menus--mt dt {
   padding-bottom: 1.125rem;
   padding-top: 1.0625rem;
 }
 
-.price-list__corse-menus dd {
+.price-list__course-menus dd {
   align-self: center;
   border-bottom: 0.0625rem solid #408f95;
   border-right: 0.0625rem solid #408f95;
@@ -2500,17 +2501,17 @@ page-about .about__contents--page {
   padding-bottom: 0.1875rem;
 }
 
-.price__corse-menus {
+.price__course-menus {
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
 }
 
-.price__corse-menu {
+.price__course-menu {
   font-size: 0.875rem;
 }
 
-.price__corse-price {
+.price__course-price {
   font-size: 0.875rem;
   margin-left: 0.5rem;
 }
@@ -3030,10 +3031,10 @@ page-about .about__contents--page {
   border-radius: 100%;
   content: "";
   display: inline-block;
-  height: 0.25rem;
   left: -0.39375rem;
   position: relative;
   top: -0.3125rem;
+  height: 0.25rem;
   width: 0.25rem;
 }
 
@@ -3920,20 +3921,20 @@ page-about .about__contents--page {
     max-width: 43.75rem;
   }
 
-  .page-blogDtail__title {
+  .page-blogDetail__title {
     font-size: 2rem;
   }
 
-  .page-blogDtail__img {
+  .page-blogDetail__img {
     aspect-ratio: 700/468;
     margin-top: 2.5rem;
   }
 
-  .page-blogDtail__content p {
+  .page-blogDetail__content p {
     margin-top: 2.5rem;
   }
 
-  .page-blogDtail__content ul {
+  .page-blogDetail__content ul {
     line-height: 1.65;
     margin-top: 2.5rem;
   }
@@ -4203,14 +4204,14 @@ page-about .about__contents--page {
     width: 4rem;
   }
 
-  .price-list__corse-menus dt {
+  .price-list__course-menus dt {
     height: 3.6875rem;
     padding: 1.0625rem 0.5rem 1.125rem 0.9375rem;
     text-align: left;
     width: 67.75%;
   }
 
-  .price-list__corse-menus dd {
+  .price-list__course-menus dd {
     height: 3.6875rem;
     width: 32.25%;
   }
@@ -4250,11 +4251,11 @@ page-about .about__contents--page {
     margin-top: 2.35rem;
   }
 
-  .price__corse-menu {
+  .price__course-menu {
     font-size: 1rem;
   }
 
-  .price__corse-price {
+  .price__course-price {
     font-size: 1rem;
   }
 
@@ -4654,11 +4655,11 @@ page-about .about__contents--page {
 }
 
 /* ブログ詳細ページ */
-.page-blogDtail__content .wp-block-image {
+.page-blogDetail__content .wp-block-image {
   margin-top: 2.5rem;
 }
 
-.page-blogDtail__content a {
+.page-blogDetail__content a {
   text-decoration: underline;
 }
 
@@ -5108,20 +5109,20 @@ span.wpcf7-spinner {
   }
 }
 
-.page-blogDtail__content .wp-block-image {
+.page-blogDetail__content .wp-block-image {
   margin-top: rem(24);
   overflow: hidden;
   aspect-ratio: 345 / 231;
 }
 
 @media screen and (min-width: 768px) {
-  .page-blogDtail__content .wp-block-image {
+  .page-blogDetail__content .wp-block-image {
     margin-top: rem(40);
     aspect-ratio: 700 / 468;
   }
 }
 
-.page-blogDtail__content .wp-block-image img {
+.page-blogDetail__content .wp-block-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;

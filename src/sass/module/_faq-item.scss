@@ -15,6 +15,7 @@
 
 .faq-item__question-text {
   color: $base;
+  text-align: left;
   @include mq("md") {
     font-size: rem(20);
   }

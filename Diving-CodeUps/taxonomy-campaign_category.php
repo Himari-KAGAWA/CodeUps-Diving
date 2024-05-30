@@ -24,24 +24,29 @@
           <div class="category-list__tabs">
             <ul class="category-list__items">
               <li class="category-list__item">
-                <a href="http://xs273754.xsrv.jp/himarin_DIVING/campaign/" class="category-list__item-link category category--link">ALL</a>
+                <a href="<?php echo esc_url(home_url('/campaign')); ?>" class="category-list__item-link category category--link">ALL</a>
               </li>
 
-              <?php $dive_terms = get_terms('campaign_category', array('hide_empty => false')); ?>
-              <?php foreach ($dive_terms as $dive_term) : ?>
+              <?php
+              // カテゴリーを取得
+              $dive_terms = get_terms('campaign_category', array('hide_empty' => false));
+
+              // カテゴリーをループしてリストアイテムとして表示
+              foreach ($dive_terms as $dive_term) :
+              ?>
                 <li class="category-list__item">
-                  <a href="<?php echo esc_url(get_term_link($dive_term, 'campaign_category')); ?>" class="category-list__item-link category category--link <?php if (is_tax('campaign_category') && $dive_term->slug == get_queried_object()->slug) echo 'is-show'; ?>"><?php echo $dive_term->name; ?></a>
+                  <a href="<?php echo esc_url(get_term_link($dive_term, 'campaign_category')); ?>" class="category-list__item-link category category--link <?php if (is_tax('campaign_category') && $dive_term->slug == get_queried_object()->slug) echo 'is-show'; ?>">
+                    <?php echo esc_html($dive_term->name); ?>
+                  </a>
                 </li>
               <?php endforeach; ?>
-              </li>
             </ul>
           </div>
+
           <div class="page-campaign__card-items">
 
             <?php if (have_posts()) : ?>
-              <?php while (have_posts()) : ?>
-                <?php the_post(); ?>
-
+              <?php while (have_posts()) : the_post(); ?>
                 <!-- campaign-card -->
                 <div class="page-campaign__card-item card-01">
                   <div class="card-01__link">
@@ -49,24 +54,28 @@
                       <?php if (has_post_thumbnail()) : ?>
                         <?php the_post_thumbnail(); ?>
                       <?php else : ?>
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/common/noimg.jpg" alt="No image">
+                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/noimg.jpg" alt="<?php echo esc_attr('No image'); ?>">
                       <?php endif; ?>
                     </div>
                     <div class="card-01__body card-01__body--page">
                       <div class="card-01__header card-01__header--page">
                         <div class="category">
-                          <?php echo get_the_terms(get_the_ID(), 'campaign_category')[0]->name; ?>
+                          <?php
+                          $terms = get_the_terms(get_the_ID(), 'campaign_category');
+                          if ($terms && !is_wp_error($terms)) {
+                            echo esc_html($terms[0]->name);
+                          }
+                          ?>
                         </div>
                         <h3 class="card-01__title card-01__title--page">
-                          <?php the_title(); ?>
+                          <?php echo esc_html(get_the_title()); ?>
                         </h3>
                       </div>
                       <div class="card-01__content card-01__content--page">
                         <p class="card-01__lead">全部コミコミ(お一人様)</p>
                         <p class="card-01__discount">
-                          <span class="card-01__price card-01__price--page">¥<?php the_field('standard') ?></span>
-                          ¥<?php the_field('special') ?>
-                        </p>
+                          <span class="card-01__price card-01__price--page">¥<?php echo esc_html(get_field('standard')); ?></span>
+                          ¥<?php echo esc_html(get_field('special')); ?>
                         </p>
                       </div>
                       <div class="card-01__lower-unit">
@@ -78,7 +87,7 @@
                           ご予約・お問い合わせはコチラ
                         </p>
                         <div class="card-01__lower-unit-link">
-                          <a href="http://xs273754.xsrv.jp/himarin_DIVING/contact/" class="link-button">Contact us
+                          <a href="<?php echo esc_url(home_url('/contact')); ?>" class="link-button">Contact us
                             <span class="arrow-x"></span>
                           </a>
                         </div>
@@ -86,9 +95,13 @@
                     </div>
                   </div>
                 </div>
-                <!-- campaign-card -->
+                <!-- /campaign-card -->
               <?php endwhile; ?>
+            <?php else : ?>
+              <p>現在、キャンペーンはありません。</p>
+              <?php endif; ?>
           </div>
+
         </div>
       </div>
       <!-- pagination -->
@@ -98,7 +111,6 @@
               } ?>
       </div>
       <!-- /pagination -->
-    <?php endif; ?>
 
     </div>
   </div>

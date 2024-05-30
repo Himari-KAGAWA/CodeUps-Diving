@@ -28,14 +28,17 @@
             <!-- 繰り返し構文で各値を順次取り出す -->
             <?php foreach ($faqGroup as $faqItem) : ?>
               <?php
-              $faq_question = esc_html($faqItem['question']); // questionをエスケープ処理して変数に代入する
-              $faq_asked = esc_html($faqItem['asked']); // askedをエスケープ処理して変数に代入する
+              // questionとaskedの値をエスケープ処理して変数に代入する
+              $faq_question = esc_html($faqItem['question']);
+              $faq_asked = esc_html($faqItem['asked']);
               ?>
-              <div class="faq-item js-faq">
-                <dt class="faq-item__question">
-                  <p class="faq-item__question-text"><?php echo nl2br($faq_question); ?></p>
+              <div class="faq-item js-faq"> <!-- 各FAQ項目を囲むdiv -->
+                <dt class="faq-item__question"> <!-- 質問部分 -->
+                  <button class="faq-item__question-text" aria-expanded="false">
+                    <?php echo nl2br($faq_question); ?>
+                  </button>
                 </dt>
-                <dd class="faq-item__answer js-faq-open">
+                <dd class="faq-item__answer js-faq-open"> <!-- 回答部分 -->
                   <p class="faq-item__answer-text"><?php echo nl2br($faq_asked); ?></p>
                 </dd>
               </div>
@@ -43,6 +46,7 @@
           <?php endif; ?>
 
         </dl>
+
       </div>
     </div>
   </div>

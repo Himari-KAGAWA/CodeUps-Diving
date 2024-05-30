@@ -6,8 +6,10 @@
         <div class="contact__info">
           <div class="contact__logo">
             <picture>
-              <source srcset="<?php echo get_template_directory_uri(); ?>/images/common/pc/logo-contact.svg" media="(min-width:768px)" />
-              <img src="<?php echo get_template_directory_uri(); ?>/images/common/logo-contact.png" alt="CodeUps" width="174" height="65" />
+              <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/logo-contact.svg" media="(min-width:768px)" />
+
+              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/logo-contact.png" alt="<?php echo esc_attr('CodeUps'); ?>" width="174" height="65" />
+
             </picture>
           </div>
           <div class="contact__access">
@@ -33,7 +35,7 @@
           </div>
           <p class="contact__text">ご予約・お問い合わせはコチラ</p>
           <div class="contact__link">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>" class="link-button">Contact us
+            <a href="<?php echo esc_url(home_url('/contact')); ?>" class="link-button">Contact us
               <span class="arrow-x"></span>
             </a>
           </div>
@@ -41,7 +43,7 @@
       </div>
     </div>
     <div class="contact__img-icon">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/common/pc/fish-illust_2.png" alt="魚の群れのアイコン" width="109" height="50" />
+      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/fish-illust_2.png" alt="<?php echo esc_attr('魚の群れのアイコン'); ?>" width="109" height="50" />
     </div>
   </section>
   <!-- /contact -->
@@ -55,84 +57,83 @@
   <div class="footer__inner inner">
     <div class="footer__wrapper footer-nav">
       <div class="footer-nav__logo">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/common/logo-footer_sp.png" alt="CodeUps" width="120" height="45" />
-
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/logo-footer_sp.png" alt="<?php echo esc_attr('CodeUps'); ?>" width="120" height="45" />
         <ul class="footer-nav__sns">
           <li class="footer-nav__icon">
-            <a href="https://www.facebook.com/?locale=ja_JP" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/common/FacebookLogo.png" alt="facebookアイコン" width="24" height="24" /></a>
+            <a href="<?php echo esc_url('https://www.facebook.com/?locale=ja_JP'); ?>" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/FacebookLogo.png" alt="<?php echo esc_attr('facebookアイコン'); ?>" width="24" height="24" /></a>
           </li>
           <li class="footer-nav__icon">
-            <a href="https://about.instagram.com/ja-jp" target="_blank"><img src="<?php echo get_template_directory_uri(); ?>/images/common/InstagramLogo.png" alt="instagramアイコン" width="24" height="24" /></a>
+            <a href="<?php echo esc_url('https://about.instagram.com/ja-jp'); ?>" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/InstagramLogo.png" alt="<?php echo esc_attr('instagramアイコン'); ?>" width="24" height="24" /></a>
           </li>
         </ul>
       </div>
       <div class="footer-nav__content">
         <ul class="footer-nav__items1">
           <li class="footer-nav__item footer-nav__item-bold">
-            <a href="<?php echo esc_url( home_url( '/campaign' ) ); ?>">キャンペーン</a>
+            <a href="<?php echo esc_url(home_url('/campaign')); ?>">キャンペーン</a>
           </li>
           <li class="footer-nav__item">
-            <a href="<?php echo esc_url( home_url( '/campaign_category/fun' ) ); ?>">ファンダイビング</a>
+            <a href="<?php echo esc_url(home_url('/campaign_category/fun')); ?>">ファンダイビング</a>
           </li>
           <li class="footer-nav__item">
-            <a href="<?php echo esc_url( home_url( '/campaign_category/license' ) ); ?>">ライセンス講習</a>
+            <a href="<?php echo esc_url(home_url('/campaign_category/license')); ?>">ライセンス講習</a>
           </li>
           <li class="footer-nav__item">
-            <a href="<?php echo esc_url( home_url( '/campaign_category/experience' ) ); ?>">体験ダイビング</a>
+            <a href="<?php echo esc_url(home_url('/campaign_category/experience')); ?>">体験ダイビング</a>
           </li>
           <li class="footer-nav__item footer-nav__item-bold footer-nav__item--layout">
-            <a href="<?php echo esc_url( home_url( '/about-us' ) ); ?>">私たちについて</a>
+            <a href="<?php echo esc_url(home_url('/about-us')); ?>">私たちについて</a>
           </li>
         </ul>
         <ul class="footer-nav__items2">
           <li class="footer-nav__item footer-nav__item-bold">
-            <a href="<?php echo esc_url( home_url( '/information' ) ); ?>">ダイビング情報</a>
+            <a href="<?php echo esc_url(home_url('/information')); ?>">ダイビング情報</a>
           </li>
           <li class="footer-nav__item">
-            <a href="<?php echo esc_url( home_url( '/information#panel1' ) ); ?>">ライセンス講習</a>
+            <a href="<?php echo esc_url(home_url('/information#panel1')); ?>">ライセンス講習</a>
           </li>
           <li class="footer-nav__item">
-            <a href="<?php echo esc_url( home_url( '/information#panel3' ) ); ?>">体験ダイビング</a>
+            <a href="<?php echo esc_url(home_url('/information#panel3')); ?>">体験ダイビング</a>
           </li>
           <li class="footer-nav__item">
-            <a href="<?php echo esc_url( home_url( '/information#panel2' ) ); ?>">ファンダイビング</a>
+            <a href="<?php echo esc_url(home_url('/information#panel2')); ?>">ファンダイビング</a>
           </li>
           <li class="footer-nav__item footer-nav__item-bold footer-nav__item--layout">
-            <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>">ブログ</a>
+            <a href="<?php echo esc_url(home_url('/blog')); ?>">ブログ</a>
           </li>
         </ul>
         <ul class="footer-nav__items3">
           <li class="footer-nav__item footer-nav__item-bold">
-            <a href="<?php echo esc_url( home_url( '/voice' ) ); ?>">お客様の声</a>
+            <a href="<?php echo esc_url(home_url('/voice')); ?>">お客様の声</a>
           </li>
           <li class="footer-nav__item footer-nav__item-bold footer-nav__item--layout">
-            <a href="<?php echo esc_url( home_url( '/price' ) ); ?>">料金一覧</a>
+            <a href="<?php echo esc_url(home_url('/price')); ?>">料金一覧</a>
           </li>
           <li class="footer-nav__item">
-            <a href="<?php echo esc_url( home_url( '/price#license' ) ); ?>">ライセンス講習</a>
+            <a href="<?php echo esc_url(home_url('/price#license')); ?>">ライセンス講習</a>
           </li>
           <li class="footer-nav__item">
-            <a href="<?php echo esc_url( home_url( '/price#experience' ) ); ?>">体験ダイビング</a>
+            <a href="<?php echo esc_url(home_url('/price#experience')); ?>">体験ダイビング</a>
           </li>
           <li class="footer-nav__item">
-            <a href="<?php echo esc_url( home_url( '/price#fun' ) ); ?>">ファンダイビング</a>
+            <a href="<?php echo esc_url(home_url('/price#fun')); ?>">ファンダイビング</a>
           </li>
         </ul>
         <ul class="footer-nav__items4">
           <li class="footer-nav__item footer-nav__item-bold">
-            <a href="<?php echo esc_url( home_url( '/faq' ) ); ?>">よくある質問</a>
+            <a href="<?php echo esc_url(home_url('/faq')); ?>">よくある質問</a>
           </li>
           <li class="footer-nav__item footer-nav__item-bold footer-nav__item--layout">
-            <a href="<?php echo esc_url( home_url( '/privacypolicy' ) ); ?>">プライバシー<br class="u-mobile" />ポリシー</a>
+            <a href="<?php echo esc_url(home_url('/privacypolicy')); ?>">プライバシー<br class="u-mobile" />ポリシー</a>
           </li>
           <li class="footer-nav__item footer-nav__item-bold footer-nav__item--layout">
-            <a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>">利用規約</a>
+            <a href="<?php echo esc_url(home_url('/terms-of-service')); ?>">利用規約</a>
           </li>
           <li class="footer-nav__item footer-nav__item-bold footer-nav__item--layout">
-            <a href="<?php echo esc_url( home_url( '/sitemap' ) ); ?>">サイトマップ</a>
+            <a href="<?php echo esc_url(home_url('/sitemap')); ?>">サイトマップ</a>
           </li>
           <li class="footer-nav__item footer-nav__item-bold footer-nav__item--layout">
-            <a href="<?php echo esc_url( home_url( '/contact' ) ); ?>">お問わ合せ</a>
+            <a href="<?php echo esc_url(home_url('/contact')); ?>">お問わ合せ</a>
           </li>
         </ul>
       </div>

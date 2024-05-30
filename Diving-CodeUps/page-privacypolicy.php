@@ -19,16 +19,19 @@
   <div class="page top-page--privacy">
     <section class="legal-document">
       <div class="legal-document__inner inner">
-        <h2 class="legal-document__title"><?php the_title(); ?></h2>
+        <h2 class="legal-document__title"><?php echo esc_html(get_the_title()); ?></h2>
 
         <?php if (have_posts()) : ?>
-          <?php while (have_posts()) : ?>
-            <?php the_post(); ?>
-            <?php the_content(); ?>
+          <?php while (have_posts()) : the_post(); ?>
+            <div class="legal-document__content">
+              <?php the_content(); ?>
+            </div>
           <?php endwhile; ?>
+        <?php else : ?>
+          <p>現在、表示する内容はありません。</p>
         <?php endif; ?>
-
       </div>
+
     </section>
     <!-- /page-contents -->
   </div>

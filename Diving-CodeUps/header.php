@@ -23,11 +23,12 @@
   <header class="header">
     <div class="header__inner">
       <h1 class="header__logo">
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo-link">
+        <a href="<?php echo esc_url(home_url('/')); ?>">
           <picture>
-            <source srcset="<?php echo get_template_directory_uri(); ?>/images/common/pc/logo-header_pc.png" media="(min-width:767px)" />
-            <img src="<?php echo get_template_directory_uri(); ?>/images/common/logo-header_sp.png" alt="CodeUps" width="102" height="38" />
+            <source srcset="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/logo-header_pc.png" media="(min-width:767px)" />
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/logo-header_sp.png" alt="<?php echo esc_attr('CodeUps'); ?>" width="102" height="38" />
           </picture>
+        </a>
         </a>
       </h1>
       <div class="header__drawer hamburger u-mobile js-hamburger">
@@ -85,7 +86,8 @@
       <div class="header__sp-nav sp-nav js-sp-nav u-mobile">
         <div class="sp-nav__header">
           <div class="sp-nav__logo">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/common/logo-nav_sp.png" alt="CodeUps" />
+            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/logo-nav_sp.png" alt="<?php echo esc_attr('CodeUps'); ?>" />
+
           </div>
         </div>
         <div class="sp-nav__inner inner">

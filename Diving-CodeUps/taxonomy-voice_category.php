@@ -21,41 +21,48 @@
     <div class="page__inner inner">
       <div class="page__content page-voice">
         <div class="page-voice__nav category-list">
-          <ul class="category-list__items">
-            <li class="category-list__item">
-              <a href="http://xs273754.xsrv.jp/himarin_DIVING/voice/" class="category-list__item-link category category--link">ALL</a>
-            </li>
-            <?php $voice_category_terms = get_terms('voice_category', array('hide_empty => false')); ?>
-            <?php foreach ($voice_category_terms as $voice_category_term) : ?>
+          <div class="category-list__tabs">
+            <ul class="category-list__items">
               <li class="category-list__item">
-                <a href="<?php echo get_term_link($voice_category_term, 'voice_category'); ?>" class="category-list__item-link category category--link <?php if (is_tax('voice_category') && $voice_category_term->slug == get_queried_object()->slug) echo 'is-show'; ?>"><?php echo $voice_category_term->name; ?></a>
-              <?php endforeach; ?>
+                <a href="<?php echo esc_url(home_url('/voice')); ?>" class="category-list__item-link category category--link">ALL</a>
               </li>
-          </ul>
+              <?php $voice_category_terms = get_terms('voice_category', array('hide_empty => false')); ?>
+              <?php foreach ($voice_category_terms as $voice_category_term) : ?>
+                <li class="category-list__item">
+                  <a href="<?php echo get_term_link($voice_category_term, 'voice_category'); ?>" class="category-list__item-link category category--link <?php if (is_tax('voice_category') && $voice_category_term->slug == get_queried_object()->slug) echo 'is-show'; ?>"><?php echo $voice_category_term->name; ?></a>
+                <?php endforeach; ?>
+                </li>
+            </ul>
+          </div>
         </div>
+
         <div class="page-voice__items voice-cards">
-
           <?php if (have_posts()) : ?>
-            <?php while (have_posts()) : ?>
-              <?php the_post(); ?>
-
+            <?php while (have_posts()) : the_post(); ?>
               <!-- Voice-card -->
               <div class="voice-cards__item card-03" data-item="tab01">
                 <div class="card-03__header">
                   <div class="card-03__left">
                     <div class="card-03__attribute">
-                      <p><?php the_field('age') ?>代(<?php the_field('gender') ?>)</p>
-                      <span class="category"><?php echo get_the_terms(get_the_ID(), 'voice_category')[0]->name; ?></span>
+                      <p><?php echo esc_html(get_field('age')); ?>代(<?php echo esc_html(get_field('gender')); ?>)</p>
+                      <span class="category">
+                        <?php
+                        $terms = get_the_terms(get_the_ID(), 'voice_category');
+                        if ($terms && !is_wp_error($terms)) {
+                          echo esc_html($terms[0]->name);
+                        }
+                        ?>
+                      </span>
                     </div>
                     <h3 class="card-03__title">
-                      <?php the_title(); ?>
+                      <?php echo esc_html(get_the_title()); ?>
                     </h3>
                   </div>
                   <div class="card-03__img js-inview">
                     <?php if (has_post_thumbnail()) : ?>
                       <?php the_post_thumbnail(); ?>
                     <?php else : ?>
-                      <img src="<?php echo get_template_directory_uri(); ?>/images/common/noimg.jpg" alt="No image">
+                      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/noimg.jpg" alt="<?php echo esc_attr('No image'); ?>">
                     <?php endif; ?>
                   </div>
                 </div>
@@ -67,18 +74,20 @@
               </div>
               <!-- /Voice-card -->
             <?php endwhile; ?>
-
+          <?php else : ?>
+            <p>現在、表示する投稿はありません。</p>
+          <?php endif; ?>
         </div>
+
       </div>
       <!-- pagination -->
       <div class="top-pagination">
         <?php if (function_exists('wp_pagenavi')) {
-              wp_pagenavi();
-            } ?>
+          wp_pagenavi();
+        } ?>
       </div>
       <!-- /pagination -->
-    <?php endif; ?>
-    <!-- /pagination -->
+
     </div>
   </div>
   <!-- /page-contents -->
