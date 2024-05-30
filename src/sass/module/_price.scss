@@ -78,20 +78,7 @@
   padding-bottom: rem(3);
 }
 
-.price__corse-menus {
-  display: flex;
-  justify-content: space-between;
-  margin-top: rem(8);
-}
-
-.price__corse-menu {
-  font-size: rem(14);
-  @include mq("md") {
-    font-size: rem(16);
-  }
-}
-
-.price__corse-price {
+.price__course-price {
   font-size: rem(14);
   margin-left: rem(8);
   @include mq("md") {
