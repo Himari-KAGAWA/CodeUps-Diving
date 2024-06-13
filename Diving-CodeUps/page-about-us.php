@@ -43,9 +43,9 @@
         <!-- ギャラリーセクション -->
         <?php $imgGroup = SCF::get('about_gallery'); ?>
         <?php if (!empty($imgGroup)) : ?> <!-- ギャラリー画像グループが空でないかチェック -->
-          <section class="page-galley top-page-gallery">
-            <div class="page-galley__inner inner">
-              <div class="page-galley__header section-header">
+          <section class="page-gallery top-page-gallery">
+            <div class="page-gallery__inner inner">
+              <div class="page-gallery__header section-header">
                 <div class="section-header__engtitle">gallery</div>
                 <h2 class="section-header__jatitle">フォト</h2>
               </div>
@@ -58,37 +58,41 @@
                     // 画像データを取得
                     $img_data = wp_get_attachment_image_src($imgItem['gallery_img'], 'full');
                     $url = $img_data[0];
-                    // 画像のaltテキストを取得。ない場合は画像のタイトルを使用
-                    $alt = get_post_meta($imgItem['gallery_img'], '_wp_attachment_image_alt', true) ?: get_post($imgItem['gallery_img'])->post_title;
+                    // 画像のaltテキストを取得。ない場合はデフォルトのテキストを使用
+                    $img_alt = !empty($imgItem['gallery_alt']) ? esc_attr($imgItem['gallery_alt']) : 'ギャラリーの画像';
                     ?>
                     <div class="page-gallery__item js-modal__trigger">
-                      <img src="<?php echo esc_url($url); ?>" alt="<?php echo esc_attr($alt); ?>"> <!-- 画像表示 -->
+                      <img src="<?php echo esc_url($url); ?>" alt="<?php echo $img_alt; ?>"> <!-- 画像表示 -->
                     </div>
                   <?php endforeach; ?>
-
                 </div>
               </div>
             </div>
-            <div class="page-gallery__img-icon u-desktop">
-              <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/fish-illust_2.png" alt="<?php echo esc_attr('魚の群れのアイコン'); ?>" width="301" height="138" />
-            </div>
           </section>
         <?php endif; ?>
-        <!-- /ギャラリーセクション -->
 
       </div>
+    </div>
+  </div>
+  <div class="page-gallery__img-icon u-desktop">
+    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/fish-illust_2.png" alt="<?php echo esc_attr('魚の群れのアイコン'); ?>" width="301" height="138" />
+  </div>
+  </section>
+  <!-- /ギャラリーセクション -->
 
-      <!-- modal本体 -->
-      <div class="page-gallery__modal modal js-modal fadeIn">
-        <div class="modal__img-wrapper">
-          <div class="modal__img">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/page-gallery_01.jpg" alt="<?php echo esc_attr('サンゴ礁と魚の群れの画像'); ?>" width="345" height="523" />
-          </div>
-        </div>
-        <div class="modal__bg js-modal-close"></div>
+  </div>
+
+  <!-- modal本体 -->
+  <div class="page-gallery__modal modal js-modal fadeIn">
+    <div class="modal__img-wrapper">
+      <div class="modal__img">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/page-gallery_01.jpg" alt="<?php echo esc_attr('サンゴ礁と魚の群れの画像'); ?>" width="345" height="523" />
       </div>
-      <!-- /modal -->
-      <!-- /page-contents -->
+    </div>
+    <div class="modal__bg js-modal-close"></div>
+  </div>
+  <!-- /modal -->
+  <!-- /page-contents -->
 
 </main>
 

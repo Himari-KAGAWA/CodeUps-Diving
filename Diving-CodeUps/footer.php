@@ -13,14 +13,27 @@
             </picture>
           </div>
           <div class="contact__access">
-            <div class="contact__store-info">
-              <address class="contact__address">沖縄県那覇市1-1</address>
-              <p>TEL:<a href="tel:0120-000-0000">0120-000-0000</a></p>
-              <p>営業時間:8:30-19:00</p>
-              <p>定休日:毎週火曜日</p>
-            </div>
+            <?php
+            // ページID 6のACFグループフィールドから店舗情報を取得
+            $top_information = get_field('top_information', 6);
+
+            if ($top_information) : // 店舗情報が存在する場合のみ表示
+              $address = $top_information['address'];
+              $tel_number = $top_information['tel_number'];
+              $open_hours = $top_information['open_hours'];
+              $close_hours = $top_information['close_hours'];
+              $holiday = $top_information['holiday'];
+            ?>
+              <div class="contact__store-info">
+                <address class="contact__address"><?php echo esc_html($address); ?></address>
+                <p>TEL:<a href="tel:<?php echo esc_html($tel_number); ?>"><?php echo esc_html($tel_number); ?></a></p>
+                <p>営業時間:<?php echo esc_html($open_hours); ?>-<?php echo esc_html($close_hours); ?></p>
+                <p>定休日:<?php echo esc_html($holiday); ?></p>
+              </div>
+            <?php endif; ?>
+
             <div class="contact__map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.0378408422885!2d139.96050337620395!3d35.72528787257302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601880e228629bdb%3A0xed622313a1e48d27!2z5Lit5bGx56u26aas5aC0!5e0!3m2!1sja!2sjp!4v1701989823861!5m2!1sja!2sjp" style="border: 0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.373539314044!2d127.7169083755944!3d26.217049689639595!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34e56bfe6cf4db67%3A0xc0899fbab29e4f8b!2z6aaW6YeM5Z-O5YWs5ZyS!5e0!3m2!1sja!2sjp!4v1718065701523!5m2!1sja!2sjp" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
         </div>
@@ -58,14 +71,42 @@
     <div class="footer__wrapper footer-nav">
       <div class="footer-nav__logo">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/logo-footer_sp.png" alt="<?php echo esc_attr('CodeUps'); ?>" width="120" height="45" />
-        <ul class="footer-nav__sns">
-          <li class="footer-nav__icon">
-            <a href="<?php echo esc_url('https://www.facebook.com/?locale=ja_JP'); ?>" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/FacebookLogo.png" alt="<?php echo esc_attr('facebookアイコン'); ?>" width="24" height="24" /></a>
-          </li>
-          <li class="footer-nav__icon">
-            <a href="<?php echo esc_url('https://about.instagram.com/ja-jp'); ?>" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/InstagramLogo.png" alt="<?php echo esc_attr('instagramアイコン'); ?>" width="24" height="24" /></a>
-          </li>
-        </ul>
+        <?php
+        // ACFのグループフィールドからSNSリンクを取得
+        $sns_link = get_field('sns_link', 6); // ページIDが6の場合
+
+        if ($sns_link) :
+          $facebook_link = $sns_link['facebook_link'];
+          $instagram_link = $sns_link['instagram_link'];
+          $x_link = $sns_link['x_link'];
+        ?>
+          <ul class="footer-nav__sns">
+            <?php if ($facebook_link) : ?>
+              <li class="footer-nav__icon">
+                <a href="<?php echo esc_url($facebook_link); ?>" target="_blank">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/FacebookLogo.png" alt="<?php echo esc_attr('facebookアイコン'); ?>" width="24" height="24" />
+                </a>
+              </li>
+            <?php endif; ?>
+
+            <?php if ($instagram_link) : ?>
+              <li class="footer-nav__icon">
+                <a href="<?php echo esc_url($instagram_link); ?>" target="_blank">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/InstagramLogo.png" alt="<?php echo esc_attr('instagramアイコン'); ?>" width="24" height="24" />
+                </a>
+              </li>
+            <?php endif; ?>
+
+            <?php if ($x_link) : ?>
+              <li class="footer-nav__icon footer-nav__icon--x">
+                <a href="<?php echo esc_url($x_link); ?>" target="_blank">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/x-icon.svg" alt="<?php echo esc_attr('Xアイコン'); ?>" width="24" height="24" />
+                </a>
+              </li>
+            <?php endif; ?>
+          </ul>
+        <?php endif; ?>
+
       </div>
       <div class="footer-nav__content">
         <ul class="footer-nav__items1">

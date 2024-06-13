@@ -44,45 +44,53 @@ jQuery(function ($) {
     }
   });
 
-  // swiper メインビュー
-  var initSwiper = function initSwiper() {
-    var swiper = new Swiper(".js-main-visual-swiper", {
+  // Swiper メインビュー
+  var initMainVisualSwipers = function initMainVisualSwipers() {
+    // 複数のスライダーを初期化
+    var swipers = document.querySelectorAll(".js-main-visual-swiper");
+    swipers.forEach(function (swiperElement) {
+      new Swiper(swiperElement, {
+        loop: true,
+        speed: 3000,
+        effect: "fade",
+        autoplay: {
+          delay: 3500,
+        },
+      });
+    });
+  };
+
+  // swiper campaign
+  // Swiper キャンペーン
+  var initCampaignSwiper = function initCampaignSwiper() {
+    new Swiper(".campaign__slider .js-campaign-swiper", {
       loop: true,
-      speed: 3000,
-      effect: "fade",
+      loopAdditionalSlides: 1,
+      slidesPerView: "auto",
+      spaceBetween: 23,
+      grabCursor: true,
       autoplay: {
-        delay: 3500,
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      // Navigation arrows
+      navigation: {
+        nextEl: ".js-campaign-next",
+        prevEl: ".js-campaign-prev",
+        clickable: true,
+      },
+      // PC表示の時の要素間の指定
+      breakpoints: {
+        767: {
+          spaceBetween: 39,
+        },
       },
     });
   };
-  window.addEventListener("load", function () {
-    initSwiper(); // ページ読み込み後に初期化
-  });
 
-  // swiper campaign
-  // overflow:hidden;したクラスを追記する↓
-  var campaign__slider = new Swiper(".campaign__slider .js-campaign-swiper", {
-    loop: true,
-    loopAdditionalSlides: 1,
-    slidesPerView: "auto",
-    spaceBetween: 23,
-    grabCursor: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    // Navigation arrows
-    navigation: {
-      nextEl: ".js-campaign-next",
-      prevEl: ".js-campaign-prev",
-      clickable: true,
-    },
-    // PC表示の時の要素間の指定
-    breakpoints: {
-      767: {
-        spaceBetween: 39,
-      },
-    },
+  window.addEventListener("load", function () {
+    initMainVisualSwipers(); // ページ読み込み後にメインビュースライダーを初期化
+    initCampaignSwiper(); // ページ読み込み後にキャンペーンスライダーを初期化
   });
 
   // スクロール検知＆to-topアイコン制御

@@ -2,60 +2,48 @@
 
 <main>
   <!-- メインビュー -->
-  <!-- Slider main container -->
   <div class="main-visual">
     <div class="main-visual__wrapper">
       <p class="main-visual__title">DIVING</p>
       <div class="main-visual__lead">into the ocean</div>
     </div>
+
+    <!-- メインビューのスライダー -->
     <div class="main-visual__swiper swiper js-main-visual-swiper">
-      <!-- Additional required wrapper -->
-      <div class="swiper-wrapper">
-
-        <!-- Slides -->
+      <div class="main-visual__wrap swiper-wrapper">
         <?php
-        // SP版画像とPC版画像のフィールドを取得
-        $mv_sp_group = get_field('mv_sp');
-        $mv_pc_group = get_field('mv_pc');
-
-        // 画像フィールドが取得できたかを確認
-        if ($mv_sp_group && $mv_pc_group) :
-          // ループで画像を取得する
-          for ($i = 1; $i <= 4; $i++) :
-            // SP版画像の取得
-            $sp_image_url = $mv_sp_group['imgSP' . $i]['url'];
-            $sp_image_alt = $mv_sp_group['imgSP' . $i]['alt'];
-
-            // PC版画像の取得
-            $pc_image_url = $mv_pc_group['imgPC' . $i]['url'];
-            $pc_image_alt = $mv_pc_group['imgPC' . $i]['alt'];
-
-            // 画像が存在する場合のみ表示
-            if ($sp_image_url && $pc_image_url) :
+        $slideImages = SCF::get('top_images');
+        foreach ($slideImages as $image) :
+          // 各サブフィールドのデータを取得
+          $img_url_SP = wp_get_attachment_image_src($image['mvImg_sp'], 'full');
+          $img_url_PC = wp_get_attachment_image_src($image['mvImg_pc'], 'full');
+          $img_alt = !empty($image['mvImg_alt']) ? esc_attr($image['mvImg_alt']) : 'メインビューの画像';
         ?>
-              <div class="swiper-slide main-visual__slide">
-                <div class="main-visual__img">
-                  <picture>
-                    <!-- PC版画像 -->
-                    <source srcset="<?php echo esc_url($pc_image_url); ?>" media="(min-width: 768px)" />
-                    <!-- スマホ版画像 -->
-                    <img src="<?php echo esc_url($sp_image_url); ?>" alt="<?php echo esc_attr($sp_image_alt); ?>" />
-                  </picture>
-                </div>
-              </div>
-            <?php endif; ?>
-          <?php endfor; ?>
-        <?php else : ?>
-          <p>画像が見つかりませんでした。</p>
-        <?php endif; ?>
-        <!-- /Slides -->
-
+          <div class="main-visual__slide swiper-slide">
+            <div class="main-visual__img">
+              <!-- SP・PCどちらの画像もある場合レスポンシブで出し分け -->
+              <?php if ($img_url_SP && $img_url_PC) : ?>
+                <picture>
+                  <source srcset="<?php echo esc_url($img_url_PC[0]) ?>" media="(min-width: 768px)" />
+                  <img src="<?php echo esc_url($img_url_SP[0]) ?>" alt="<?php echo $img_alt; ?>" width="375" height="667" />
+                </picture>
+                <!-- 画像がない場合はローディング画像を表示 -->
+              <?php else : ?>
+                <picture>
+                  <source srcset="<?php echo esc_url(get_theme_file_uri() . '/images/common/pc/mv-loading_pc.png'); ?>" media="(min-width: 768px)">
+                  <img src="<?php echo esc_url(get_theme_file_uri() . '/images/common/mv-loading.png'); ?>" alt="Loading image" width="375" height="667">
+                </picture>
+              <?php endif; ?>
+            </div>
+          </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </div>
   <!-- /メインビュー -->
 
-  <!-- campaign -->
+
+  <!-- キャンペーン：campaign -->
   <section id="campaign" class="campaign top-campaign">
     <div class="campaign__inner inner">
       <div class="campaign__header section-header">
@@ -68,7 +56,7 @@
         <!-- ↓のoverflow:hidden;をvisibleに -->
         <div class="campaign__swiper swiper js-campaign-swiper">
           <!-- swiper-wrapper -->
-          <div class="swiper-wrapper">
+          <div class="campaign__wrap swiper-wrapper">
             <!-- Campaign Slides -->
             <?php
             // 新着6件のカスタム投稿を取得
@@ -91,7 +79,7 @@
                       <div class="card-01__img">
                         <!-- アイキャッチ画像の表示 -->
                         <?php if (has_post_thumbnail()) : ?>
-                          <?php the_post_thumbnail('medium'); ?>
+                          <?php the_post_thumbnail(); ?>
                         <?php else : ?>
                           <!-- アイキャッチ画像がない場合のデフォルト画像 -->
                           <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/noimg.jpg" alt="<?php echo esc_attr('No image'); ?>" width="280" height="188">
@@ -112,13 +100,45 @@
                           <h3 class="card-01__title"><?php the_title(); ?></h3>
                         </div>
                         <div class="card-01__content">
-                          <p class="card-01__lead">全部コミコミ(お一人様)</p>
-                          <p class="card-01__discount">
-                            <span class="card-01__price">¥<?php echo esc_html(get_field('standard')); ?></span>
-                            ¥<?php echo esc_html(get_field('special')); ?>
-                          </p>
+                          <!-- price -->
+                          <?php
+                          // ACFからキャンペーン価格のグループフィールドを取得
+                          $campaign_price = get_field('campaign_price');
+
+                          if ($campaign_price) {
+                            // 正常価格とオファー価格をそれぞれ取得
+                            $normal_price = $campaign_price['normal_price'];
+                            $offer_price = $campaign_price['offer_price'];
+                          }
+                          ?>
+                          <?php if (!empty($offer_price)) : ?>
+                            <!-- パッケージタイトル -->
+                            <?php
+                            // ACFからパッケージタイトルを取得
+                            $package_title = get_field('package_title');
+
+                            // デフォルトタイトルを設定
+                            $default_title = "全部コミコミ(お一人様)";
+
+                            // パッケージタイトルが空の場合はデフォルトタイトルを使用
+                            if (!$package_title) {
+                              $package_title = $default_title;
+                            }
+
+                            // パッケージタイトルをHTMLエスケープし、改行を<br>タグに変換して表示
+                            echo '<p class="card-01__lead">' . nl2br(esc_html($package_title)) . '</p>';
+                            ?>
+                            <p class="card-01__discount">
+                              <?php if (!empty($normal_price)) : ?>
+                                <!-- 正常価格を表示 -->
+                                <span class="card-01__price">¥<?php echo esc_html(number_format($normal_price)); ?></span>
+                              <?php endif; ?>
+                              <!-- オファー価格を表示 -->
+                              ¥<?php echo esc_html(number_format($offer_price)); ?>
+                            </p>
+                          <?php endif; ?>
+                          <!-- /price -->
                         </div>
-                      </div>
                     </a>
                   </div>
                 </article>
@@ -126,18 +146,16 @@
               <?php endwhile; ?>
               <?php wp_reset_postdata(); ?>
             <?php else : ?>
-              <!-- キャンペーンが見つからない場合のメッセージ -->
-              <p>キャンペーンが見つかりませんでした。</p>
+              <p>キャンペーンの投稿が見つかりませんでした</p>
             <?php endif; ?>
             <!-- /Campaign Slides -->
           </div>
-
           <!-- /swiper-wrapper -->
         </div>
         <!-- /swiper -->
       </div>
       <div class="campaign__arrow-control u-desktop">
-        <!-- If we need navigation buttons -->
+        <!-- ページネーション -->
         <div class="swiper-button-prev js-campaign-prev"></div>
         <div class="swiper-button-next js-campaign-next"></div>
       </div>
@@ -148,8 +166,8 @@
       </a>
     </div>
   </section>
-  <!-- /campaign -->
-  <!-- about-us -->
+
+  <!-- 私たちについて：about us -->
   <section id="about" class="about top-about">
     <div class="about__inner inner">
       <div class="about__header section-header">
@@ -181,11 +199,10 @@
     </div>
     <div class="about__img-icon u-desktop">
       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/coral.png" alt="<?php echo esc_attr('サンゴのアイコン'); ?>" width="194" height="181" />
-
     </div>
   </section>
-  <!-- /about-us -->
-  <!-- information -->
+
+  <!-- ダイビング情報：information -->
   <section id="information" class="information section">
     <div class="information__inner inner">
       <div class="information__header section-header">
@@ -210,8 +227,8 @@
       </div>
     </div>
   </section>
-  <!-- /information -->
-  <!-- blog -->
+
+  <!-- ブログ：blog -->
   <section id="blog" class="blog">
     <div class="blog__inner inner">
       <div class="blog__header section-header">
@@ -243,7 +260,7 @@
                 <div class="card-02__img">
                   <!-- アイキャッチ画像の表示 -->
                   <?php if (has_post_thumbnail()) : ?>
-                    <?php the_post_thumbnail('medium'); ?>
+                    <?php the_post_thumbnail(); ?>
                   <?php else : ?>
                     <!-- アイキャッチ画像がない場合のデフォルト画像 -->
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/noimg.jpg" alt="No image" width="301" height="201">
@@ -256,8 +273,7 @@
                   <h3 class="card-02__title"><?php the_title(); ?></h3>
                 </div>
                 <div class="card-02__content">
-                  <!-- 投稿の抜粋を表示 -->
-                  <?php the_excerpt(); ?>
+                  <?php echo get_the_content(); ?>
                 </div>
               </a>
             </article>
@@ -266,12 +282,9 @@
           <!-- クエリの投稿データをリセット -->
           <?php wp_reset_postdata(); ?>
         <?php else : ?>
-          <!-- 投稿が見つからない場合のメッセージ -->
-          <p>投稿が見つかりませんでした。</p>
+          <p>まだブログ記事は投稿されてません</p>
         <?php endif; ?>
-
       </div>
-
       <div class="blog__link">
         <a href="<?php echo esc_url(home_url('/blog')); ?>" class="link-button">View more
           <span class="arrow-x"></span>
@@ -280,11 +293,10 @@
     </div>
     <div class="blog__img-icon u-desktop">
       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/blog-fish-illust.png" alt="<?php echo esc_attr('魚の群れのアイコン'); ?>" width="437" height="201" />
-
     </div>
   </section>
-  <!-- /blog -->
-  <!-- voice -->
+
+  <!-- お客様の声：voice -->
   <section id="voice" class="voice top-voice">
     <div class="voice__inner inner">
       <div class="voice__header section-header">
@@ -292,7 +304,6 @@
         <h2 class="section-header__jatitle">お客様の声</h2>
       </div>
       <div class="voice__items voice-cards">
-
         <?php
         // 新着2件のカスタム投稿を取得
         $args = array(
@@ -312,7 +323,13 @@
               <div class="card-03__header">
                 <div class="card-03__left">
                   <div class="card-03__attribute">
-                    <p><?php echo esc_html(get_field('age')); ?>代(<?php echo esc_html(get_field('gender')); ?>)</p>
+                    <?php
+                    // ACFのグループフィールドからデータを取得
+                    $metadata = get_field('metadata');
+                    $age = $metadata['age'];
+                    $gender = $metadata['gender'];
+                    ?>
+                    <p><?php echo esc_html($age); ?>(<?php echo esc_html($gender); ?>)</p>
                     <?php
                     $terms = get_the_terms(get_the_ID(), 'voice_category');
                     if ($terms && !is_wp_error($terms)) :
@@ -335,10 +352,11 @@
                 <?php
                 $content = get_the_content();
                 if (mb_strlen($content, 'UTF-8') > 170) {
-                  $content = mb_substr(strip_tags($content), 0, 170, 'UTF-8');
-                  echo esc_html($content) . '……';
+                  // 本文から改行を削除しないように変更
+                  $content = mb_substr($content, 0, 170, 'UTF-8');
+                  echo wp_kses_post($content) . '…'; // 改行を含むテキストをエスケープ
                 } else {
-                  echo esc_html(strip_tags($content));
+                  echo wp_kses_post($content); // 改行を含むテキストをエスケープ
                 }
                 ?>
               </div>
@@ -347,10 +365,8 @@
           <?php endwhile; ?>
           <?php wp_reset_postdata(); ?>
         <?php else : ?>
-          <!-- 投稿が見つからない場合のメッセージ -->
-          <p>投稿が見つかりませんでした。</p>
+          <p>お客様の声の投稿が見つかりませんでした</p>
         <?php endif; ?>
-
       </div>
 
       <div class="voice__link">
@@ -366,8 +382,8 @@
       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/seahorse-illust.png" alt="<?php echo esc_attr('タツノオトシゴのアイコン'); ?>" width="71" height="162" />
     </div>
   </section>
-  <!-- /voice -->
-  <!-- price -->
+
+  <!-- 料金一覧：price -->
   <section id="price" class="price section">
     <div class="price__inner inner">
       <div class="price__header section-header">
@@ -377,123 +393,147 @@
       <div class="price__contents">
         <div class="price__items">
 
+
           <!-- ライセンス講習 -->
           <?php
-          $courses = SCF::get_option_meta('theme-options', 'license'); // オプションページからライセンス講習の情報を取得
-          if (!empty($courses)) : // 講習情報が空でないかチェック
+          // 固定ページIDを指定
+          $page_id = 22;
+
+          // 固定ページからSCFのデータを取得
+          $courses = SCF::get('license', $page_id);
+
+          // 取得した講習情報が空でないかを確認
+          if (!empty($courses)) :
           ?>
             <div class="price__courses">
-              <h3 class="price__course">ライセンス講習</h3>
+              <h3 class="price__course">ライセンス講習</h3> <!-- クラス名を元に戻す -->
               <dl class="price__course-list">
-                <!-- データ -->
-                <?php
-                foreach ($courses as $courseItem) : // 各講習情報をループで表示
-                  if (isset($courseItem['title_license'])) : // タイトルが設定されているかチェック
-                    $fullTitle = esc_html($courseItem['title_license'] . ' ' . $courseItem['subTitle_license']); // タイトルとサブタイトルを結合してエスケープ処理
+                <!-- 各講習情報をループで表示 -->
+                <?php foreach ($courses as $course) :
+                  // タイトルが設定されているかを確認
+                  $name1 = isset($course['title_license']) ? esc_html($course['title_license']) : '';
+                  // 価格を整数に変換して取得
+                  $price = isset($course['price_license']) ? intval($course['price_license']) : 0;
                 ?>
-                    <div class="price__course-menus">
-                      <dt class="price__course-menu">
-                        <!-- // タイトルとサブタイトルを表示 -->
-                        <?php echo $fullTitle; ?>
-                      </dt>
-                      <!-- 価格をフォーマットして表示 -->
-                      <dd class="price__course-price">¥<?php echo number_format(intval($courseItem['price_license'])); ?></dd>
-                    </div>
-                  <?php endif; ?>
+                  <div class="price__course-menus"> <!-- クラス名を元に戻す -->
+                    <dt class="price__course-menu"> <!-- クラス名を元に戻す -->
+                      <!-- タイトルとサブタイトルを表示 -->
+                      <?php echo $name1; ?>
+                    </dt>
+                    <!-- 価格をフォーマットして表示 -->
+                    <dd class="price__course-price">¥<?php echo number_format($price); ?></dd>
+                  </div>
                 <?php endforeach; ?>
               </dl>
             </div>
-            <!-- 講習情報がない場合の処理終了 -->
           <?php endif; ?>
 
 
           <!-- 体験ダイビング -->
           <?php
-          $courses = SCF::get_option_meta('theme-options', 'experience'); // オプションページから体験ダイビングの情報を取得
-          if (!empty($courses)) : // 講習情報が空でないかチェック
+          // 固定ページIDを指定
+          $page_id = 22;
+
+          // 固定ページからSCFのデータを取得
+          $courses = SCF::get('experience', $page_id);
+
+          // 取得した講習情報が空でないかを確認
+          if (!empty($courses)) :
           ?>
             <div class="price__courses">
               <h3 class="price__course">体験ダイビング</h3>
               <dl class="price__course-list">
-                <!-- データ -->
-                <?php
-                foreach ($courses as $courseItem) : // 各講習情報をループで表示
-                  if (isset($courseItem['title_experience'])) : // タイトルが設定されているかチェック
-                    $fullTitle = esc_html($courseItem['title_experience'] . ' ' . $courseItem['subTitle_experience']); // タイトルとサブタイトルを結合してエスケープ処理
+                <!-- 各講習情報をループで表示 -->
+                <?php foreach ($courses as $courseItem) :
+                  // タイトルと所要時間をエスケープして取得
+                  $name1 = isset($courseItem['title_experience']) ? esc_html($courseItem['title_experience']) : '';
+                  $name2 = isset($courseItem['duration_experience']) ? esc_html($courseItem['duration_experience']) : '';
+                  // 価格を整数に変換して取得
+                  $price = isset($courseItem['price_experience']) ? intval($courseItem['price_experience']) : 0;
                 ?>
-                    <div class="price__course-menus">
-                      <dt class="price__course-menu">
-                        <!-- タイトルとサブタイトルを表示 -->
-                        <?php echo $fullTitle; ?>
-                      </dt>
-                      <!--  価格をフォーマットして表示 -->
-                      <dd class="price__course-price">¥<?php echo number_format(intval($courseItem['price_experience'])); ?></dd>
-                    </div>
-                  <?php endif; ?>
+                  <div class="price__course-menus">
+                    <dt class="price__course-menu">
+                      <!-- タイトルと所要時間を表示 -->
+                      <?php echo $name1 . ' ' . $name2; ?>
+                    </dt>
+                    <!-- 価格をフォーマットして表示 -->
+                    <dd class="price__course-price">¥<?php echo number_format($price); ?></dd>
+                  </div>
                 <?php endforeach; ?>
               </dl>
             </div>
-            <!-- 講習情報がない場合の処理終了 -->
           <?php endif; ?>
 
 
           <!-- ファンダイビング -->
           <?php
-          $courses = SCF::get_option_meta('theme-options', 'fun'); // オプションページからファンダイビングの情報を取得
-          if (!empty($courses)) : // 講習情報が空でないかチェック
+          // 固定ページIDを指定
+          $page_id = 22;
+
+          // 固定ページからSCFのデータを取得
+          $courses = SCF::get('fun', $page_id);
+
+          // 講習情報が空でないかチェック
+          if (!empty($courses)) :
           ?>
             <div class="price__courses">
               <h3 class="price__course">ファンダイビング</h3>
               <dl class="price__course-list">
-                <!-- データ -->
-                <?php
-                foreach ($courses as $courseItem) : // 各講習情報をループで表示
-                  if (isset($courseItem['title_fun'])) : // タイトルが設定されているかチェック
-                    $fullTitle = esc_html($courseItem['title_fun'] . ' ' . $courseItem['subTitle_fun']); // タイトルとサブタイトルを結合してエスケープ処理
+                <!-- 各講習情報をループで表示 -->
+                <?php foreach ($courses as $courseItem) :
+                  // タイトルと回数をエスケープして取得
+                  $name1 = isset($courseItem['title_fun']) ? esc_html($courseItem['title_fun']) : '';
+                  $name2 = isset($courseItem['time_fun']) ? esc_html($courseItem['time_fun']) : '';
+                  // 価格を整数に変換して取得
+                  $price = isset($courseItem['price_fun']) ? intval($courseItem['price_fun']) : 0;
                 ?>
-                    <div class="price__course-menus">
-                      <dt class="price__course-menu">
-                        <!-- // タイトルとサブタイトルを表示 -->
-                        <?php echo $fullTitle; ?>
-                      </dt>
-                      <!-- 価格をフォーマットして表示 -->
-                      <dd class="price__course-price">¥<?php echo number_format(intval($courseItem['price_fun'])); ?></dd>
-                    </div>
-                  <?php endif; ?>
+                  <div class="price__course-menus">
+                    <dt class="price__course-menu">
+                      <!-- タイトルと回数を表示 -->
+                      <?php echo $name1 . ' ' . $name2; ?>
+                    </dt>
+                    <!-- 価格をフォーマットして表示 -->
+                    <dd class="price__course-price">¥<?php echo number_format($price); ?></dd>
+                  </div>
                 <?php endforeach; ?>
               </dl>
             </div>
-            <!-- 講習情報がない場合の処理終了 -->
           <?php endif; ?>
 
 
           <!-- スペシャルダイビング -->
           <?php
-          $courses = SCF::get_option_meta('theme-options', 'special'); // オプションページからスペシャルダイビングの情報を取得
-          if (!empty($courses)) : // 講習情報が空でないかチェック
+          // 固定ページIDを指定
+          $page_id = 22;
+
+          // 固定ページからSCFのデータを取得
+          $courses = SCF::get('special', $page_id);
+
+          // 講習情報が空でないかチェック
+          if (!empty($courses)) :
           ?>
             <div class="price__courses">
               <h3 class="price__course">スペシャルダイビング</h3>
               <dl class="price__course-list">
-                <!-- データ -->
-                <?php
-                foreach ($courses as $courseItem) : // 各講習情報をループで表示
-                  if (isset($courseItem['title_special'])) : // タイトルが設定されているかチェック
-                    $fullTitle = esc_html($courseItem['title_special'] . ' ' . $courseItem['subTitle_special']); // タイトルとサブタイトルを結合してエスケープ処理
+                <!-- 各講習情報をループで表示 -->
+                <?php foreach ($courses as $courseItem) :
+                  // タイトルとサブタイトルをエスケープして取得
+                  $name1 = isset($courseItem['title_special']) ? esc_html($courseItem['title_special']) : '';
+                  $name2 = isset($courseItem['time_special']) ? esc_html($courseItem['time_special']) : '';
+                  // 価格を整数に変換して取得
+                  $price = isset($courseItem['price_special']) ? intval($courseItem['price_special']) : 0;
                 ?>
-                    <div class="price__course-menus">
-                      <dt class="price__course-menu">
-                        <!-- タイトルとサブタイトルを表示 -->
-                        <?php echo $fullTitle; ?>
-                      </dt>
-                      <!-- 価格をフォーマットして表示 -->
-                      <dd class="price__course-price">¥<?php echo number_format(intval($courseItem['price_special'])); ?></dd>
-                    </div>
-                  <?php endif; ?>
+                  <div class="price__course-menus">
+                    <dt class="price__course-menu">
+                      <!-- タイトルとサブタイトルを表示 -->
+                      <?php echo $name1 . ' ' . $name2; ?>
+                    </dt>
+                    <!-- 価格をフォーマットして表示 -->
+                    <dd class="price__course-price">¥<?php echo number_format($price); ?></dd>
+                  </div>
                 <?php endforeach; ?>
               </dl>
             </div>
-            <!--  講習情報がない場合の処理終了 -->
           <?php endif; ?>
 
 
@@ -516,7 +556,6 @@
       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/common/pc/fish-illust_2.png" alt="<?php echo esc_attr('魚の群れイラスト画像'); ?>" width="437" height="201" />
     </div>
   </section>
-  <!-- /price -->
 
 </main>
 

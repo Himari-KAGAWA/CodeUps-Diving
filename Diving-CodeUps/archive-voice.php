@@ -49,15 +49,31 @@
           <!-- 投稿があるかどうかをチェック -->
           <?php if (have_posts()) : ?>
             <!-- 投稿がある間、ループを開始 -->
-            <?php while (have_posts()) : ?>
-              <?php the_post(); ?>
+            <?php while (have_posts()) : the_post(); ?> <!-- whileループ内でthe_post()を直接使用 -->
 
               <!-- お客様の声カード -->
               <div class="voice-cards__item card-03" data-item="tab01">
                 <div class="card-03__header">
                   <div class="card-03__left">
                     <div class="card-03__attribute">
-                      <p><?php the_field('age'); ?>代(<?php the_field('gender'); ?>)</p> <!-- 年齢代と性別 -->
+                      <?php
+                      // ACFからお客様情報のグループフィールドを取得
+                      $metadata = get_field('metadata');
+
+                      if ($metadata) {
+                        $age = isset($metadata['age']) ? $metadata['age'] : '';
+                        $gender = isset($metadata['gender']) ? $metadata['gender'] : '';
+                      }
+                      ?>
+                      <p>
+                        <?php if (!empty($age)) : ?>
+                          <?php echo esc_html($age); ?>
+                        <?php endif; ?>
+                        <?php if (!empty($gender)) : ?>
+                          (<?php echo esc_html($gender); ?>)
+                        <?php endif; ?>
+                      </p>
+
                       <span class="category">
                         <?php
                         $categories = get_the_terms(get_the_ID(), 'voice_category');
@@ -82,20 +98,20 @@
                     <?php endif; ?>
                   </div>
                 </div>
+                <!-- お客様の声本文 -->
                 <div class="card-03__content">
-                  <p>
-                    <!--  投稿のコンテンツを表示 -->
-                    <?php the_content(); ?>
-                  </p>
+                  <?php the_content(); ?>
                 </div>
               </div>
               <!-- /お客様の声カード -->
-
             <?php endwhile; ?>
             <?php wp_reset_postdata(); ?>
-            <!--  投稿が見つからない場合の処理終了 -->
+          <?php else : ?>
+            <!-- 投稿が見つからない場合のメッセージ -->
+            <p>お客様の声の投稿が見つかりませんでした</p>
           <?php endif; ?>
         </div>
+
 
       </div>
       <!-- pagination -->

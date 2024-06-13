@@ -1036,6 +1036,11 @@ a {
   width: 1.5rem;
 }
 
+.footer-nav__icon--x {
+  width: 1rem;
+  height: 1rem;
+}
+
 .footer-nav__icon + .footer-nav__icon {
   margin-left: 1rem;
 }
@@ -3659,6 +3664,12 @@ page-about .about__contents--page {
     height: 2rem;
     transition: opacity 0.3s ease 0s;
     width: 2rem;
+  }
+
+  .footer-nav__icon--x {
+    height: 1.5em;
+    width: 1.5em;
+    margin-bottom: 0.1875rem;
   }
 
   .footer-nav__content {

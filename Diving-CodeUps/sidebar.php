@@ -43,7 +43,16 @@
                   <?php endif; ?>
                 </div>
                 <div class="card-02__header">
-                  <time class="card-02__date" datetime="<?php echo esc_attr($popular_post->date); ?>"><?php echo esc_html($popular_post->date); ?></time>
+                  <time class="card-02__date" datetime="<?php echo esc_attr($popular_post->date); ?>">
+                    <?php
+                    $date_time = $popular_post->date;
+                    $year = substr($date_time, 0, 4);
+                    $month = substr($date_time, 5, 2);
+                    $day = substr($date_time, 8, 2);
+                    echo esc_html("{$year}.{$month}/{$day}");
+                    ?>
+                  </time>
+
                   <h3 class="card-02__title">
                     <?php
                     // タイトルの長さをチェックし、24文字以上の場合は切り詰める

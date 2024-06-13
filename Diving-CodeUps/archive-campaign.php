@@ -50,8 +50,7 @@
             <!-- 投稿があるかどうかをチェック -->
             <?php if (have_posts()) : ?>
               <!-- 投稿がある間、ループを開始 -->
-              <?php while (have_posts()) : ?>
-                <?php the_post(); ?>
+              <?php while (have_posts()) : the_post(); ?> <!-- whileループ内でthe_post()を直接使用 -->
 
                 <div class="page-campaign__card-item card-01">
                   <div class="card-01__link">
@@ -79,17 +78,86 @@
                         </h3>
                       </div>
                       <div class="card-01__content card-01__content--page">
-                        <p class="card-01__lead">全部コミコミ(お一人様)</p>
-                        <p class="card-01__discount">
-                          <span class="card-01__price card-01__price--page">¥<?php echo number_format(intval(get_field('standard'))); ?></span>
-                          ¥<?php echo number_format(intval(get_field('special'))); ?>
-                        </p>
+                        <!-- price -->
+                        <?php
+                        // ACFからキャンペーン価格のグループフィールドを取得
+                        $campaign_price = get_field('campaign_price');
+
+                        // 初期化
+                        $normal_price = '';
+                        $offer_price = '';
+
+                        if ($campaign_price) {
+                          // 正常価格とオファー価格をそれぞれ取得
+                          $normal_price = isset($campaign_price['normal_price']) ? $campaign_price['normal_price'] : '';
+                          $offer_price = isset($campaign_price['offer_price']) ? $campaign_price['offer_price'] : '';
+                        }
+                        ?>
+                        <?php if (!empty($offer_price)) : ?>
+                          <!-- パッケージタイトル -->
+                          <?php
+                          // ACFからパッケージタイトルを取得
+                          $package_title = get_field('package_title');
+
+                          // デフォルトタイトルを設定
+                          $default_title = "全部コミコミ(お一人様)";
+
+                          // パッケージタイトルが空の場合はデフォルトタイトルを使用
+                          if (!$package_title) {
+                            $package_title = $default_title;
+                          }
+
+                          // パッケージタイトルをHTMLエスケープし、改行を<br>タグに変換して表示
+                          echo '<p class="card-01__lead">' . nl2br(esc_html($package_title)) . '</p>';
+                          ?>
+                          <p class="card-01__discount">
+                            <?php if (!empty($normal_price)) : ?>
+                              <!-- 正常価格を表示 -->
+                              <span class="card-01__price card-01__price--page">¥<?php echo esc_html(number_format($normal_price)); ?></span>
+                            <?php endif; ?>
+                            <!-- オファー価格を表示 -->
+                            ¥<?php echo esc_html(number_format($offer_price)); ?>
+                          </p>
+                        <?php endif; ?>
+                        <!-- /price -->
+
                       </div>
                       <div class="card-01__lower-unit">
-                        <div class="text">
-                          <?php the_content(); ?>
-                        </div>
-                        <p class="period"><?php the_field('period'); ?></p>
+                        <!-- desc -->
+                        <?php the_content(); ?>
+
+                        <!-- date -->
+                        <?php
+                        // ACFからキャンペーン期間のグループフィールドを取得
+                        $campaign_period = get_field('campaign_period');
+
+                        // 初期化
+                        $start_date = '';
+                        $end_date = '';
+
+                        if ($campaign_period) {
+                          $start_date = isset($campaign_period['start_date']) ? $campaign_period['start_date'] : '';
+                          $end_date = isset($campaign_period['end_date']) ? $campaign_period['end_date'] : '';
+                        }
+                        ?>
+                        <p class="period">
+                          <?php if (!empty($start_date) && !empty($end_date)) : ?>
+                            <?php
+                            $start = new DateTime($start_date);
+                            $end = new DateTime($end_date);
+                            if ($start->format('Y') === $end->format('Y')) {
+                              // 同じ年の場合、開始日はそのまま、終了日は月日だけ表示
+                              echo esc_html($start->format('Y/n/j')) . ' - ' . esc_html($end->format('n/j'));
+                            } else {
+                              // 異なる年の場合、開始日と終了日をそのまま表示
+                              echo esc_html($start_date) . ' - ' . esc_html($end_date);
+                            }
+                            ?>
+                          <?php elseif (!empty($start_date)) : ?>
+                            <?php echo esc_html($start_date); ?>
+                          <?php endif; ?>
+                        </p>
+                        <!-- /date -->
                         <p class="click-here">ご予約・お問い合わせはコチラ</p>
                         <div class="card-01__lower-unit-link">
                           <a href="<?php echo esc_url(home_url('/contact')); ?>" class="link-button">Contact us
@@ -103,10 +171,14 @@
 
               <?php endwhile; ?>
               <?php wp_reset_postdata(); ?>
-              <!--  投稿が見つからない場合の処理終了 -->
+            <?php else : ?>
+              <!-- 投稿が見つからない場合のメッセージ -->
+              <p>キャンペーンの投稿が見つかりませんでした</p>
             <?php endif; ?>
 
           </div>
+
+
         </div>
       </div>
       <!-- pagination -->
