@@ -351,6 +351,10 @@
               <div class="card-03__content">
                 <?php
                 $content = get_the_content();
+
+                // 余計なHTMLコメントを削除
+                $content = preg_replace('/<!--(.*)-->/Uis', '', $content);
+
                 if (mb_strlen($content, 'UTF-8') > 170) {
                   // 本文から改行を削除しないように変更
                   $content = mb_substr($content, 0, 170, 'UTF-8');
@@ -360,6 +364,7 @@
                 }
                 ?>
               </div>
+
             </div>
             <!-- /Voice-card -->
           <?php endwhile; ?>
