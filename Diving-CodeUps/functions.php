@@ -364,16 +364,3 @@ function custom_enter_placeholder($text)
   return $text;
 }
 add_filter('write_your_story', 'custom_enter_placeholder', 10, 2);
-
-
-/*---------------------------------------
-【編集画面】固定ページの設定の並び順
-/*--------------------------------------*/
-function custom_scf_meta_box_priority()
-{
-  // SCFのメタボックスをSEO SIMPLE PACKより上に表示するために優先度を変更します
-  remove_meta_box('smart-custom-fields', 'post', 'normal');
-  add_meta_box('smart-custom-fields', 'Custom Fields', 'smart_custom_fields_display_meta_box', 'post', 'normal', 'high');
-}
-
-add_action('add_meta_boxes', 'custom_scf_meta_box_priority', 100);
