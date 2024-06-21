@@ -59,8 +59,7 @@
 }
 
 /* キャンペーン：サンプル画像 */
-/* .post-type-campaign #acf-group_66302aeaa48f2 .acf-fields.-top */
-.post-type-campaign #acf-group_666983d8eceae .acf-fields.-top {
+.post-type-campaign #acf-group_66302aeaa48f2 .acf-fields.-top {
   background: url(../images/common/pc/campaign-sample.jpg) no-repeat;
   background-size: contain;
   background-position: top right 8px;
